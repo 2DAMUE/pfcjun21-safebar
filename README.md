@@ -19,4 +19,4 @@
 	$ git push origin master
 
 
-2. Una vez que tengas tu proyecto Android Studio creado y sincronizado, dentro de la carpeta "docs" en AS sustituirás la versión actual por tu versión de las plantillas de Anteproyecto y Memoria
+2. Una vez que tengas tu proyecto Android Studio creado y sincronizado, dentro de la carpeta "docs" en AS sustituirás la versión actual por tu versión de las plantillas de Anteproyecto y Memoria.
