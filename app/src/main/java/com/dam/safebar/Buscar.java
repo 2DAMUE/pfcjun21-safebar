@@ -11,6 +11,6 @@ public class Buscar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buscar);
 
-        //holi
+        //ho
     }
 }
