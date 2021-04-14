@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "741492545663",
+    "project_id": "safebar-b4376",
+    "storage_bucket": "safebar-b4376.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741492545663:android:0bafd67e4f2a8734cd874a",
+        "android_client_info": {
+          "package_name": "com.dam.safebar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "741492545663-nn90ca7p5maokll2pubiv8omonlv6lp6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSPb_kdw0XqhTAAAWa3lCEGRhOzF5VOXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "741492545663-nn90ca7p5maokll2pubiv8omonlv6lp6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
