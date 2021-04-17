@@ -3,17 +3,17 @@ package com.dam.safebar.javabeans;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Reserva implements Parcelable {
+public class ReservaUsu implements Parcelable {
 
     private String nombreRest;
     private String fecha;
     private String hora;
     private int numPersonas;
 
-    public Reserva() {
+    public ReservaUsu() {
     }
 
-    public Reserva(String nombreRest, String fecha, String hora, int numPersonas) {
+    public ReservaUsu(String nombreRest, String fecha, String hora, int numPersonas) {
         this.nombreRest = nombreRest;
         this.fecha = fecha;
         this.hora = hora;
@@ -52,22 +52,22 @@ public class Reserva implements Parcelable {
         this.numPersonas = numPersonas;
     }
 
-    protected Reserva(Parcel in) {
+    protected ReservaUsu(Parcel in) {
         nombreRest = in.readString();
         fecha = in.readString();
         hora = in.readString();
         numPersonas = in.readInt();
     }
 
-    public static final Creator<Reserva> CREATOR = new Creator<Reserva>() {
+    public static final Creator<ReservaUsu> CREATOR = new Creator<ReservaUsu>() {
         @Override
-        public Reserva createFromParcel(Parcel in) {
-            return new Reserva(in);
+        public ReservaUsu createFromParcel(Parcel in) {
+            return new ReservaUsu(in);
         }
 
         @Override
-        public Reserva[] newArray(int size) {
-            return new Reserva[size];
+        public ReservaUsu[] newArray(int size) {
+            return new ReservaUsu[size];
         }
     };
 
