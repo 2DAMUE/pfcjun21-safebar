@@ -1,7 +1,9 @@
 package com.dam.safebar.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,11 +28,10 @@ public class InicioFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public InicioFragment newInstance() {
+    public InicioFragment newInstance(ArrayList<Restaurante> listaRestaurantes) {
         InicioFragment fragment = new InicioFragment();
         Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
+        args.putParcelableArrayList("LISTA_REST", listaRestaurantes);
         fragment.setArguments(args);
         return fragment;
     }
@@ -38,10 +39,9 @@ public class InicioFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
+        if (getArguments() != null) {
+            listaRestaurantes = getArguments().getParcelableArrayList("LISTA_REST");
+        }
     }
 
     @Override
@@ -54,13 +54,12 @@ public class InicioFragment extends Fragment {
 
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
-        final Datos datos = new Datos();
-        InicioAdapter inicAdap = new InicioAdapter((datos.getListaRestaurantes()));
+        InicioAdapter inicAdap = new InicioAdapter(listaRestaurantes);
 //        inicAdap.setListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
 //                int i = rv.getChildAdapterPosition(v);
-//                Restaurante restaurante = datos.getListaRestaurantes().get(i);
+//                Restaurante restaurante = listaRestaurantes.get(i);
 //                listener.accederVecinoInicio(usuario);
 //            }
 //        });
@@ -68,4 +67,22 @@ public class InicioFragment extends Fragment {
         rv.setAdapter(inicAdap);
         return view;
     }
+
+//    @Override
+//    public void onAttach(@NonNull Context context) {
+//        super.onAttach(context);
+//        if (context instanceof VecinoFragmentListener) {
+//            listener = (VecinoFragmentListener) context;
+//        } else {
+//            throw new RuntimeException(context.toString()
+//                    + " must implement OnFragmentInteractionListener");
+//        }
+//    }
+//
+//    @Override
+//    public void onDetach() {
+//        super.onDetach();
+//        listener = null;
+//    }
+//
 }

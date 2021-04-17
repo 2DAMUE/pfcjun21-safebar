@@ -79,7 +79,7 @@ public class InicioAdapter extends RecyclerView.Adapter<InicioAdapter.Restaurant
         }
 
         public void bindItem(Restaurante restaurante) {
-            imagen.setImageResource(Integer.parseInt(restaurante.getUrlFoto()));
+            //imagen.setImageResource(Integer.parseInt(restaurante.getUrlFoto()));
 
             //TODO:
 
@@ -92,9 +92,9 @@ public class InicioAdapter extends RecyclerView.Adapter<InicioAdapter.Restaurant
             distancia.setText("km");
             nombre.setText(restaurante.getNombreRest());
             direccion.setText(restaurante.getDireccion());
-            aforo.setText(restaurante.getAforo());
+            aforo.setText(String.valueOf(restaurante.getAforo()));
             calif.setText(String.valueOf(restaurante.getCalificacion()));
-            precio.setText(restaurante.getPrecioMedio());
+            precio.setText(String.valueOf(restaurante.getPrecioMedio()));
         }
 
 
