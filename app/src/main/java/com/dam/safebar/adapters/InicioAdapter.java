@@ -81,7 +81,7 @@ public class InicioAdapter extends RecyclerView.Adapter<InicioAdapter.Restaurant
         public void bindItem(Restaurante restaurante) {
             //imagen.setImageResource(Integer.parseInt(restaurante.getUrlFoto()));
 
-            //TODO:
+            //TODO:r
 
             Glide.with(imagen)
                     .load(restaurante.getUrlFoto())
