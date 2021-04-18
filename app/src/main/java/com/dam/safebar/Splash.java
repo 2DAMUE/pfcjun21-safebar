@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Splash extends AppCompatActivity {
 
@@ -40,21 +42,44 @@ public class Splash extends AppCompatActivity {
         logo.startAnimation(fadeIn);
         nombre.startAnimation(fadeIn);
 
-        openDelay(true);
+        //Para comprobar si existe usuario Logueado. Salta al inicio si ya hay sesion abierta.
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            openDelay(false);
+        } else {
+            openDelay(true);
+        }
+
 
     }
 
     private void openDelay(boolean b) {
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(Splash
-                        .this, LogIn.class);
-                startActivity(intent);
-                finish();
-            }
-        }, 3500);
+        if (b) {
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(Splash
+                            .this, LogIn.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }, 3500);
+
+        } else {
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(Splash
+                            .this, Inicio.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }, 3500);
+
+        }
     }
 
 

@@ -38,11 +38,13 @@
     <style name="TextInput.LogIn" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/statelist_et_orange</item>
         <item name="colorOnSurface">@color/white</item>
-        <item name="hintTextColor">@color/orange_light_alpha</item>
+        <item name="hintTextColor">@color/white_light_alpha</item>
         <item name="android:textColorHint">@color/white</item>
         <item name="boxBackgroundColor">@color/white_alpha</item>
         <item name="hintEnabled">true</item>
         <item name="android:strokeColor">@color/orange_light</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Login.EditText</item>
+        <item name="errorEnabled">true</item>
     </style>
 
     <style name="Text.Titulo" parent="Widget.AppCompat.TextView">
@@ -58,6 +60,12 @@
         <item name="fontFamily">@font/oswald</item>
         <item name="android:textStyle">italic</item>
         <item name="android:textSize">24sp</item>
+        <item name="backgroundTint">@color/statelist_btn_orange</item>
+    </style>
+
+    <style name="ShapeAppearance.Login.EditText" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
     </style>
 
 </resources>
