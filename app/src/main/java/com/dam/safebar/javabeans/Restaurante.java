@@ -3,6 +3,8 @@ package com.dam.safebar.javabeans;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
 public class Restaurante implements Parcelable {
 
     private String nombreRest;
@@ -14,8 +16,22 @@ public class Restaurante implements Parcelable {
     private int precioMedio;
     private int aforo;
     private String descripcion;
+    private ArrayList<ReservaRest> listaReservas;
 
     public Restaurante() {
+    }
+
+    public Restaurante(String nombreRest, String urlFoto, String correo, String password, String direccion, int calificacion, int precioMedio, int aforo, String descripcion, ArrayList<ReservaRest> listaReservas) {
+        this.nombreRest = nombreRest;
+        this.urlFoto = urlFoto;
+        this.correo = correo;
+        this.password = password;
+        this.direccion = direccion;
+        this.calificacion = calificacion;
+        this.precioMedio = precioMedio;
+        this.aforo = aforo;
+        this.descripcion = descripcion;
+        this.listaReservas = listaReservas;
     }
 
     public Restaurante(String nombreRest, String urlFoto, String correo, String password, String direccion, int calificacion, int precioMedio, int aforo, String descripcion) {
@@ -102,6 +118,14 @@ public class Restaurante implements Parcelable {
         this.descripcion = descripcion;
     }
 
+    public ArrayList<ReservaRest> getListaReservas() {
+        return listaReservas;
+    }
+
+    public void setListaReservas(ArrayList<ReservaRest> listaReservas) {
+        this.listaReservas = listaReservas;
+    }
+
     protected Restaurante(Parcel in) {
         nombreRest = in.readString();
         urlFoto = in.readString();
@@ -113,6 +137,8 @@ public class Restaurante implements Parcelable {
         precioMedio = in.readInt();
         aforo = in.readInt();
         descripcion = in.readString();
+        in.readList(listaReservas, ReservaRest.class.getClassLoader());
+
     }
 
     public static final Creator<Restaurante> CREATOR = new Creator<Restaurante>() {
@@ -144,6 +170,7 @@ public class Restaurante implements Parcelable {
         dest.writeInt(precioMedio);
         dest.writeInt(aforo);
         dest.writeString(descripcion);
+        dest.writeList(listaReservas);
 
     }
 }

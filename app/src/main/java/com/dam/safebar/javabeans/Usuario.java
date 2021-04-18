@@ -11,12 +11,12 @@ public class Usuario implements Parcelable {
     private String email;
     private String password;
     private String direccion;
-    private ArrayList<Reserva> listaReservas;
+    private ArrayList<ReservaUsu> listaReservas;
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, String email, String password, String direccion, ArrayList<Reserva> listaReservas) {
+    public Usuario(String nombre, String email, String password, String direccion, ArrayList<ReservaUsu> listaReservas) {
         this.nombre = nombre;
         this.email = email;
         this.password = password;
@@ -31,11 +31,11 @@ public class Usuario implements Parcelable {
         this.direccion = direccion;
     }
 
-    public ArrayList<Reserva> getListaReservas() {
+    public ArrayList<ReservaUsu> getListaReservas() {
         return listaReservas;
     }
 
-    public void setListaReservas(ArrayList<Reserva> listaReservas) {
+    public void setListaReservas(ArrayList<ReservaUsu> listaReservas) {
         this.listaReservas = listaReservas;
     }
 
@@ -45,7 +45,7 @@ public class Usuario implements Parcelable {
         password = in.readString();
         direccion = in.readString();
         //TODO:
-        in.readList(listaReservas, Reserva.class.getClassLoader());
+        in.readList(listaReservas, ReservaUsu.class.getClassLoader());
     }
 
     public static final Creator<Usuario> CREATOR = new Creator<Usuario>() {

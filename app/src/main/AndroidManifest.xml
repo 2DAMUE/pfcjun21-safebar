@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SafeBar">
-        <activity android:name=".Restaurante"></activity>
+        <activity android:name=".Rest"></activity>
         <activity android:name=".Cuenta" ></activity>
         <activity android:name=".Reservas" ></activity>
         <activity android:name=".Buscar" ></activity>
