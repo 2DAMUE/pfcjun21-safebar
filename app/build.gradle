@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.dam.safebar"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -47,4 +47,6 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation platform('com.google.firebase:firebase-bom:27.0.0')
     implementation 'com.google.firebase:firebase-auth:20.0.3'
+
+    implementation 'jp.wasabeef:glide-transformations:4.3.0'
 }

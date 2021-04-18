@@ -10,13 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SafeBar">
         <activity android:name=".Restaurante"></activity>
-        <activity android:name=".Cuenta" />
-        <activity android:name=".Reservas" />
-        <activity android:name=".Buscar" />
-        <activity android:name=".Inicio" />
-        <activity android:name=".SignUp" />
-        <activity android:name=".LogIn" />
-        <activity android:name=".Splash" />
+        <activity android:name=".Cuenta" ></activity>
+        <activity android:name=".Reservas" ></activity>
+        <activity android:name=".Buscar" ></activity>
+        <activity android:name=".Inicio" ></activity>
+        <activity android:name=".SignUp"
+            android:theme="@style/Theme.SafeBar.NoStatusBar"></activity>
+        <activity android:name=".LogIn"
+            android:theme="@style/Theme.SafeBar.NoStatusBar"></activity>
+        <activity android:name=".Splash"
+            android:theme="@style/Theme.SafeBar.NoStatusBar.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"
