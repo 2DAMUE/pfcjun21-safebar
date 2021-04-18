@@ -56,6 +56,9 @@ public class LogIn extends AppCompatActivity {
                     } else { etPassword.setError("Obligatorio"); }
 
                 } else { etUsuarioEmail.setError("Obligatorio"); }
+
+                Intent intent = new Intent(LogIn.this, Inicio.class);
+                startActivity(intent);
             }
         });
     }
