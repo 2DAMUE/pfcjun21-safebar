@@ -6,4 +6,55 @@
     android:layout_height="match_parent"
     tools:context=".Cuenta">
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCuentaConfiguracion"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:onClick="Configuracion"
+        android:text="@string/btn_cuenta_configuracion"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnCuentaAboutUs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCuentaAboutUs"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:onClick="AboutUs"
+        android:text="@string/btn_cuenta_aboutus"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@id/btnCuentaAyuda"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCuentaConfiguracion"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCuentaAyuda"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:onClick="Ayuda"
+        android:text="@string/btn_cuenta_ayuda"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@id/btnCuentaProtocoloCovid"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCuentaAboutUs" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCuentaProtocoloCovid"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:onClick="Protocolo"
+        android:text="@string/btn_cuenta_protocolocovid"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCuentaAyuda" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
