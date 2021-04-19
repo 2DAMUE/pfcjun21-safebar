@@ -3,7 +3,7 @@ package com.dam.safebar.javabeans;
 import java.util.ArrayList;
 
 public class Datos {
-
+//V
     ArrayList<Usuario> listaUsuarios;
     ArrayList<Restaurante> listaRestaurantes;
 

@@ -6,4 +6,143 @@
     android:layout_height="match_parent"
     tools:context=".LogIn">
 
+    <ImageView
+        android:id="@+id/ivBackgroundLogin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_restaurante_crop"
+        android:scaleType="centerCrop"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66000000"
+        android:visibility="visible"/>
+
+    <ImageView
+        android:id="@+id/ivLogoLogin"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="90dp"
+        android:src="@drawable/ic_logo"/>
+
+    <TextView
+        android:id="@+id/tvLogin"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivLogoLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="80dp"
+
+        android:text="LOGIN"
+        android:textColor="@color/white"
+        style="@style/Text.Titulo"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/lLoginUsuario"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toBottomOf="@id/tvLogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"
+        android:hint="Usuario"
+        style="@style/TextInput.LogIn">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etLoginUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/lLoginPassword"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toBottomOf="@id/lLoginUsuario"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"
+        android:hint="Contraseña"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/white"
+        style="@style/TextInput.LogIn">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etLoginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:inputType="textPassword"
+            android:textColorHint="@color/white"/>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogin"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/lLoginPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:text="Login"
+        style="@style/Button.Material.BaseLogin"/>
+
+    <LinearLayout
+        android:id="@+id/llLogin"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btnLogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal">
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/chLogin"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/white"
+            android:checked="true"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Mantenerme logueado"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textStyle="italic" />
+        <TextView
+            android:id="@+id/tvOlvidasteContrasenaLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿Olvidaste la contraseña?"
+            android:textColor="@color/white"
+            android:gravity="end"
+            android:layout_marginTop="-8dp"
+            android:textSize="14sp"
+            android:onClick="olvidasteContrasena"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/llLogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"
+        android:text="¿No tienes cuenta? Regístrate"
+        style="@style/Text.Subtitulo.RobotoMedium.Italic"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:onClick="goSignUp"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

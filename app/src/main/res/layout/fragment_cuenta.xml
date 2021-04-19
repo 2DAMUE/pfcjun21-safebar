@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.CuentaFragment"
+    android:orientation="vertical">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCuentaConfiguracion"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/btn_cuenta_configuracion"
+        android:textSize="22sp"/>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCuentaAboutUs"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="@string/btn_cuenta_aboutus"
+        android:textSize="22sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCuentaAyuda"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="@string/btn_cuenta_ayuda"
+        android:textSize="22sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCuentaProtocoloCovid"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="@string/btn_cuenta_protocolocovid"
+        android:textSize="22sp" />
+
+</LinearLayout>
