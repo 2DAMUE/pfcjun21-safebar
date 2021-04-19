@@ -4,15 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.Toast;
 
 import com.dam.safebar.fragments.AboutUsFragment;
 import com.dam.safebar.fragments.AyudaFragment;
 import com.dam.safebar.fragments.ConfiguracionFragment;
 import com.dam.safebar.fragments.CuentaFragment;
-import com.dam.safebar.fragments.InicioFragment;
+import com.dam.safebar.fragments.EditarPerfilFragment;
 import com.dam.safebar.fragments.ProtocoloCovidFragment;
 import com.dam.safebar.listeners.CuentaListener;
 
@@ -71,4 +70,16 @@ public class Cuenta extends AppCompatActivity implements CuentaListener {
         ft.addToBackStack(null);
         ft.commit();
     }
+
+    @Override
+    public void abrirEditPerf() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        EditarPerfilFragment epf = new EditarPerfilFragment().newInstance();
+        ft.replace(R.id.flCuenta, epf);
+        ft.addToBackStack(null);
+        ft.commit();
+    }
+
+
 }

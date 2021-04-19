@@ -1,13 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragments.ConfiguracionFragment">
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Configuracion"/>
+    <TextView
+        android:id="@+id/tvNombreConfigFrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_marginStart="120dp"
+        android:text="@string/config_frag_tv_nombre"
+        android:textSize="20sp"/>
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tvEmailConfigFrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="120dp"
+        android:text="@string/config_frag_tv_email"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/tvPWConfigFrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="120dp"
+        android:text="@string/config_frag_tv_pw"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/tvDirecConfigFrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="120dp"
+        android:text="@string/config_frag_tv_direc"
+        android:textSize="20sp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEditPerfConfigFrag"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="120dp"
+        android:text="@string/config_frag_btn_edit_perf"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogOutConfigFrag"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="120dp"
+        android:text="@string/config_frag_btn_log_out"
+        android:backgroundTint="@color/green_light"/>
+
+
+
+</LinearLayout>

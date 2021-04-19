@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.EditarPerfilFragment">
+
+    <LinearLayout
+        android:id="@+id/ll1EditPerfFrag"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvEditPerfFragTitNom"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="26dp"
+            android:layout_weight="1"
+            android:text="@string/editperf_frag_tv_nombre"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/lEditPerfFragNom"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="6">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEditPerfFragNom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="-8dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll2EditPerfFrag"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvEditPerfFragEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="26dp"
+            android:layout_weight="1"
+            android:text="@string/editperf_frag_tv_email"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/lEditPerfFragEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="8">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEditPerfFragEmail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="-8dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll3EditPerfFrag"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvEditPerfFragTitPW"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="26dp"
+            android:layout_weight="1"
+            android:text="@string/editperf_frag_tv_pw"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/lEditPerfFragPW"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="3">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEditPerfFragPW"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="-8dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll5EditPerfFrag"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvEditPerfFragTitDirec"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginTop="26dp"
+            android:layout_weight="1"
+            android:text="@string/editperf_frag_tv_direc"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/lEditPerfFragDirec"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginTop="-16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEditPerfFragDirec"
+                android:layout_width="340dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="-8dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="24dp">
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGuardarEditPerfFrag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:text="@string/editperf_frag_btn_guardar"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancelarEditPerfFrag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:text="@string/ditperf_frag_btn_cancelar"
+            android:backgroundTint="@color/green_light"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

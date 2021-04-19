@@ -11,20 +11,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dam.safebar.R;
 import com.dam.safebar.listeners.CuentaListener;
 
-public class ConfiguracionFragment extends Fragment {
+
+public class EditarPerfilFragment extends Fragment {
 
     CuentaListener listener;
 
-    public ConfiguracionFragment() {
+    public EditarPerfilFragment() {
         // Required empty public constructor
     }
 
-    public ConfiguracionFragment newInstance() {
-        ConfiguracionFragment fragment = new ConfiguracionFragment();
+
+    public EditarPerfilFragment newInstance() {
+        EditarPerfilFragment fragment = new EditarPerfilFragment();
         Bundle args = new Bundle();
 //        args.putString(ARG_PARAM1, param1);
 //        args.putString(ARG_PARAM2, param2);
@@ -44,26 +47,43 @@ public class ConfiguracionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_configuracion, container, false);
+        View view = inflater.inflate(R.layout.fragment_editar_perfil, container, false);
 
-        TextView tvNom = view.findViewById(R.id.tvNombreConfigFrag);
-        TextView tvEmail = view.findViewById(R.id.tvEmailConfigFrag);
-        TextView tvPw = view.findViewById(R.id.tvPWConfigFrag);
-        TextView tvDirec = view.findViewById(R.id.tvDirecConfigFrag);
-        Button btnEP = view.findViewById(R.id.btnEditPerfConfigFrag);
-        Button btnLO = view.findViewById(R.id.btnLogOutConfigFrag);
+        TextView tvNom = view.findViewById(R.id.etEditPerfFragNom);
+        TextView tvEmail = view.findViewById(R.id.etEditPerfFragEmail);
+        TextView tvPw = view.findViewById(R.id.etEditPerfFragPW);
+        TextView tvDirec = view.findViewById(R.id.etEditPerfFragDirec);
+        Button btnGuardar = view.findViewById(R.id.btnGuardarEditPerfFrag);
+        Button btnCancelar = view.findViewById(R.id.btnCancelarEditPerfFrag);
 
-        btnEP.setOnClickListener(new View.OnClickListener() {
+        btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.abrirEditPerf();
+
+                //TODO: Firebase
+
+                Toast.makeText(getContext(), "Cambios Guardados!", Toast.LENGTH_SHORT).show();
+                listener.abrirConfiguracion();
+
             }
         });
 
-        //TODO: Hacer el Logout
+
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.abrirConfiguracion();
+                Toast.makeText(getContext(), "cambios cancelados", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+
 
         return view;
     }
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
