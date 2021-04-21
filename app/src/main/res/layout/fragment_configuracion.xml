@@ -24,14 +24,7 @@
         android:text="@string/config_frag_tv_email"
         android:textSize="20sp"/>
 
-    <TextView
-        android:id="@+id/tvPWConfigFrag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="120dp"
-        android:text="@string/config_frag_tv_pw"
-        android:textSize="20sp"/>
+
 
     <TextView
         android:id="@+id/tvDirecConfigFrag"

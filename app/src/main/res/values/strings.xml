@@ -23,4 +23,19 @@
     <string name="editperf_frag_tv_direc">Dirección:</string>
     <string name="editperf_frag_btn_guardar">Guardar</string>
     <string name="ditperf_frag_btn_cancelar">Cancelar</string>
+    <string name="perf_rest_frag_tv_nombre">Oven</string>
+    <string name="perf_rest_frag_tv_email">oven@gmail.com</string>
+    <string name="perf_rest_frag_tv_pw">lechuga1234</string>
+    <string name="perf_rest_frag_tv_direc">Calle Falsa 123, Madrid</string>
+    <string name="perf_rest_frag_tv_precio">25€</string>
+    <string name="perf_rest_frag_tv_aforo">70</string>
+    <string name="perf_rest_frag_tv_descrip">Disfruta del ambiente acogedor de nuestros restaurancontem</string>
+    <string name="edit_perf_rest_frag_tv_nombre">Nombre:</string>
+    <string name="edit_perf_rest_frag_tv_email">Email:</string>
+    <string name="edit_perf_rest_frag_tv_pw">Contraseña:</string>
+    <string name="edit_perf_rest_frag_tv_direc">Dirección:</string>
+    <string name="edit_perf_rest_frag_btn_guardar">Guardar</string>
+    <string name="edit_perf_rest_frag_tv_descrip">Descripción:</string>
+    <string name="edit_perf_rest_frag_tv_precio">Precio medio:</string>
+    <string name="edit_perf_rest_frag_tv_aforo">Aforo:</string>
 </resources>

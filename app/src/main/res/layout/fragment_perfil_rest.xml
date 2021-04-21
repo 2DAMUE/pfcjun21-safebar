@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.PerfilRestFragment">
+
+    <ImageView
+        android:id="@+id/imgPerfRestFrag"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/tvNombrePerfRestFrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="120dp"
+        android:text="@string/perf_rest_frag_tv_nombre"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/tvEmailPerfRestFrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="120dp"
+        android:text="@string/perf_rest_frag_tv_email"
+        android:textSize="20sp"/>
+
+
+    <TextView
+        android:id="@+id/tvDirecPerfRestFrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="120dp"
+        android:text="@string/perf_rest_frag_tv_direc"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/tvPrecioPerfRestFrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="120dp"
+        android:text="@string/perf_rest_frag_tv_precio"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/tvAforoPerfRestFrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="120dp"
+        android:text="@string/perf_rest_frag_tv_aforo"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/tvDescripPerfRestFrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="120dp"
+        android:text="@string/perf_rest_frag_tv_descrip"
+        android:textSize="20sp"/>
+
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEditCuentaPerfRestFrag"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="120dp"
+        android:text="@string/config_frag_btn_edit_perf"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogOutPerfRestFrag"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="120dp"
+        android:text="@string/config_frag_btn_log_out"
+        android:backgroundTint="@color/green_light"/>
+
+</LinearLayout>

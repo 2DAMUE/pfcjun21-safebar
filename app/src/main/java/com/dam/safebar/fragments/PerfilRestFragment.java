@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,17 +15,20 @@ import android.widget.TextView;
 
 import com.dam.safebar.R;
 import com.dam.safebar.listeners.CuentaListener;
+import com.dam.safebar.listeners.PerfilRestListener;
 
-public class ConfiguracionFragment extends Fragment {
 
-    CuentaListener listener;
+public class PerfilRestFragment extends Fragment {
 
-    public ConfiguracionFragment() {
+    PerfilRestListener listener;
+
+    public PerfilRestFragment() {
         // Required empty public constructor
     }
 
-    public ConfiguracionFragment newInstance() {
-        ConfiguracionFragment fragment = new ConfiguracionFragment();
+
+    public PerfilRestFragment newInstance() {
+        PerfilRestFragment fragment = new PerfilRestFragment();
         Bundle args = new Bundle();
 //        args.putString(ARG_PARAM1, param1);
 //        args.putString(ARG_PARAM2, param2);
@@ -44,30 +48,41 @@ public class ConfiguracionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_configuracion, container, false);
+        View view = inflater.inflate(R.layout.fragment_perfil_rest, container, false);
 
-        TextView tvNom = view.findViewById(R.id.tvNombreConfigFrag);
-        TextView tvEmail = view.findViewById(R.id.tvEmailConfigFrag);
-        TextView tvDirec = view.findViewById(R.id.tvDirecConfigFrag);
-        Button btnEP = view.findViewById(R.id.btnEditPerfConfigFrag);
-        Button btnLO = view.findViewById(R.id.btnLogOutConfigFrag);
+        TextView tvNom = view.findViewById(R.id.tvNombrePerfRestFrag);
+        TextView tvEmail = view.findViewById(R.id.tvEmailPerfRestFrag);
+        TextView tvDirec = view.findViewById(R.id.tvDirecPerfRestFrag);
+        TextView tvPrecio = view.findViewById(R.id.tvPrecioPerfRestFrag);
+        TextView tvAforo = view.findViewById(R.id.tvAforoPerfRestFrag);
+        TextView tvDescrip = view.findViewById(R.id.tvDescripPerfRestFrag);
+        Button btnEC = view.findViewById(R.id.btnEditCuentaPerfRestFrag);
+        Button btnLO = view.findViewById(R.id.btnLogOutPerfRestFrag);
 
-        btnEP.setOnClickListener(new View.OnClickListener() {
+        btnEC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.abrirEditPerf();
+
+                listener.abrirEditCuenta();
+
             }
         });
 
-        //TODO: Hacer el Logout
+        btnLO.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO: hacer LogOut
+            }
+        });
 
         return view;
     }
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if (context instanceof CuentaListener) {
-            listener = (CuentaListener) context;
+        if (context instanceof PerfilRestListener) {
+            listener = (PerfilRestListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
