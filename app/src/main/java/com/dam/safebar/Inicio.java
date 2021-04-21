@@ -29,7 +29,7 @@ public class Inicio extends BottomNavigationHelper {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        @BottomNavigationHelper monta directamente el layout
+//        @BottomNavigationHelper monta directamente el layoutt
 //        setContentView(R.layout.activity_inicio);
 
         Restaurante r0 = new Restaurante();
