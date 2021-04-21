@@ -6,19 +6,31 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
+import com.dam.safebar.adapters.BottomNavigationHelper;
 import com.dam.safebar.fragments.InicioFragment;
 import com.dam.safebar.javabeans.Restaurante;
 
 import java.util.ArrayList;
 
-public class Inicio extends AppCompatActivity {
+public class Inicio extends BottomNavigationHelper {
 
     ArrayList<Restaurante> listaRestaurantes;
 
     @Override
+    public int getContentViewId() {
+        return R.layout.activity_inicio;
+    }
+
+    @Override
+    public int getNavigationMenuItemId() {
+        return R.id.itmInicio;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inicio);
+//        @BottomNavigationHelper monta directamente el layout
+//        setContentView(R.layout.activity_inicio);
 
         Restaurante r0 = new Restaurante();
         Restaurante r1 = new Restaurante();
@@ -48,7 +60,6 @@ public class Inicio extends AppCompatActivity {
         ft.add(R.id.flInicio, if1);
         ft.addToBackStack(null);
         ft.commit();
-
 
     }
 }

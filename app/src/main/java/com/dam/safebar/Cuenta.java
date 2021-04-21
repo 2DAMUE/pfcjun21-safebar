@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.dam.safebar.adapters.BottomNavigationHelper;
 import com.dam.safebar.fragments.AboutUsFragment;
 import com.dam.safebar.fragments.AyudaFragment;
 import com.dam.safebar.fragments.ConfiguracionFragment;
@@ -16,12 +17,21 @@ import com.dam.safebar.fragments.InicioFragment;
 import com.dam.safebar.fragments.ProtocoloCovidFragment;
 import com.dam.safebar.listeners.CuentaListener;
 
-public class Cuenta extends AppCompatActivity implements CuentaListener {
+public class Cuenta extends BottomNavigationHelper implements CuentaListener {
+
+    @Override
+    public int getContentViewId() {
+        return R.layout.activity_cuenta;
+    }
+
+    @Override
+    public int getNavigationMenuItemId() {
+        return R.id.itmCuenta;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cuenta);
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
