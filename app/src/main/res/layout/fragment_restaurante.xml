@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.RestauranteFragment">
+
+
+    <ImageView
+        android:src="@drawable/food"
+        android:id="@+id/imgRestauranteFrag"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+       android:id="@+id/tvNombreRestauranteFrag"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginStart="16dp"
+       android:layout_marginTop="16dp"
+       android:text="Oven"
+       android:textSize="22sp"
+       android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvDirecRestauranteFrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Calle la que sea 434"/>
+
+    <TextView
+        android:id="@+id/tvCalifRestauranteFrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="36dp"
+        android:text="4.5"
+        android:textStyle="bold"
+        android:textSize="22sp"/>
+
+    <TextView
+        android:id="@+id/tvPrecioRestauranteFrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="21dp"
+        android:text="22€"/>
+
+    <TextView
+        android:id="@+id/tvAforoRestauranteFrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="16dp"
+        android:text="70"/>
+
+    <TextView
+        android:id="@+id/tvDescripRestauranteFrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="21dp"
+        android:text="Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de tipografías o de borradores de diseño para probar el diseño visual antes de insertar el texto fina"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnReservarRestauranteFrag"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="50dp"
+        android:text="@string/restaurante_frag_btn_reservar"/>
+
+
+</LinearLayout>
