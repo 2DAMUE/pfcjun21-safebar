@@ -9,20 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SafeBar">
+        <activity android:name=".SignUpRest"
+            android:theme="@style/Theme.SafeBar.NoStatusBar"/>
+        <activity android:name=".LogInRest"
+            android:theme="@style/Theme.SafeBar.NoStatusBar"/>
         <activity android:name=".InicioRest" />
         <activity android:name=".PerfilRest" />
-        <activity android:name=".Rest">
+        <activity android:name=".Rest" />
+        <activity android:name=".Cuenta">
+        </activity>
+        <activity android:name=".Reservas" />
+        <activity android:name=".Buscar" />
+        <activity android:name=".Inicio">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Cuenta">
-        </activity>
-        <activity android:name=".Reservas" />
-        <activity android:name=".Buscar" />
-        <activity android:name=".Inicio"/>
         <activity
             android:name=".SignUp"
             android:theme="@style/Theme.SafeBar.NoStatusBar" />

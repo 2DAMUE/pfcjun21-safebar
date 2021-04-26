@@ -3,39 +3,32 @@ package com.dam.safebar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.switchmaterial.SwitchMaterial;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
-public class LogIn extends AppCompatActivity {
-
-
+public class LogInRest extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
-        ImageView background = (ImageView) findViewById(R.id.ivBackgroundLogin);
-        Button btnLogin = (Button) findViewById(R.id.btnLogin);
-        TextInputLayout etUsuarioEmail = (TextInputLayout) findViewById(R.id.lLoginUsuario);
-        TextInputLayout etPassword = (TextInputLayout) findViewById(R.id.lLoginPassword);
-        SwitchMaterial swUsuario = (SwitchMaterial) findViewById(R.id.switchLogin);
+        setContentView(R.layout.activity_log_in_rest);
+        ImageView background = (ImageView) findViewById(R.id.ivBackgroundLoginRest);
+        Button btnLogin = (Button) findViewById(R.id.btnLoginRest);
+        TextInputLayout etUsuarioEmail = (TextInputLayout) findViewById(R.id.lLoginUsuarioRest);
+        TextInputLayout etPassword = (TextInputLayout) findViewById(R.id.lLoginPasswordRest);
+        SwitchMaterial swRest = (SwitchMaterial) findViewById(R.id.switchLoginRest);
 
         Glide.with(this)
                 .load(R.drawable.food)
@@ -53,7 +46,7 @@ public class LogIn extends AppCompatActivity {
                     if (checkEmpty(etPassword)) {
 
                         etPassword.setError(null);
-                        Toast.makeText(LogIn.this, getInputString(etUsuarioEmail), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LogInRest.this, getInputString(etUsuarioEmail), Toast.LENGTH_SHORT).show();
 
                         //TODO: INICIAR SESION
 
@@ -61,23 +54,21 @@ public class LogIn extends AppCompatActivity {
 
                 } else { etUsuarioEmail.setError("Obligatorio"); }
 
-                Intent intent = new Intent(LogIn.this, Inicio.class);
+                Intent intent = new Intent(LogInRest.this, InicioRest.class);
                 startActivity(intent);
             }
         });
 
-        swUsuario.setChecked(false);
-        swUsuario.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        swRest.setChecked(true);
+        swRest.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    Intent intent = new Intent(LogIn.this, LogInRest.class);
-                    startActivity(intent);
+                if (!isChecked) {
+                    Intent i = new Intent(LogInRest.this, LogIn.class);
+                    startActivity(i);
                 }
             }
         });
-
-
     }
 
     private boolean checkEmpty(TextInputLayout et) {
@@ -92,7 +83,7 @@ public class LogIn extends AppCompatActivity {
     }
 
     public void goSignUp(View view) {
-        Intent i = new Intent(this, SignUp.class);
+        Intent i = new Intent(this, SignUpRest.class);
         startActivity(i);
     }
 }

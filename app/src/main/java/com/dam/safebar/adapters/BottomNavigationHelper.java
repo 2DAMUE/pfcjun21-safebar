@@ -25,8 +25,6 @@ public abstract class BottomNavigationHelper extends AppCompatActivity implement
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getContentViewId());
-        Log.i("check", "llegado a onCreate");
-
         navigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationBar);
         navigationView.setOnNavigationItemSelectedListener(this);
     }
@@ -34,28 +32,23 @@ public abstract class BottomNavigationHelper extends AppCompatActivity implement
     @Override
     protected void onStart() {
         super.onStart();
-        Log.i("check", "llegado a onStart");
         updateNavigationBarState();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Log.i("check", "llegado a onPause");
         overridePendingTransition(0,0);
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Log.i("check", "llegado a onNavigationItemSelected");
         navigationView.postDelayed(() -> {
             int itemId = item.getItemId();
             if (itemId == R.id.itmInicio) {
-                Log.i("check", "llegado a itmInicio");
                 Intent i = new Intent(this, Inicio.class);
                 startActivity(i);
             } else if (itemId == R.id.itmBuscar) {
-                Log.i("check", "llegado a itmBuscar");
                 Intent i = new Intent(this, Buscar.class);
                 startActivity(i);
             } else if (itemId == R.id.itmReservas) {
