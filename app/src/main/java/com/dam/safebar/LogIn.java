@@ -24,7 +24,7 @@ import jp.wasabeef.glide.transformations.BlurTransformation;
 
 public class LogIn extends AppCompatActivity {
 
-
+    //u
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
