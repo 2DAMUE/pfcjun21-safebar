@@ -9,14 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SafeBar">
+        <activity android:name=".SignUpRest"
+            android:theme="@style/Theme.SafeBar.NoStatusBar"/>
+        <activity android:name=".LogInRest"
+            android:theme="@style/Theme.SafeBar.NoStatusBar"/>
         <activity android:name=".InicioRest" />
         <activity android:name=".PerfilRest" />
         <activity android:name=".Rest" />
-        <activity android:name=".Cuenta">
-        </activity>
+        <activity android:name=".Cuenta" />
         <activity android:name=".Reservas" />
         <activity android:name=".Buscar" />
         <activity android:name=".Inicio">
+
+        </activity>
+        <activity
+            android:name=".SignUp"
+            android:theme="@style/Theme.SafeBar.NoStatusBar" />
+        <activity
+            android:name=".LogIn"
+            android:theme="@style/Theme.SafeBar.NoStatusBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,15 +35,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignUp"
-            android:theme="@style/Theme.SafeBar.NoStatusBar" />
-        <activity
-            android:name=".LogIn"
-            android:theme="@style/Theme.SafeBar.NoStatusBar" />
-        <activity android:name=".Splash"
-            android:theme="@style/Theme.SafeBar.NoStatusBar.Splash">
-
-        </activity>
+            android:name=".Splash"
+            android:theme="@style/Theme.SafeBar.NoStatusBar.Splash" />
 
         <meta-data
             android:name="preloaded_fonts"
