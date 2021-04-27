@@ -35,7 +35,7 @@ public class LogInRest extends AppCompatActivity {
                 .fitCenter()
                 .apply(RequestOptions.bitmapTransform(new BlurTransformation(6, 1)))
                 .into(background);
-
+//s
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
