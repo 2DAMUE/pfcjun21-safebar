@@ -6,11 +6,18 @@
     android:orientation="vertical"
     tools:context=".fragments.ConfiguracionFragment">
 
+    <ImageView
+        android:id="@+id/imgConfigFrag"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"/>
+
     <TextView
         android:id="@+id/tvNombreConfigFrag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="120dp"
         android:text="@string/config_frag_tv_nombre"
         android:textSize="20sp"/>

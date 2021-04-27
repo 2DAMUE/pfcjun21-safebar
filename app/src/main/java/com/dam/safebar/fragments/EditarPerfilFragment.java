@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +52,8 @@ public class EditarPerfilFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_editar_perfil, container, false);
 
+        ImageView imageView = view.findViewById(R.id.imgEditPerfFrag);
+        ImageButton imbEditarImagen = view.findViewById(R.id.imbEditPerfFrag);
         EditText etNom = view.findViewById(R.id.etEditPerfFragNom);
         EditText etEmail = view.findViewById(R.id.etEditPerfFragEmail);
         EditText etPw = view.findViewById(R.id.etEditPerfFragPW);

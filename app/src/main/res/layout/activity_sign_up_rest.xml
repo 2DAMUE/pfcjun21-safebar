@@ -104,7 +104,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="10dp"
-        android:hint="Teléfono (Opcional)"
+        android:hint="Teléfono"
         style="@style/TextInput.LogIn">
 
         <com.google.android.material.textfield.TextInputEditText

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dam.safebar.R;
@@ -46,6 +47,7 @@ public class ConfiguracionFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_configuracion, container, false);
 
+        ImageView img = view.findViewById(R.id.imgConfigFrag);
         TextView tvNom = view.findViewById(R.id.tvNombreConfigFrag);
         TextView tvEmail = view.findViewById(R.id.tvEmailConfigFrag);
         TextView tvDirec = view.findViewById(R.id.tvDirecConfigFrag);

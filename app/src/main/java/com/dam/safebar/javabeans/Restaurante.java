@@ -12,6 +12,7 @@ public class Restaurante implements Parcelable {
     private String correo;
     private String password;
     private String direccion;
+    private String telefono;
     private int calificacion;
     private int precioMedio;
     private int aforo;
@@ -21,12 +22,13 @@ public class Restaurante implements Parcelable {
     public Restaurante() {
     }
 
-    public Restaurante(String nombreRest, String urlFoto, String correo, String password, String direccion, int calificacion, int precioMedio, int aforo, String descripcion, ArrayList<ReservaRest> listaReservas) {
+    public Restaurante(String nombreRest, String urlFoto, String correo, String password, String direccion, String telefono, int calificacion, int precioMedio, int aforo, String descripcion, ArrayList<ReservaRest> listaReservas) {
         this.nombreRest = nombreRest;
         this.urlFoto = urlFoto;
         this.correo = correo;
         this.password = password;
         this.direccion = direccion;
+        this.telefono = telefono;
         this.calificacion = calificacion;
         this.precioMedio = precioMedio;
         this.aforo = aforo;
@@ -34,17 +36,19 @@ public class Restaurante implements Parcelable {
         this.listaReservas = listaReservas;
     }
 
-    public Restaurante(String nombreRest, String urlFoto, String correo, String password, String direccion, int calificacion, int precioMedio, int aforo, String descripcion) {
+    public Restaurante(String nombreRest, String urlFoto, String correo, String password, String direccion, String telefono, int calificacion, int precioMedio, int aforo, String descripcion) {
         this.nombreRest = nombreRest;
         this.urlFoto = urlFoto;
         this.correo = correo;
         this.password = password;
         this.direccion = direccion;
+        this.telefono = telefono;
         this.calificacion = calificacion;
         this.precioMedio = precioMedio;
         this.aforo = aforo;
         this.descripcion = descripcion;
     }
+
 
     public String getNombreRest() {
         return nombreRest;
@@ -84,6 +88,15 @@ public class Restaurante implements Parcelable {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public int getCalificacion() {
@@ -132,6 +145,7 @@ public class Restaurante implements Parcelable {
         correo = in.readString();
         password = in.readString();
         direccion = in.readString();
+        telefono = in.readString();
         password = in.readString();
         calificacion = in.readInt();
         precioMedio = in.readInt();
@@ -166,6 +180,7 @@ public class Restaurante implements Parcelable {
         dest.writeString(correo);
         dest.writeString(password);
         dest.writeString(direccion);
+        dest.writeString(telefono);
         dest.writeInt(calificacion);
         dest.writeInt(precioMedio);
         dest.writeInt(aforo);

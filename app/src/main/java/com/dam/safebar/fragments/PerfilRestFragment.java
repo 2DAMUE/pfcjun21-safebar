@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dam.safebar.R;
@@ -50,9 +51,11 @@ public class PerfilRestFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_perfil_rest, container, false);
 
+        ImageView img = view.findViewById(R.id.imgPerfRestFrag);
         TextView tvNom = view.findViewById(R.id.tvNombrePerfRestFrag);
         TextView tvEmail = view.findViewById(R.id.tvEmailPerfRestFrag);
         TextView tvDirec = view.findViewById(R.id.tvDirecPerfRestFrag);
+        TextView tvTelef = view.findViewById(R.id.tvTelefPerfRestFrag);
         TextView tvPrecio = view.findViewById(R.id.tvPrecioPerfRestFrag);
         TextView tvAforo = view.findViewById(R.id.tvAforoPerfRestFrag);
         TextView tvDescrip = view.findViewById(R.id.tvDescripPerfRestFrag);

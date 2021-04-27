@@ -44,12 +44,12 @@ public class Splash extends AppCompatActivity {
 
         //Para comprobar si existe usuario Logueado. Salta al inicio si ya hay sesion abierta.
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            openDelay(false);
-        } else {
-            openDelay(true);
-        }
-
+//        if (user != null) {
+//            openDelay(false);
+//        } else {
+//            openDelay(true);
+//        }
+        openDelay(true);
 
     }
 

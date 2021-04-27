@@ -1,5 +1,6 @@
 package com.dam.safebar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,12 +14,26 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
 public class LogInRest extends AppCompatActivity {
+
+    private FirebaseAuth fba;
+    private FirebaseUser user;
+
+    String email;
+    String password;
+
+    TextInputLayout etUsuarioEmail;
+    TextInputLayout etPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +41,8 @@ public class LogInRest extends AppCompatActivity {
         setContentView(R.layout.activity_log_in_rest);
         ImageView background = (ImageView) findViewById(R.id.ivBackgroundLoginRest);
         Button btnLogin = (Button) findViewById(R.id.btnLoginRest);
-        TextInputLayout etUsuarioEmail = (TextInputLayout) findViewById(R.id.lLoginUsuarioRest);
-        TextInputLayout etPassword = (TextInputLayout) findViewById(R.id.lLoginPasswordRest);
+        etUsuarioEmail = (TextInputLayout) findViewById(R.id.lLoginUsuarioRest);
+        etPassword = (TextInputLayout) findViewById(R.id.lLoginPasswordRest);
         SwitchMaterial swRest = (SwitchMaterial) findViewById(R.id.switchLoginRest);
 
         Glide.with(this)
@@ -35,6 +50,9 @@ public class LogInRest extends AppCompatActivity {
                 .fitCenter()
                 .apply(RequestOptions.bitmapTransform(new BlurTransformation(6, 1)))
                 .into(background);
+
+        fba = FirebaseAuth.getInstance();
+        user = fba.getCurrentUser();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,16 +64,13 @@ public class LogInRest extends AppCompatActivity {
                     if (checkEmpty(etPassword)) {
 
                         etPassword.setError(null);
-                        Toast.makeText(LogInRest.this, getInputString(etUsuarioEmail), Toast.LENGTH_SHORT).show();
 
-                        //TODO: INICIAR SESION
+                        comprobarUsuario();
 
                     } else { etPassword.setError("Obligatorio"); }
 
                 } else { etUsuarioEmail.setError("Obligatorio"); }
 
-                Intent intent = new Intent(LogInRest.this, InicioRest.class);
-                startActivity(intent);
             }
         });
 
@@ -69,6 +84,36 @@ public class LogInRest extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void comprobarUsuario() {
+
+        email = etUsuarioEmail.getEditText().getText().toString().trim();
+        password = etPassword.getEditText().getText().toString().trim();
+
+        fba.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            user = fba.getCurrentUser();
+                            acceder();
+
+                        } else {
+                            Toast.makeText(LogInRest.this, "El usuario introducido no existe",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+
+                });
+
+    }
+
+    private void acceder() {
+        Intent intent = new Intent(LogInRest.this, InicioRest.class);
+        startActivity(intent);
+        finish();
     }
 
     private boolean checkEmpty(TextInputLayout et) {
