@@ -3,13 +3,11 @@ package com.dam.safebar.javabeans;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
-
 public class Restaurante implements Parcelable {
 
     private String nombreRest;
     private String urlFoto;
-    private String correo;
+    private String email;
     private String password;
     private String direccion;
     private String telefono;
@@ -17,15 +15,37 @@ public class Restaurante implements Parcelable {
     private int precioMedio;
     private int aforo;
     private String descripcion;
-    private ArrayList<ReservaRest> listaReservas;
+    //private ArrayList<ReservaRest> listaReservas;
 
     public Restaurante() {
     }
 
-    public Restaurante(String nombreRest, String urlFoto, String correo, String password, String direccion, String telefono, int calificacion, int precioMedio, int aforo, String descripcion, ArrayList<ReservaRest> listaReservas) {
+//    public Restaurante(String nombreRest, String urlFoto, String correo, String password, String direccion, String telefono, int calificacion, int precioMedio, int aforo, String descripcion, ArrayList<ReservaRest> listaReservas) {
+//        this.nombreRest = nombreRest;
+//        this.urlFoto = urlFoto;
+//        this.correo = correo;
+//        this.password = password;
+//        this.direccion = direccion;
+//        this.telefono = telefono;
+//        this.calificacion = calificacion;
+//        this.precioMedio = precioMedio;
+//        this.aforo = aforo;
+//        this.descripcion = descripcion;
+//        this.listaReservas = listaReservas;
+//    }
+
+
+    public Restaurante(String nombreRest, String email, String password, String direccion) {
+        this.nombreRest = nombreRest;
+        this.email = email;
+        this.password = password;
+        this.direccion = direccion;
+    }
+
+    public Restaurante(String nombreRest, String urlFoto, String email, String password, String direccion, String telefono, int calificacion, int precioMedio, int aforo, String descripcion) {
         this.nombreRest = nombreRest;
         this.urlFoto = urlFoto;
-        this.correo = correo;
+        this.email = email;
         this.password = password;
         this.direccion = direccion;
         this.telefono = telefono;
@@ -33,22 +53,19 @@ public class Restaurante implements Parcelable {
         this.precioMedio = precioMedio;
         this.aforo = aforo;
         this.descripcion = descripcion;
-        this.listaReservas = listaReservas;
     }
 
-    public Restaurante(String nombreRest, String urlFoto, String correo, String password, String direccion, String telefono, int calificacion, int precioMedio, int aforo, String descripcion) {
+    public Restaurante(String nombreRest, String urlFoto, String email, String password, String direccion, String telefono, int precioMedio, int aforo, String descripcion) {
         this.nombreRest = nombreRest;
         this.urlFoto = urlFoto;
-        this.correo = correo;
+        this.email = email;
         this.password = password;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.calificacion = calificacion;
         this.precioMedio = precioMedio;
         this.aforo = aforo;
         this.descripcion = descripcion;
     }
-
 
     public String getNombreRest() {
         return nombreRest;
@@ -66,12 +83,12 @@ public class Restaurante implements Parcelable {
         this.urlFoto = urlFoto;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -131,18 +148,18 @@ public class Restaurante implements Parcelable {
         this.descripcion = descripcion;
     }
 
-    public ArrayList<ReservaRest> getListaReservas() {
-        return listaReservas;
-    }
-
-    public void setListaReservas(ArrayList<ReservaRest> listaReservas) {
-        this.listaReservas = listaReservas;
-    }
+//    public ArrayList<ReservaRest> getListaReservas() {
+//        return listaReservas;
+//    }
+//
+//    public void setListaReservas(ArrayList<ReservaRest> listaReservas) {
+//        this.listaReservas = listaReservas;
+//    }
 
     protected Restaurante(Parcel in) {
         nombreRest = in.readString();
         urlFoto = in.readString();
-        correo = in.readString();
+        email = in.readString();
         password = in.readString();
         direccion = in.readString();
         telefono = in.readString();
@@ -151,7 +168,7 @@ public class Restaurante implements Parcelable {
         precioMedio = in.readInt();
         aforo = in.readInt();
         descripcion = in.readString();
-        in.readList(listaReservas, ReservaRest.class.getClassLoader());
+        //in.readList(listaReservas, ReservaRest.class.getClassLoader());
 
     }
 
@@ -177,7 +194,7 @@ public class Restaurante implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(nombreRest);
         dest.writeString(urlFoto);
-        dest.writeString(correo);
+        dest.writeString(email);
         dest.writeString(password);
         dest.writeString(direccion);
         dest.writeString(telefono);
@@ -185,7 +202,7 @@ public class Restaurante implements Parcelable {
         dest.writeInt(precioMedio);
         dest.writeInt(aforo);
         dest.writeString(descripcion);
-        dest.writeList(listaReservas);
+        //dest.writeList(listaReservas);
 
     }
 }

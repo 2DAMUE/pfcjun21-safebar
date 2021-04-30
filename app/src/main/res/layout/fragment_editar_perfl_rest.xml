@@ -31,8 +31,7 @@
                 android:id="@+id/imbEditPerfRestFrag"
                 android:layout_width="180dp"
                 android:layout_height="180dp"
-                android:layout_marginLeft="-180dp"
-                android:src="@drawable/food"/>
+                android:layout_marginLeft="-180dp"/>
         </LinearLayout>
 
         <LinearLayout

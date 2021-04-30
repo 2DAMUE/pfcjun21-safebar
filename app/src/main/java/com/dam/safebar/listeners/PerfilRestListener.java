@@ -6,4 +6,6 @@ public interface PerfilRestListener {
 
     public void volverPerfilRest();
 
+    public void salir();
+
 }

@@ -12,13 +12,41 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.dam.safebar.R;
+import com.dam.safebar.javabeans.Usuario;
 import com.dam.safebar.listeners.CuentaListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class ConfiguracionFragment extends Fragment {
 
     CuentaListener listener;
+
+    FirebaseAuth fba;
+    FirebaseUser user;
+    DatabaseReference dbRef;
+    StorageReference mFotoStorageRef;
+    ValueEventListener vel;
+
+    Usuario usuLoged;
+
+    ImageView img;
+    TextView tvNom;
+    TextView tvEmail;
+    TextView tvDirec;
+    Button btnEP;
+    Button btnLO;
+
 
     public ConfiguracionFragment() {
         // Required empty public constructor
@@ -47,12 +75,18 @@ public class ConfiguracionFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_configuracion, container, false);
 
-        ImageView img = view.findViewById(R.id.imgConfigFrag);
-        TextView tvNom = view.findViewById(R.id.tvNombreConfigFrag);
-        TextView tvEmail = view.findViewById(R.id.tvEmailConfigFrag);
-        TextView tvDirec = view.findViewById(R.id.tvDirecConfigFrag);
-        Button btnEP = view.findViewById(R.id.btnEditPerfConfigFrag);
-        Button btnLO = view.findViewById(R.id.btnLogOutConfigFrag);
+        img = view.findViewById(R.id.imgConfigFrag);
+        tvNom = view.findViewById(R.id.tvNombreConfigFrag);
+        tvEmail = view.findViewById(R.id.tvEmailConfigFrag);
+        tvDirec = view.findViewById(R.id.tvDirecConfigFrag);
+        btnEP = view.findViewById(R.id.btnEditPerfConfigFrag);
+        btnLO = view.findViewById(R.id.btnLogOutConfigFrag);
+
+
+        fba = FirebaseAuth.getInstance();
+        user = fba.getCurrentUser();
+        dbRef = FirebaseDatabase.getInstance().getReference("datos/usuarios");
+        mFotoStorageRef = FirebaseStorage.getInstance().getReference().child("fotos");
 
         btnEP.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,10 +95,72 @@ public class ConfiguracionFragment extends Fragment {
             }
         });
 
-        //TODO: Hacer el Logout
+        btnLO.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fba.signOut();
+                listener.salir();
+
+            }
+        });
 
         return view;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        addListener();
+    }
+
+    private void addListener() {
+        if (vel == null) {
+            vel = new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    usuLoged = dataSnapshot.getValue(Usuario.class);
+                    cargarDatosUsuario();
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(getContext(), "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+                }
+            };
+            dbRef.child(user.getUid()).addValueEventListener(vel);
+        }
+    }
+
+    private void cargarDatosUsuario() {
+        Glide.with(this)
+                .load(usuLoged.getUrlFoto())
+                .placeholder(R.drawable.usuario_1)
+                .circleCrop()
+                .into(img);
+
+        tvNom.setText(usuLoged.getNombre());
+        tvEmail.setText(usuLoged.getEmail());
+        tvDirec.setText(usuLoged.getDireccion());
+
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        removeListener();
+    }
+
+    private void removeListener() {
+        if (vel != null) {
+            dbRef.removeEventListener(vel);
+            vel = null;
+        }
+
+    }
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);

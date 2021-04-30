@@ -111,7 +111,7 @@ public class LogInRest extends AppCompatActivity {
     }
 
     private void acceder() {
-        Intent intent = new Intent(LogInRest.this, InicioRest.class);
+        Intent intent = new Intent(LogInRest.this, PerfilRest.class);
         startActivity(intent);
         finish();
     }

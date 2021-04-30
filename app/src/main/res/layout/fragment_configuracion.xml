@@ -19,7 +19,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginStart="120dp"
-        android:text="@string/config_frag_tv_nombre"
         android:textSize="20sp"/>
 
     <TextView
@@ -28,7 +27,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginStart="120dp"
-        android:text="@string/config_frag_tv_email"
         android:textSize="20sp"/>
 
 
@@ -39,7 +37,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginStart="120dp"
-        android:text="@string/config_frag_tv_direc"
         android:textSize="20sp"/>
 
     <com.google.android.material.button.MaterialButton
