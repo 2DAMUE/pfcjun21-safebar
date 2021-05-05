@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/tvFechaReservasItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="21dp"
+        android:text="1"/>
+    <TextView
+        android:id="@+id/tvHoraReservasItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="16dp"
+        android:text="10:00"/>
+    <TextView
+        android:id="@+id/tvNumPersonasReservasItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="21dp"
+        android:text="4"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnReservarReservasItem"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="50dp"
+        android:text="@string/restaurante_frag_btn_reservar"/>
+
+</LinearLayout>

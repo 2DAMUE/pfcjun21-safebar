@@ -38,4 +38,5 @@
     <string name="edit_perf_rest_frag_tv_precio">Precio medio:</string>
     <string name="edit_perf_rest_frag_tv_aforo">Aforo:</string>
     <string name="restaurante_frag_btn_reservar">Reservar</string>
+    <string name="filtros_frag_btn_filtrar">Filtrar</string>
 </resources>
