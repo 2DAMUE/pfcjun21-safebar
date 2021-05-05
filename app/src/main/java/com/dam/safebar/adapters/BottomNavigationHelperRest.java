@@ -9,10 +9,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.safebar.Buscar;
-import com.dam.safebar.Cuenta;
 import com.dam.safebar.Inicio;
+import com.dam.safebar.PerfilRest;
 import com.dam.safebar.R;
-import com.dam.safebar.Reservas;
+import com.dam.safebar.ReservasRest;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public abstract class BottomNavigationHelperRest extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -44,11 +44,11 @@ public abstract class BottomNavigationHelperRest extends AppCompatActivity imple
         navigationView.postDelayed(() -> {
             int itemId = item.getItemId();
             //TODO ITEMS REST
-            if (itemId == R.id.itmInicio) {
-                Intent i = new Intent(this, Inicio.class);
+            if (itemId == R.id.itmReservasRest) {
+                Intent i = new Intent(this, ReservasRest.class);
                 startActivity(i);
-            } else if (itemId == R.id.itmBuscar) {
-                Intent i = new Intent(this, Buscar.class);
+            } else if (itemId == R.id.itmPerfilRest) {
+                Intent i = new Intent(this, PerfilRest.class);
                 startActivity(i);
             }
             finish();

@@ -29,7 +29,7 @@
     <string name="perf_rest_frag_tv_precio">25€</string>
     <string name="perf_rest_frag_tv_aforo">70</string>
     <string name="perf_rest_frag_tv_descrip">Disfruta del ambiente acogedor de nuestros restaurancontem</string>
-    <string name="edit_perf_rest_frag_tv_nombre">Nombre:</string>
+    <string name="edit_perf_rest_frag_tv_nombre">Nombre</string>
     <string name="edit_perf_rest_frag_tv_email">Email:</string>
     <string name="edit_perf_rest_frag_tv_pw">Contraseña:</string>
     <string name="edit_perf_rest_frag_tv_direc">Dirección:</string>

@@ -10,15 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SafeBar">
         <activity android:name=".SignUpRest"
-            android:theme="@style/Theme.SafeBar.NoStatusBar"/>
+                android:theme="@style/Theme.SafeBar.NoStatusBar"/>
         <activity android:name=".LogInRest"
             android:theme="@style/Theme.SafeBar.NoStatusBar"/>
-        <activity android:name=".InicioRest" />
+        <activity android:name=".ReservasRest" />
         <activity android:name=".PerfilRest" />
         <activity android:name=".Rest" />
         <activity android:name=".Cuenta"/>
 
-        <activity android:name=".Reservas" />
+        <activity android:name=".ReservasUsu" />
         <activity android:name=".Buscar" />
         <activity android:name=".Inicio"/>
         <activity

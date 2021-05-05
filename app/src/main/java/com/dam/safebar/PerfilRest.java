@@ -7,18 +7,18 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.dam.safebar.adapters.BottomNavigationHelperRest;
 import com.dam.safebar.fragments.CuentaFragment;
 import com.dam.safebar.fragments.EditarPerflRestFragment;
 import com.dam.safebar.fragments.PerfilRestFragment;
 import com.dam.safebar.listeners.PerfilRestListener;
 
-public class PerfilRest extends AppCompatActivity implements PerfilRestListener {
+public class PerfilRest extends BottomNavigationHelperRest implements PerfilRestListener {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_perfil_rest);
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
@@ -28,6 +28,16 @@ public class PerfilRest extends AppCompatActivity implements PerfilRestListener 
         ft.commit();
 
 
+    }
+
+    @Override
+    public int getContentViewId() {
+        return R.layout.activity_perfil_rest;
+    }
+
+    @Override
+    public int getNavigationMenuItemId() {
+        return R.id.itmPerfilRest;
     }
 
 

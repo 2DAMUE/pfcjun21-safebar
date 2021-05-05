@@ -4,17 +4,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-
 import com.dam.safebar.R;
 import com.dam.safebar.javabeans.ReservaUsu;
-import com.dam.safebar.javabeans.Restaurante;
 
 import java.util.ArrayList;
 
@@ -31,7 +27,7 @@ public class ReservasAdapter extends RecyclerView.Adapter<ReservasAdapter.Reserv
     @NonNull
     @Override
     public ReservaUsuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rest_reservas, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_reservas_usu, parent, false);
         v.setOnClickListener(this);
         ReservaUsuViewHolder rvh = new ReservaUsuViewHolder(v);
         return rvh;

@@ -1,25 +1,22 @@
 package com.dam.safebar;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
 import com.dam.safebar.adapters.BottomNavigationHelper;
-import com.dam.safebar.fragments.ReservasFragment;
-import com.dam.safebar.fragments.RestauranteFragment;
+import com.dam.safebar.fragments.ReservasUsuFragment;
 import com.dam.safebar.javabeans.ReservaUsu;
-import com.dam.safebar.javabeans.Restaurante;
 
 import java.util.ArrayList;
 
-public class Reservas extends BottomNavigationHelper {
+public class ReservasUsu extends BottomNavigationHelper {
     ArrayList<ReservaUsu> listareservas;
 
     @Override
     public int getContentViewId() {
-        return R.layout.activity_reservas;
+        return R.layout.activity_reservas_usu;
     }
 
     @Override
@@ -42,7 +39,7 @@ public class Reservas extends BottomNavigationHelper {
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ReservasFragment resvf = new ReservasFragment().newInstance(listareservas);
+        ReservasUsuFragment resvf = new ReservasUsuFragment().newInstance(listareservas);
         ft.add(R.id.flReservas, resvf);
         ft.addToBackStack(null);
         ft.commit();

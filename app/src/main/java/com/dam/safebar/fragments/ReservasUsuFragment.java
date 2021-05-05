@@ -13,16 +13,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.dam.safebar.R;
-import com.dam.safebar.adapters.InicioAdapter;
 import com.dam.safebar.adapters.ReservasAdapter;
 import com.dam.safebar.javabeans.ReservaUsu;
-import com.dam.safebar.javabeans.Restaurante;
 
 import java.util.ArrayList;
-import java.util.function.ToDoubleBiFunction;
 
 
-public class ReservasFragment extends Fragment {
+public class ReservasUsuFragment extends Fragment {
     RecyclerView rv;
     ArrayList<ReservaUsu> listareservas;
     TextView tvFecha;
@@ -32,13 +29,13 @@ public class ReservasFragment extends Fragment {
 
 
 
-    public ReservasFragment() {
+    public ReservasUsuFragment() {
         // Required empty public constructor
     }
 
 
-    public ReservasFragment newInstance(ArrayList<ReservaUsu> listareservas) {
-        ReservasFragment fragment = new ReservasFragment();
+    public ReservasUsuFragment newInstance(ArrayList<ReservaUsu> listareservas) {
+        ReservasUsuFragment fragment = new ReservasUsuFragment();
         Bundle args = new Bundle();
         args.putParcelableArrayList("LISTA_RESV", listareservas);
         fragment.setArguments(args);
@@ -61,7 +58,7 @@ public class ReservasFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_reservas, container, false);
+        View view = inflater.inflate(R.layout.fragment_reservas_usu, container, false);
         /*tvFecha = view.findViewById(R.id.tvFechaReservasFrag);
         tvHora = view.findViewById(R.id.tvHoraReservasFrag);
         tvNumPer = view.findViewById(R.id.tvNumPersonasReservasFrag);

@@ -2,8 +2,6 @@ package com.dam.safebar.adapters;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -14,7 +12,7 @@ import com.dam.safebar.Buscar;
 import com.dam.safebar.Cuenta;
 import com.dam.safebar.Inicio;
 import com.dam.safebar.R;
-import com.dam.safebar.Reservas;
+import com.dam.safebar.ReservasUsu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public abstract class BottomNavigationHelper extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -52,7 +50,7 @@ public abstract class BottomNavigationHelper extends AppCompatActivity implement
                 Intent i = new Intent(this, Buscar.class);
                 startActivity(i);
             } else if (itemId == R.id.itmReservas) {
-                Intent i = new Intent(this, Reservas.class);
+                Intent i = new Intent(this, ReservasUsu.class);
                 startActivity(i);
             } else if (itemId == R.id.itmCuenta) {
                 Intent i = new Intent(this, Cuenta.class);
