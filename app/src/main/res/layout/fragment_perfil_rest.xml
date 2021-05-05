@@ -8,8 +8,9 @@
 
     <ImageView
         android:id="@+id/imgPerfRestFrag"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
         android:layout_gravity="center"/>
 
     <TextView
@@ -38,6 +39,15 @@
         android:layout_marginTop="24dp"
         android:layout_marginStart="120dp"
         android:text="@string/perf_rest_frag_tv_direc"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/tvTelefPerfRestFrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="120dp"
+        android:text="668777666"
         android:textSize="20sp"/>
 
     <TextView
@@ -81,7 +91,7 @@
         android:id="@+id/btnLogOutPerfRestFrag"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginStart="120dp"
         android:text="@string/config_frag_btn_log_out"
         android:backgroundTint="@color/green_light"/>

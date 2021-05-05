@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.dam.safebar.fragments.CuentaFragment;
@@ -52,5 +53,12 @@ public class PerfilRest extends AppCompatActivity implements PerfilRestListener 
         ft.addToBackStack(null);
         ft.commit();
 
+    }
+
+    @Override
+    public void salir() {
+        Intent intent = new Intent(PerfilRest.this, Splash.class);
+        startActivity(intent);
+        finish();
     }
 }

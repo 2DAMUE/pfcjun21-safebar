@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -89,6 +90,13 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
         ft.replace(R.id.flCuenta, epf);
         ft.addToBackStack(null);
         ft.commit();
+    }
+
+    @Override
+    public void salir() {
+        Intent intent = new Intent(Cuenta.this, Splash.class);
+        startActivity(intent);
+        finish();
     }
 
 

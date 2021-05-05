@@ -8,5 +8,6 @@ public interface CuentaListener {
     public void abrirProtocoloCovid();
 
     public void abrirEditPerf();
+    public void salir();
 
 }

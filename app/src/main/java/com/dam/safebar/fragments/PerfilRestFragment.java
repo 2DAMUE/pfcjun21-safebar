@@ -6,21 +6,51 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.dam.safebar.R;
-import com.dam.safebar.listeners.CuentaListener;
+import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.PerfilRestListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 
 public class PerfilRestFragment extends Fragment {
 
     PerfilRestListener listener;
+
+    FirebaseAuth fba;
+    FirebaseUser user;
+    DatabaseReference dbRef;
+    StorageReference mFotoStorageRef;
+    ValueEventListener vel;
+
+    Restaurante restLoged;
+
+    ImageView img;
+    TextView tvNom;
+    TextView tvEmail;
+    TextView tvDirec;
+    TextView tvTelef;
+    TextView tvPrecio;
+    TextView tvAforo;
+    TextView tvDescrip;
+    Button btnEC;
+    Button btnLO;
 
     public PerfilRestFragment() {
         // Required empty public constructor
@@ -50,14 +80,21 @@ public class PerfilRestFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_perfil_rest, container, false);
 
-        TextView tvNom = view.findViewById(R.id.tvNombrePerfRestFrag);
-        TextView tvEmail = view.findViewById(R.id.tvEmailPerfRestFrag);
-        TextView tvDirec = view.findViewById(R.id.tvDirecPerfRestFrag);
-        TextView tvPrecio = view.findViewById(R.id.tvPrecioPerfRestFrag);
-        TextView tvAforo = view.findViewById(R.id.tvAforoPerfRestFrag);
-        TextView tvDescrip = view.findViewById(R.id.tvDescripPerfRestFrag);
-        Button btnEC = view.findViewById(R.id.btnEditCuentaPerfRestFrag);
-        Button btnLO = view.findViewById(R.id.btnLogOutPerfRestFrag);
+        img = view.findViewById(R.id.imgPerfRestFrag);
+        tvNom = view.findViewById(R.id.tvNombrePerfRestFrag);
+        tvEmail = view.findViewById(R.id.tvEmailPerfRestFrag);
+        tvDirec = view.findViewById(R.id.tvDirecPerfRestFrag);
+        tvTelef = view.findViewById(R.id.tvTelefPerfRestFrag);
+        tvPrecio = view.findViewById(R.id.tvPrecioPerfRestFrag);
+        tvAforo = view.findViewById(R.id.tvAforoPerfRestFrag);
+        tvDescrip = view.findViewById(R.id.tvDescripPerfRestFrag);
+        btnEC = view.findViewById(R.id.btnEditCuentaPerfRestFrag);
+        btnLO = view.findViewById(R.id.btnLogOutPerfRestFrag);
+
+        fba = FirebaseAuth.getInstance();
+        user = fba.getCurrentUser();
+        dbRef = FirebaseDatabase.getInstance().getReference("datos/restaurantes");
+        mFotoStorageRef = FirebaseStorage.getInstance().getReference().child("fotosR");
 
         btnEC.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,11 +108,70 @@ public class PerfilRestFragment extends Fragment {
         btnLO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: hacer LogOut
+                fba.signOut();
+                listener.salir();
             }
         });
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        addListener();
+    }
+
+    private void addListener() {
+        if (vel == null) {
+            vel = new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    restLoged = dataSnapshot.getValue(Restaurante.class);
+                    cargarDatosUsuario();
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(getContext(), "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+                }
+            };
+            dbRef.child(user.getUid()).addValueEventListener(vel);
+        }
+    }
+
+    private void cargarDatosUsuario() {
+        Glide.with(img)
+                .load(restLoged.getUrlFoto())
+                .placeholder(null)
+                .circleCrop()
+                .into(img);
+
+        tvNom.setText(restLoged.getNombreRest());
+        tvEmail.setText(restLoged.getEmail());
+        tvDirec.setText(restLoged.getDireccion());
+        tvTelef.setText(restLoged.getTelefono());
+        tvPrecio.setText(String.valueOf(restLoged.getPrecioMedio()));
+        tvAforo.setText(String.valueOf(restLoged.getAforo()));
+        tvDescrip.setText(restLoged.getDescripcion());
+
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        removeListener();
+    }
+
+    private void removeListener() {
+        if (vel != null) {
+            dbRef.removeEventListener(vel);
+            vel = null;
+        }
+
     }
 
     @Override

@@ -12,25 +12,40 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.dam.safebar.R;
+import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.PerfilRestListener;
 import com.dam.safebar.listeners.ReservarListener;
 
 
 public class RestauranteFragment extends Fragment {
 
+    public static final String COD_REST = "R1";
+
+    Restaurante restaurante;
+
     ReservarListener listener;
+
+    ImageView img;
+    TextView tvNom;
+    TextView tvDirec;
+    TextView tvCalif;
+    TextView tvPrecio;
+    TextView tvAforo;
+    TextView tvDescrip;
+    Button btnReservar;
 
     public RestauranteFragment() {
         // Required empty public constructor
     }
 
-    public RestauranteFragment newInstance() {
+    public RestauranteFragment newInstance(Restaurante restaurante) {
         RestauranteFragment fragment = new RestauranteFragment();
         Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
+        args.putParcelable(COD_REST, restaurante);
         fragment.setArguments(args);
         return fragment;
     }
@@ -38,10 +53,9 @@ public class RestauranteFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
+        if (getArguments() != null) {
+            restaurante = getArguments().getParcelable(COD_REST);
+        }
     }
 
     @Override
@@ -49,14 +63,26 @@ public class RestauranteFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_restaurante, container, false);
 
-        ImageView img = view.findViewById(R.id.imgRestauranteFrag);
-        TextView tvNom = view.findViewById(R.id.tvNombreRestauranteFrag);
-        TextView tvDirec = view.findViewById(R.id.tvDirecRestauranteFrag);
-        TextView tvCalif = view.findViewById(R.id.tvCalifRestauranteFrag);
-        TextView tvPrecio = view.findViewById(R.id.tvPrecioRestauranteFrag);
-        TextView tvAforo = view.findViewById(R.id.tvAforoRestauranteFrag);
-        TextView tvDescrip = view.findViewById(R.id.tvDescripRestauranteFrag);
-        Button btnReservar = view.findViewById(R.id.btnReservarRestauranteFrag);
+        img = view.findViewById(R.id.imgRestauranteFrag);
+        tvNom = view.findViewById(R.id.tvNombreRestauranteFrag);
+        tvDirec = view.findViewById(R.id.tvDirecRestauranteFrag);
+        tvCalif = view.findViewById(R.id.tvCalifRestauranteFrag);
+        tvPrecio = view.findViewById(R.id.tvPrecioRestauranteFrag);
+        tvAforo = view.findViewById(R.id.tvAforoRestauranteFrag);
+        tvDescrip = view.findViewById(R.id.tvDescripRestauranteFrag);
+        btnReservar = view.findViewById(R.id.btnReservarRestauranteFrag);
+
+        Glide.with(img)
+                .load(restaurante.getUrlFoto())
+                .placeholder(null)
+                .into(img);
+
+        tvNom.setText(restaurante.getNombreRest());
+        tvDirec.setText(restaurante.getDireccion());
+        tvCalif.setText(String.valueOf(restaurante.getCalificacion()));
+        tvPrecio.setText(String.valueOf(restaurante.getPrecioMedio()));
+        tvAforo.setText(String.valueOf(restaurante.getAforo()));
+        tvDescrip.setText(restaurante.getDescripcion());
 
         btnReservar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +97,8 @@ public class RestauranteFragment extends Fragment {
 
         return view;
     }
+
+
 
     @Override
     public void onAttach(@NonNull Context context) {

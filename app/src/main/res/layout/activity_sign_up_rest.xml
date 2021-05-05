@@ -97,21 +97,21 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/lSignUpTelefonoRest"
+        android:id="@+id/lSignUpDireccionRest"
         android:layout_width="300dp"
         android:layout_height="60dp"
         app:layout_constraintTop_toBottomOf="@id/lSignUpPasswordRest"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="10dp"
-        android:hint="Teléfono (Opcional)"
+        android:hint="Dirección"
         style="@style/TextInput.LogIn">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etSignUpTelefonoRest"
+            android:id="@+id/etSignUpDireccionRest"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="phone"
+            android:inputType="text"
             android:textColor="@color/white"/>
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -120,7 +120,7 @@
         android:id="@+id/btnSignUpRest"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/lSignUpTelefonoRest"
+        app:layout_constraintTop_toBottomOf="@id/lSignUpDireccionRest"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="26dp"
