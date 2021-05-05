@@ -16,6 +16,7 @@ import com.dam.safebar.R;
 import com.dam.safebar.adapters.InicioAdapter;
 import com.dam.safebar.javabeans.Datos;
 import com.dam.safebar.javabeans.Restaurante;
+import com.dam.safebar.listeners.InicioListener;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,7 @@ public class InicioFragment extends Fragment {
 
     RecyclerView rv;
     ArrayList<Restaurante> listaRestaurantes;
+    InicioListener listener;
 
     public InicioFragment() {
         // Required empty public constructor
@@ -55,34 +57,34 @@ public class InicioFragment extends Fragment {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         InicioAdapter inicAdap = new InicioAdapter(listaRestaurantes);
-//        inicAdap.setListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int i = rv.getChildAdapterPosition(v);
-//                Restaurante restaurante = listaRestaurantes.get(i);
-//                listener.accederVecinoInicio(usuario);
-//            }
-//        });
+        inicAdap.setListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int i = rv.getChildAdapterPosition(v);
+                Restaurante restaurante = listaRestaurantes.get(i);
+                listener.abrirRestaurante(restaurante);
+            }
+        });
 
         rv.setAdapter(inicAdap);
         return view;
     }
 
-//    @Override
-//    public void onAttach(@NonNull Context context) {
-//        super.onAttach(context);
-//        if (context instanceof VecinoFragmentListener) {
-//            listener = (VecinoFragmentListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
-//    }
-//
-//    @Override
-//    public void onDetach() {
-//        super.onDetach();
-//        listener = null;
-//    }
-//
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof InicioListener) {
+            listener = (InicioListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
+    }
+
 }

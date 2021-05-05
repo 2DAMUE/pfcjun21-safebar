@@ -136,7 +136,7 @@ public class ConfiguracionFragment extends Fragment {
     private void cargarDatosUsuario() {
         Glide.with(this)
                 .load(usuLoged.getUrlFoto())
-                .placeholder(R.drawable.usuario_1)
+                .placeholder(null)
                 .circleCrop()
                 .into(img);
 

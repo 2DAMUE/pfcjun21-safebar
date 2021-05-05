@@ -278,7 +278,7 @@ public class EditarPerflRestFragment extends Fragment {
 
         Glide.with(imageView)
                 .load(restLoged.getUrlFoto())
-                .placeholder(R.drawable.usuario_1)
+                .placeholder(null)
                 .circleCrop()
                 .into(imageView);
 

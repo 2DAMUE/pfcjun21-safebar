@@ -253,7 +253,7 @@ public class EditarPerfilFragment extends Fragment {
 
         Glide.with(imageView)
                 .load(usuLoged.getUrlFoto())
-                .placeholder(R.drawable.usuario_1)
+                .placeholder(null)
                 .circleCrop()
                 .into(imageView);
 

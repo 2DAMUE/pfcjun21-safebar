@@ -85,8 +85,7 @@ public class InicioAdapter extends RecyclerView.Adapter<InicioAdapter.Restaurant
 
             Glide.with(imagen)
                     .load(restaurante.getUrlFoto())
-                    .placeholder(R.drawable.usuario_1)
-                    .circleCrop()
+                    .placeholder(null)
                     .into(imagen);
 
             distancia.setText("km");

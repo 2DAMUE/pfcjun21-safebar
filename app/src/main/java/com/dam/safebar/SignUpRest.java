@@ -126,7 +126,7 @@ public class SignUpRest extends AppCompatActivity {
     }
 
     private void accederApp() {
-        Intent i = new Intent(this, InicioRest.class);
+        Intent i = new Intent(this, PerfilRest.class);
         startActivity(i);
         finish();
     }

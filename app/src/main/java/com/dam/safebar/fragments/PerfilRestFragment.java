@@ -145,7 +145,7 @@ public class PerfilRestFragment extends Fragment {
     private void cargarDatosUsuario() {
         Glide.with(img)
                 .load(restLoged.getUrlFoto())
-                .placeholder(R.drawable.usuario_1)
+                .placeholder(null)
                 .circleCrop()
                 .into(img);
 
