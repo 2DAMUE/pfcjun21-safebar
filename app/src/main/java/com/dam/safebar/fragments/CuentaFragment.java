@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.dam.safebar.R;
 import com.dam.safebar.listeners.CuentaListener;
@@ -48,6 +49,10 @@ public class CuentaFragment extends Fragment {
         Button btnAboutUs = view.findViewById(R.id.btnCuentaAboutUs);
         Button btnAyuda = view.findViewById(R.id.btnCuentaAyuda);
         Button btnProtocoloCovid = view.findViewById(R.id.btnCuentaProtocoloCovid);
+        TextView tvEmail = view.findViewById(R.id.tvCuentaEmail);
+
+        //TODO: METER EL EMAIL (USUARIO) DE LA CUENTA ACTUAL
+        tvEmail.setText("email_cuenta_actual@email.com");
 
         btnConfiguracion.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.dam.safebar.Cuenta;
 import com.dam.safebar.R;
 import com.dam.safebar.listeners.CuentaListener;
 

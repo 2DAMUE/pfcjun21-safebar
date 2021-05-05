@@ -47,6 +47,18 @@
         <item name="errorEnabled">true</item>
     </style>
 
+    <style name="TextInput.Outlined.WithBackground" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/statelist_et_noalpha</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="hintTextColor">@color/orange_light</item>
+        <item name="android:textColorHint">@color/green_light</item>
+        <item name="boxBackgroundColor">@color/white_alpha</item>
+        <item name="hintEnabled">true</item>
+        <item name="android:strokeColor">@color/orange_light</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Login.EditText</item>
+        <item name="errorEnabled">true</item>
+    </style>
+
     <style name="Text.Titulo" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/oswald_light</item>
         <item name="android:textSize">26sp</item>
@@ -54,6 +66,10 @@
     <style name="Text.Subtitulo.RobotoMedium.Italic" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/roboto_medium</item>
         <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="Text.Subtitulo.RobotoMedium" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/roboto_medium</item>
     </style>
 
     <style name="Button.Material.BaseLogin" parent="Widget.MaterialComponents.Button">

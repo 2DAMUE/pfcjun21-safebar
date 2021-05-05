@@ -1,86 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
 
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/imgItemRVInicio"
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"/>
-
-        <TextView
-            android:id="@+id/tvKmItemRVInicio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="16sp"/>
-
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgItemRVInicio"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:id="@+id/tvKmItemRVInicio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="16sp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tvNomItemRVInicio"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:textSize="22sp"/>
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
 
-                <TextView
-                    android:id="@+id/tvDirecItemRVInicio"
+                    <TextView
+                        android:id="@+id/tvNomItemRVInicio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textSize="22sp"/>
+
+                    <TextView
+                        android:id="@+id/tvDirecItemRVInicio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:id="@+id/tvAforoItemRVInicio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textSize="18sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:textSize="18sp"/>
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="2">
 
-                <TextView
-                    android:id="@+id/tvAforoItemRVInicio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:textSize="18sp"/>
+                    <TextView
+                        android:id="@+id/tvCalifItemRVInicio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
 
+                    <TextView
+                        android:id="@+id/tvPrecioItemRVInicio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textSize="18sp"
+                        android:layout_weight="1"/>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="2">
-
-                <TextView
-                    android:id="@+id/tvCalifItemRVInicio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:textAlignment="center"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/tvPrecioItemRVInicio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    android:layout_weight="1"/>
-
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -88,6 +93,4 @@
 
     </LinearLayout>
 
-
-
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

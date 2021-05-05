@@ -6,144 +6,65 @@
     android:orientation="vertical"
     tools:context=".fragments.EditarPerfilFragment">
 
-    <LinearLayout
-        android:id="@+id/ll1EditPerfFrag"
-        android:layout_width="match_parent"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginRight="40dp"
-        android:orientation="horizontal">
+        android:hint="@string/editperf_frag_tv_nombre"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
 
-        <TextView
-            android:id="@+id/tvEditPerfFragTitNom"
-            android:layout_width="wrap_content"
+        style="@style/TextInput.Outlined.WithBackground">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEditPerfFragNom"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="26dp"
-            android:layout_weight="1"
-            android:text="@string/editperf_frag_tv_nombre"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textColor="@color/black"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/lEditPerfFragNom"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="6">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etEditPerfFragNom"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="-8dp"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll2EditPerfFrag"
-        android:layout_width="match_parent"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:orientation="horizontal">
+        android:hint="@string/editperf_frag_tv_email"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
 
-        <TextView
-            android:id="@+id/tvEditPerfFragEmail"
-            android:layout_width="wrap_content"
+        style="@style/TextInput.Outlined.WithBackground">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEditPerfFragEmail"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="26dp"
-            android:layout_weight="1"
-            android:text="@string/editperf_frag_tv_email"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textColor="@color/black"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/lEditPerfFragEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="8">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etEditPerfFragEmail"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="-8dp"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll3EditPerfFrag"
-        android:layout_width="match_parent"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:orientation="horizontal">
+        android:hint="@string/editperf_frag_tv_pw"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
 
-        <TextView
-            android:id="@+id/tvEditPerfFragTitPW"
-            android:layout_width="wrap_content"
+        style="@style/TextInput.Outlined.WithBackground">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEditPerfFragPW"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="26dp"
-            android:layout_weight="1"
-            android:text="@string/editperf_frag_tv_pw"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textColor="@color/black"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/lEditPerfFragPW"
-            android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:hint="@string/editperf_frag_tv_direc"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+
+        style="@style/TextInput.Outlined.WithBackground">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEditPerfFragDirec"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="3">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etEditPerfFragPW"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="-8dp"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/ll5EditPerfFrag"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/tvEditPerfFragTitDirec"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_marginTop="26dp"
-            android:layout_weight="1"
-            android:text="@string/editperf_frag_tv_direc"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/lEditPerfFragDirec"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginTop="-16dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etEditPerfFragDirec"
-                android:layout_width="340dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="-8dp"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </LinearLayout>
+            android:textColor="@color/black"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <LinearLayout

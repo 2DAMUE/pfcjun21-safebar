@@ -39,6 +39,7 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
         ft.addToBackStack(null);
         ft.commit();
 
+
     }
 
     @Override
@@ -90,6 +91,19 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
         ft.addToBackStack(null);
         ft.commit();
     }
+
+//    public void resetActionBar(boolean childAction, int drawerMode)
+//    {
+//        if (childAction) {
+//            // [Undocumented?] trick to get up button icon to show
+//            drawerToggle.setDrawerIndicatorEnabled(false);
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        } else {
+//            drawerToggle.setDrawerIndicatorEnabled(true);
+//        }
+//
+//        drawerLayout.setDrawerLockMode(drawerMode);
+//    }
 
 
 }

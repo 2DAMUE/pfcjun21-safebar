@@ -16,10 +16,10 @@
     <string name="config_frag_tv_direc">Sector Mares 27, Tres Cantos</string>
     <string name="config_frag_btn_edit_perf">Editar cuenta</string>
     <string name="config_frag_btn_log_out">Log Out</string>
-    <string name="editperf_frag_tv_nombre">Nombre:</string>
-    <string name="editperf_frag_tv_email">Email:</string>
-    <string name="editperf_frag_tv_pw">Contraseña:</string>
-    <string name="editperf_frag_tv_direc">Dirección:</string>
+    <string name="editperf_frag_tv_nombre">Nombre</string>
+    <string name="editperf_frag_tv_email">Email</string>
+    <string name="editperf_frag_tv_pw">Contraseña</string>
+    <string name="editperf_frag_tv_direc">Dirección</string>
     <string name="editperf_frag_btn_guardar">Guardar</string>
     <string name="ditperf_frag_btn_cancelar">Cancelar</string>
     <string name="perf_rest_frag_tv_nombre">Oven</string>
