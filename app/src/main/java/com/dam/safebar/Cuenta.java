@@ -99,5 +99,18 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
         finish();
     }
 
+//    public void resetActionBar(boolean childAction, int drawerMode)
+//    {
+//        if (childAction) {
+//            // [Undocumented?] trick to get up button icon to show
+//            drawerToggle.setDrawerIndicatorEnabled(false);
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        } else {
+//            drawerToggle.setDrawerIndicatorEnabled(true);
+//        }
+//
+//        drawerLayout.setDrawerLockMode(drawerMode);
+//    }
+
 
 }
