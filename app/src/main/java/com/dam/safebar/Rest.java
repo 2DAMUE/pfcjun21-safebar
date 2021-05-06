@@ -13,18 +13,18 @@ import com.dam.safebar.listeners.ReservarListener;
 
 public class Rest extends AppCompatActivity implements ReservarListener {
 
-    Restaurante restaurante;
+    String restUID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurante);
 
-        restaurante = getIntent().getParcelableExtra(Inicio.COD_REST);
+        restUID = getIntent().getStringExtra(Inicio.COD_REST_UID);
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        RestauranteFragment restf = new RestauranteFragment().newInstance(restaurante);
+        RestauranteFragment restf = new RestauranteFragment().newInstance(restUID);
         ft.add(R.id.flRestaurante, restf);
         ft.addToBackStack(null);
         ft.commit();
