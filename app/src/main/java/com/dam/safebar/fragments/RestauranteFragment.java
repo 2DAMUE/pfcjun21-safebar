@@ -32,9 +32,11 @@ import com.google.firebase.storage.StorageReference;
 public class RestauranteFragment extends Fragment {
 
     public static final String COD_REST_UID = "R1";
+    public static final String COD_REST_NOM = "R2";
 
     Restaurante restaurante;
     String restUID;
+    String restNom;
 
     ReservarListener listener;
 
@@ -55,10 +57,11 @@ public class RestauranteFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public RestauranteFragment newInstance(String restUID) {
+    public RestauranteFragment newInstance(String restUID, String restNom) {
         RestauranteFragment fragment = new RestauranteFragment();
         Bundle args = new Bundle();
         args.putString(COD_REST_UID, restUID);
+        args.putString(COD_REST_NOM, restNom);
         fragment.setArguments(args);
         return fragment;
     }
@@ -68,6 +71,7 @@ public class RestauranteFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             restUID = getArguments().getString(COD_REST_UID);
+            restNom = getArguments().getString(COD_REST_NOM);
         }
     }
 
@@ -94,9 +98,7 @@ public class RestauranteFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                listener.reservar();
-
-                //TODO: Firebase
+                listener.abrirReservar(restUID, restNom);
 
             }
         });

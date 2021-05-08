@@ -9,6 +9,7 @@ public class ReservaRest implements Parcelable {
     private String fecha;
     private String hora;
     private int numPersonas;
+    private  String codigo;
 
     public ReservaRest() {
     }
@@ -18,6 +19,12 @@ public class ReservaRest implements Parcelable {
         this.fecha = fecha;
         this.hora = hora;
         this.numPersonas = numPersonas;
+    }
+
+    public ReservaRest(String userUID, int numPersonas, String codigo) {
+        this.userUID = userUID;
+        this.numPersonas = numPersonas;
+        this.codigo = codigo;
     }
 
     public String getUserUID() {
@@ -52,11 +59,20 @@ public class ReservaRest implements Parcelable {
         this.numPersonas = numPersonas;
     }
 
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
     protected ReservaRest(Parcel in) {
         userUID = in.readString();
         fecha = in.readString();
         hora = in.readString();
         numPersonas = in.readInt();
+        codigo = in.readString();
     }
 
     public static final Creator<ReservaRest> CREATOR = new Creator<ReservaRest>() {
@@ -82,5 +98,6 @@ public class ReservaRest implements Parcelable {
         dest.writeString(fecha);
         dest.writeString(hora);
         dest.writeInt(numPersonas);
+        dest.writeString(codigo);
     }
 }
