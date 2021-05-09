@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -52,8 +53,8 @@ public class Rest extends AppCompatActivity implements ReservarListener {
 
     @Override
     public void booking() {
-
-        Toast.makeText(this, "ok", Toast.LENGTH_SHORT).show();
-
+        Intent i = new Intent(Rest.this, Inicio.class);
+        startActivity(i);
+        finish();
     }
 }

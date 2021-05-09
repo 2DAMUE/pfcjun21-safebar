@@ -22,12 +22,6 @@ public class ReservaUsu implements Parcelable {
         this.numPersonas = numPersonas;
     }
 
-    public ReservaUsu(String nombreRest, int numPersonas, String codigo) {
-        this.nombreRest = nombreRest;
-        this.numPersonas = numPersonas;
-        this.codigo = codigo;
-    }
-
     public String getNombreRest() {
         return nombreRest;
     }

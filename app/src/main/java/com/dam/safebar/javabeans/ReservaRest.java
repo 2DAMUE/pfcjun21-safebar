@@ -21,11 +21,6 @@ public class ReservaRest implements Parcelable {
         this.numPersonas = numPersonas;
     }
 
-    public ReservaRest(String userUID, int numPersonas, String codigo) {
-        this.userUID = userUID;
-        this.numPersonas = numPersonas;
-        this.codigo = codigo;
-    }
 
     public String getUserUID() {
         return userUID;

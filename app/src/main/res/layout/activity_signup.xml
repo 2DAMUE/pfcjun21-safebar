@@ -28,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="120dp"
 
-        android:text="SIGN UP"
+        android:text="SIGN UP USUARIO"
         android:textColor="@color/white"
         style="@style/Text.Titulo"/>
 

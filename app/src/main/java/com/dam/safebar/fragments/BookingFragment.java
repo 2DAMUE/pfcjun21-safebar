@@ -27,6 +27,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.ArrayList;
+
 
 public class BookingFragment extends Fragment {
 
@@ -38,6 +40,8 @@ public class BookingFragment extends Fragment {
     String codigoReserva;
     ReservaUsu reservaUsu;
     ReservaRest reservaRest;
+    ReservaRest reservaRestCheck;
+    Restaurante restaurante;
 
     ReservarListener listener;
 
@@ -50,6 +54,8 @@ public class BookingFragment extends Fragment {
     String hora;
     String sNumPersonas;
     int numPersonas;
+    int contAforo;
+
 
     EditText etFecha;
     EditText etHora;
@@ -89,6 +95,8 @@ public class BookingFragment extends Fragment {
         etNumPersonas = view.findViewById(R.id.etBookingFragNumPers);
         btnReservar = view.findViewById(R.id.btnBookingFragReservar);
 
+        contAforo = 0;
+
         dbRef = FirebaseDatabase.getInstance().getReference("datos");
         fba = FirebaseAuth.getInstance();
         user = fba.getCurrentUser();
@@ -107,19 +115,14 @@ public class BookingFragment extends Fragment {
                     Toast.makeText(getContext(), "Faltan datos!", Toast.LENGTH_SHORT).show();
                 } else {
                     numPersonas = Integer.parseInt(sNumPersonas);
-                    codigoReserva = "cod12ab";
+                    codigoReserva = crearCodigoReserva();
 
-                    reservaUsu = new ReservaUsu(restNom, numPersonas, codigoReserva);
-                    reservaRest = new ReservaRest(user.getUid(), numPersonas, codigoReserva);
+                    reservaUsu = new ReservaUsu(restNom, fecha, hora, numPersonas);
+                    reservaRest = new ReservaRest(user.getUid(), fecha, hora,  numPersonas);
 
-                    dbRef.child("usuarios").child(user.getUid()).child("reservas").child(fecha).child(hora).setValue(reservaUsu);
-                    dbRef.child("restaurantes").child(restUID).child("reservas").child(fecha).child(hora).setValue(reservaRest);
+                    addListener1();
 
                 }
-
-
-
-                listener.booking();
 
             }
         });
@@ -129,45 +132,103 @@ public class BookingFragment extends Fragment {
         return view;
     }
 
+    private String crearCodigoReserva() {
+
+        String codigoUIDs = user.getUid().substring(0,3) + restUID.substring(0,3);
+        String codigoDatosReserva = fecha.replace("-", "1") +
+                hora.replace(":", "1") + String.valueOf(numPersonas);
+
+        return codigoUIDs + codigoDatosReserva;
+
+    }
+
 
     //    @Override
 //    public void onResume() {
 //        super.onResume();
 //        addListener();
 //    }
-//
-//    private void addListener() {
-//        if (vel == null) {
-//            vel = new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                    restaurante = dataSnapshot.getValue(Restaurante.class);
-//                    cargarDatos();
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//                    Toast.makeText(getContext(), "Error al cargar los datos", Toast.LENGTH_SHORT).show();
-//                }
-//            };
-//            dbRef.child(restUID).addValueEventListener(vel);
-//        }
-//    }
-//
-//    @Override
-//    public void onPause() {
-//        super.onPause();
-//        removeListener();
-//    }
-//
-//    private void removeListener() {
-//        if (vel != null) {
-//            dbRef.removeEventListener(vel);
-//            vel = null;
-//        }
-//
-//    }
+
+    private void addListener1() {
+        onPause();
+        if (vel == null) {
+            vel = new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    contAforo = 0;
+
+                    for (DataSnapshot dss : dataSnapshot.getChildren()) {
+                        reservaRestCheck = dss.getValue(ReservaRest.class);
+                        contAforo = contAforo + reservaRestCheck.getNumPersonas();
+                    }
+
+                    contAforo = contAforo + numPersonas;
+
+                    addListener2();
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(getContext(), "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+                }
+            };
+            dbRef.child("restaurantes").child(restUID).child("reservas").child(fecha).child(hora).addValueEventListener(vel);
+        }
+
+
+    }
+
+    private void addListener2() {
+
+        onPause();
+
+        if (vel == null) {
+            vel = new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    restaurante = dataSnapshot.getValue(Restaurante.class);
+
+                    if (contAforo > restaurante.getAforo()) {
+                        Toast.makeText(getContext(), "Aforo completo!", Toast.LENGTH_SHORT).show();
+                    } else {
+
+                        dbRef.child("usuarios").child(user.getUid()).child("reservas").child(fecha).child(codigoReserva).setValue(reservaUsu);
+                        dbRef.child("restaurantes").child(restUID).child("reservas").child(fecha).child(hora).child(codigoReserva).setValue(reservaRest);
+
+                        Toast.makeText(getContext(), "Reserva realizada con exito!", Toast.LENGTH_SHORT).show();
+
+                        listener.booking();
+
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(getContext(), "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+                }
+            };
+            dbRef.child("restaurantes").child(restUID).addValueEventListener(vel);
+        }
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        removeListener();
+    }
+
+    private void removeListener() {
+        if (vel != null) {
+            dbRef.removeEventListener(vel);
+            vel = null;
+        }
+
+    }
 
     @Override
     public void onAttach(@NonNull Context context) {
