@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.dam.safebar.fragments.InicioFragment;
 import com.dam.safebar.fragments.RestauranteFragment;
 import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.ReservarListener;
+import com.google.android.material.appbar.MaterialToolbar;
 
 public class Rest extends AppCompatActivity implements ReservarListener {
 
@@ -19,6 +22,14 @@ public class Rest extends AppCompatActivity implements ReservarListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurante);
+
+        MaterialToolbar tb = findViewById(R.id.topAppBar);
+        tb.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         restaurante = getIntent().getParcelableExtra(Inicio.COD_REST);
 
@@ -31,6 +42,11 @@ public class Rest extends AppCompatActivity implements ReservarListener {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(this, Inicio.class);
+        startActivity(i);
+    }
 
     @Override
     public void reservar() {

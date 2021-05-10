@@ -15,8 +15,10 @@
             android:theme="@style/Theme.SafeBar.NoStatusBar"/>
         <activity android:name=".ReservasRest" />
         <activity android:name=".PerfilRest" />
-        <activity android:name=".Rest" />
-        <activity android:name=".Cuenta"/>
+        <activity android:name=".Rest"
+            android:theme="@style/Theme.SafeBar.NoActionBar"/>
+        <activity android:name=".Cuenta"
+            android:theme="@style/Theme.SafeBar.NoActionBar"/>
 
         <activity android:name=".ReservasUsu" />
         <activity android:name=".Buscar" />

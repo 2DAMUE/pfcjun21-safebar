@@ -6,11 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".Cuenta">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbaar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBarCuenta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Cuenta"
+            app:titleTextColor="@color/white"
+            app:titleTextAppearance="@style/Text.AppBar"
+            app:navigationIcon="@drawable/ic_back_arrow"
+            >
+            <!--            <TextView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:text="Hola Safebar"-->
+            <!--                android:textSize="32sp"-->
+            <!--                android:gravity="center_vertical"-->
+            <!--                android:textColor="@color/white"-->
+            <!--                android:fontFamily="@font/roboto_light"-->
+            <!--                android:textStyle="bold"/>-->
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
     <FrameLayout
         android:id="@+id/flCuenta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbaar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
