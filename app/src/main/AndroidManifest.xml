@@ -22,7 +22,8 @@
 
         <activity android:name=".ReservasUsu" />
         <activity android:name=".Buscar" />
-        <activity android:name=".Inicio"/>
+        <activity android:name=".Inicio"
+            android:theme="@style/Theme.SafeBar.NoActionBar"/>
         <activity
             android:name=".SignUp"
             android:theme="@style/Theme.SafeBar.NoStatusBar" />

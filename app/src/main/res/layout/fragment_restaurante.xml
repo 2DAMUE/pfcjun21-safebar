@@ -15,15 +15,42 @@
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"/>
 
-    <TextView
-       android:id="@+id/tvNombreRestauranteFrag"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_marginStart="16dp"
-       android:layout_marginTop="16dp"
-       android:text="Oven"
-       android:textSize="22sp"
-       android:textStyle="bold"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvNombreRestauranteFrag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Oven"
+            android:layout_weight="2"
+            android:textColor="@color/green_dark"
+            android:fontFamily="@font/roboto_medium"
+            android:textSize="26sp"
+            android:textStyle="bold"/>
+
+        <RatingBar
+            android:id="@+id/ratingBarRestaurante"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rating="2"
+            android:layout_marginRight="-80dp"
+            android:layout_marginLeft="-60dp"
+            android:numStars="5"
+            android:max="5"
+            android:min="0"
+            android:scaleY="0.4"
+            android:scaleX="0.4"
+            android:minHeight="2dp"
+            android:maxHeight="70dp"
+            style="@style/Theme.SafeBar.RatingBar"
+            />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvDirecRestauranteFrag"
@@ -31,7 +58,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Calle la que sea 434"/>
+        android:textSize="20sp"
+        android:fontFamily="@font/roboto_light"
+        android:text="Calle la que sea 434"
+        android:textColor="@color/green_light"
+        android:drawableStart="@drawable/ic_localizacion_inicio"/>
+
+
 
     <TextView
         android:id="@+id/tvCalifRestauranteFrag"
@@ -68,13 +101,30 @@
         android:layout_marginTop="21dp"
         android:text="Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de tipografías o de borradores de diseño para probar el diseño visual antes de insertar el texto fina"/>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnReservarRestauranteFrag"
-        android:layout_width="300dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="50dp"
-        android:text="@string/restaurante_frag_btn_reservar"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="22dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnReservarRestauranteFrag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:text="@string/restaurante_frag_btn_reservar"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="16dp"
+            android:drawableRight="@drawable/ic_telefono"
+            android:backgroundTint="@color/green_dark"
+            />
+    </LinearLayout>
+
 
 
 </LinearLayout>

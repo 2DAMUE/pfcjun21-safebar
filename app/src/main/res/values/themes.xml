@@ -73,6 +73,12 @@
         <item name="errorEnabled">true</item>
     </style>
 
+    <style name="Theme.SafeBar.RatingBar" parent="Widget.AppCompat.RatingBar.Indicator">
+        <item name="android:progressDrawable">@drawable/rating_bar</item>
+        <item name="android:progressTint">@color/green_dark</item>
+
+    </style>
+
     <style name="Text.Titulo" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/oswald_light</item>
         <item name="android:textSize">26sp</item>

@@ -23,15 +23,18 @@ public class Rest extends AppCompatActivity implements ReservarListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurante);
 
+        restaurante = getIntent().getParcelableExtra(Inicio.COD_REST);
+
         MaterialToolbar tb = findViewById(R.id.topAppBar);
+        tb.setTitle(restaurante.getNombreRest());
         tb.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                finish();
             }
         });
 
-        restaurante = getIntent().getParcelableExtra(Inicio.COD_REST);
+
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();

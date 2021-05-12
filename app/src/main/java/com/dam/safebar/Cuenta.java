@@ -56,11 +56,12 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
                 onBackPressed();
                 if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
                     tb.setNavigationIcon(null);
+                    tb.setTitle("Cuenta");
                 } else {
                     if (true) {
                         Fragment f = getSupportFragmentManager().findFragmentById(R.id.flCuenta);
                         if (f instanceof ConfiguracionFragment) {
-                            tb.setTitle("holaaa");
+                            tb.setTitle("Configuración");
                         }
                     }
                     tb.setNavigationIcon(R.drawable.ic_back_arrow);
@@ -79,6 +80,7 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
         ft.addToBackStack(null);
         ft.commit();
 
+        tb.setTitle("Configuración");
         tb.setNavigationIcon(R.drawable.ic_back_arrow);
     }
 
@@ -91,6 +93,7 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
         ft.addToBackStack(null);
         ft.commit();
 
+        tb.setTitle("About Us");
         tb.setNavigationIcon(R.drawable.ic_back_arrow);
     }
 
@@ -103,6 +106,7 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
         ft.addToBackStack(null);
         ft.commit();
 
+        tb.setTitle("Ayuda");
         tb.setNavigationIcon(R.drawable.ic_back_arrow);
     }
 
@@ -115,6 +119,7 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
         ft.addToBackStack(null);
         ft.commit();
 
+        tb.setTitle("Protocolo Covid");
         tb.setNavigationIcon(R.drawable.ic_back_arrow);
     }
 
@@ -127,6 +132,7 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
         ft.addToBackStack(null);
         ft.commit();
 
+        tb.setTitle("Editar perfil");
         tb.setNavigationIcon(R.drawable.ic_back_arrow);
     }
 
