@@ -62,7 +62,7 @@ public class InicioFragment extends Fragment {
             public void onClick(View v) {
                 int i = rv.getChildAdapterPosition(v);
                 Restaurante restaurante = listaRestaurantes.get(i);
-                listener.abrirRestaurante(restaurante);
+                listener.abrirRestaurante(restaurante.getRestUID(), restaurante.getNombreRest());
             }
         });
 

@@ -9,6 +9,8 @@ public class ReservaUsu implements Parcelable {
     private String fecha;
     private String hora;
     private int numPersonas;
+    private  String codigo;
+
 
     public ReservaUsu() {
     }
@@ -52,11 +54,20 @@ public class ReservaUsu implements Parcelable {
         this.numPersonas = numPersonas;
     }
 
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
     protected ReservaUsu(Parcel in) {
         nombreRest = in.readString();
         fecha = in.readString();
         hora = in.readString();
         numPersonas = in.readInt();
+        codigo = in.readString();
     }
 
     public static final Creator<ReservaUsu> CREATOR = new Creator<ReservaUsu>() {
@@ -82,5 +93,6 @@ public class ReservaUsu implements Parcelable {
         dest.writeString(fecha);
         dest.writeString(hora);
         dest.writeInt(numPersonas);
+        dest.writeString(codigo);
     }
 }

@@ -15,6 +15,7 @@ public class Restaurante implements Parcelable {
     private int precioMedio;
     private int aforo;
     private String descripcion;
+    private String restUID;
     //private ArrayList<ReservaRest> listaReservas;
 
     public Restaurante() {
@@ -65,6 +66,20 @@ public class Restaurante implements Parcelable {
         this.precioMedio = precioMedio;
         this.aforo = aforo;
         this.descripcion = descripcion;
+    }
+
+    public Restaurante(String nombreRest, String urlFoto, String email, String password, String direccion, String telefono, int calificacion, int precioMedio, int aforo, String descripcion, String restUID) {
+        this.nombreRest = nombreRest;
+        this.urlFoto = urlFoto;
+        this.email = email;
+        this.password = password;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.calificacion = calificacion;
+        this.precioMedio = precioMedio;
+        this.aforo = aforo;
+        this.descripcion = descripcion;
+        this.restUID = restUID;
     }
 
     public String getNombreRest() {
@@ -148,7 +163,15 @@ public class Restaurante implements Parcelable {
         this.descripcion = descripcion;
     }
 
-//    public ArrayList<ReservaRest> getListaReservas() {
+    public String getRestUID() {
+        return restUID;
+    }
+
+    public void setRestUID(String restUID) {
+        this.restUID = restUID;
+    }
+
+    //    public ArrayList<ReservaRest> getListaReservas() {
 //        return listaReservas;
 //    }
 //
@@ -168,6 +191,7 @@ public class Restaurante implements Parcelable {
         precioMedio = in.readInt();
         aforo = in.readInt();
         descripcion = in.readString();
+        restUID = in.readString();
         //in.readList(listaReservas, ReservaRest.class.getClassLoader());
 
     }
@@ -202,6 +226,7 @@ public class Restaurante implements Parcelable {
         dest.writeInt(precioMedio);
         dest.writeInt(aforo);
         dest.writeString(descripcion);
+        dest.writeString(restUID);
         //dest.writeList(listaReservas);
 
     }

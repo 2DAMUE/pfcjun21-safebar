@@ -26,7 +26,9 @@ import java.util.ArrayList;
 
 public class Inicio extends BottomNavigationHelper implements InicioListener {
 
-    public static final String COD_REST = "REST";
+    public static final String COD_REST_UID = "restUID";
+    public static final String COD_REST_NOM = "restNom";
+
     ArrayList<Restaurante> listaRestaurantes;
     Restaurante  restaurante;
 
@@ -82,6 +84,7 @@ public class Inicio extends BottomNavigationHelper implements InicioListener {
 
                     for (DataSnapshot dss: dataSnapshot.getChildren()) {
                         restaurante = dss.getValue(Restaurante.class);
+                        restaurante.setRestUID(dss.getKey());
                         listaRestaurantes.add(restaurante);
                     }
 
@@ -114,9 +117,10 @@ public class Inicio extends BottomNavigationHelper implements InicioListener {
 
 
     @Override
-    public void abrirRestaurante(Restaurante restaurante) {
+    public void abrirRestaurante(String restUID, String restNom) {
         Intent i = new Intent(Inicio.this, Rest.class);
-        i.putExtra(COD_REST, restaurante);
+        i.putExtra(COD_REST_UID, restUID);
+        i.putExtra(COD_REST_NOM, restNom);
         startActivity(i);
         finish();
     }
