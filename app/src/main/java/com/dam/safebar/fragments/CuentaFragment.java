@@ -11,13 +11,33 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.dam.safebar.Inicio;
 import com.dam.safebar.R;
+import com.dam.safebar.javabeans.Restaurante;
+import com.dam.safebar.javabeans.Usuario;
 import com.dam.safebar.listeners.CuentaListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class CuentaFragment extends Fragment {
 
     CuentaListener listener;
+
+    FirebaseAuth fba;
+    FirebaseUser user;
+    DatabaseReference dbRef;
+    ValueEventListener vel;
+
+    Usuario usuario;
+
+    TextView tvEmail;
 
     public CuentaFragment() {
         // Required empty public constructor
@@ -49,10 +69,13 @@ public class CuentaFragment extends Fragment {
         Button btnAboutUs = view.findViewById(R.id.btnCuentaAboutUs);
         Button btnAyuda = view.findViewById(R.id.btnCuentaAyuda);
         Button btnProtocoloCovid = view.findViewById(R.id.btnCuentaProtocoloCovid);
-        TextView tvEmail = view.findViewById(R.id.tvCuentaEmail);
+        tvEmail = view.findViewById(R.id.tvCuentaEmail);
 
-        //TODO: METER EL EMAIL (USUARIO) DE LA CUENTA ACTUAL
-        tvEmail.setText("email_cuenta_actual@email.com");
+        dbRef = FirebaseDatabase.getInstance().getReference("datos/usuarios");
+        fba = FirebaseAuth.getInstance();
+        user = fba.getCurrentUser();
+
+        addListener();
 
         btnConfiguracion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +106,47 @@ public class CuentaFragment extends Fragment {
         });
 
         return view;
+
+    }
+
+    //    @Override
+//    public void onResume() {
+//        super.onResume();
+//        addListener();
+//    }
+
+    private void addListener() {
+        if (vel == null) {
+            vel = new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                   usuario = dataSnapshot.getValue(Usuario.class);
+
+                    tvEmail.setText(usuario.getEmail());
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(getContext(), "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+                }
+            };
+            dbRef.child(user.getUid()).addValueEventListener(vel);
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        removeListener();
+    }
+
+    private void removeListener() {
+        if (vel != null) {
+            dbRef.removeEventListener(vel);
+            vel = null;
+        }
 
     }
 

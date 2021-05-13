@@ -6,6 +6,7 @@ import android.os.Parcelable;
 public class ReservaRest implements Parcelable {
 
     private String userUID;
+    private String nomUsu;
     private String fecha;
     private String hora;
     private int numPersonas;
@@ -21,6 +22,13 @@ public class ReservaRest implements Parcelable {
         this.numPersonas = numPersonas;
     }
 
+    public ReservaRest(String userUID, String nomUsu, String fecha, String hora, int numPersonas) {
+        this.userUID = userUID;
+        this.nomUsu = nomUsu;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.numPersonas = numPersonas;
+    }
 
     public String getUserUID() {
         return userUID;
@@ -28,6 +36,14 @@ public class ReservaRest implements Parcelable {
 
     public void setUserUID(String userUID) {
         this.userUID = userUID;
+    }
+
+    public String getNomUsu() {
+        return nomUsu;
+    }
+
+    public void setNomUsu(String nomUsu) {
+        this.nomUsu = nomUsu;
     }
 
     public String getFecha() {
@@ -64,6 +80,7 @@ public class ReservaRest implements Parcelable {
 
     protected ReservaRest(Parcel in) {
         userUID = in.readString();
+        nomUsu = in.readString();
         fecha = in.readString();
         hora = in.readString();
         numPersonas = in.readInt();
@@ -90,6 +107,7 @@ public class ReservaRest implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(userUID);
+        dest.writeString(nomUsu);
         dest.writeString(fecha);
         dest.writeString(hora);
         dest.writeInt(numPersonas);

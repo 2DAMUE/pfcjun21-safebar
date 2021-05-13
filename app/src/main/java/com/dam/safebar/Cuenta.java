@@ -18,8 +18,15 @@ import com.dam.safebar.fragments.ConfiguracionFragment;
 import com.dam.safebar.fragments.CuentaFragment;
 import com.dam.safebar.fragments.EditarPerfilFragment;
 import com.dam.safebar.fragments.ProtocoloCovidFragment;
+import com.dam.safebar.javabeans.Usuario;
 import com.dam.safebar.listeners.CuentaListener;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
 
 public class Cuenta extends BottomNavigationHelper implements CuentaListener {
 
@@ -41,6 +48,7 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
 
         tb = findViewById(R.id.topAppBarCuenta);
         tb.setNavigationIcon(null);
+
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         CuentaFragment cf = new CuentaFragment().newInstance();

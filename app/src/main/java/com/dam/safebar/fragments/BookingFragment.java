@@ -17,6 +17,7 @@ import com.dam.safebar.R;
 import com.dam.safebar.javabeans.ReservaRest;
 import com.dam.safebar.javabeans.ReservaUsu;
 import com.dam.safebar.javabeans.Restaurante;
+import com.dam.safebar.javabeans.Usuario;
 import com.dam.safebar.listeners.ReservarListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -42,6 +43,7 @@ public class BookingFragment extends Fragment {
     ReservaRest reservaRest;
     ReservaRest reservaRestCheck;
     Restaurante restaurante;
+    Usuario usuario;
 
     ReservarListener listener;
 
@@ -195,12 +197,7 @@ public class BookingFragment extends Fragment {
                         Toast.makeText(getContext(), "Aforo completo!", Toast.LENGTH_SHORT).show();
                     } else {
 
-                        dbRef.child("usuarios").child(user.getUid()).child("reservas").child(fecha).child(codigoReserva).setValue(reservaUsu);
-                        dbRef.child("restaurantes").child(restUID).child("reservas").child(fecha).child(hora).child(codigoReserva).setValue(reservaRest);
-
-                        Toast.makeText(getContext(), "Reserva realizada con exito!", Toast.LENGTH_SHORT).show();
-
-                        listener.booking();
+                        addListener3();
 
                     }
 
@@ -212,6 +209,37 @@ public class BookingFragment extends Fragment {
                 }
             };
             dbRef.child("restaurantes").child(restUID).addValueEventListener(vel);
+        }
+
+    }
+
+    private void addListener3() {
+
+        onPause();
+
+        if (vel == null) {
+            vel = new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    usuario = dataSnapshot.getValue(Usuario.class);
+                    reservaRest.setNomUsu(usuario.getNombre());
+
+                    dbRef.child("usuarios").child(user.getUid()).child("reservas").child(fecha).child(codigoReserva).setValue(reservaUsu);
+                    dbRef.child("restaurantes").child(restUID).child("reservas").child(fecha).child(hora).child(codigoReserva).setValue(reservaRest);
+
+                    Toast.makeText(getContext(), "Reserva realizada con exito!", Toast.LENGTH_SHORT).show();
+
+                    listener.booking();
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(getContext(), "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+                }
+            };
+            dbRef.child("usuarios").child(user.getUid()).addValueEventListener(vel);
         }
 
     }
