@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.dam.safebar.fragments.BookingFragment;
 import com.dam.safebar.fragments.InicioFragment;
@@ -70,6 +71,5 @@ public class Rest extends AppCompatActivity implements ReservarListener {
     public void booking() {
         Intent i = new Intent(Rest.this, Inicio.class);
         startActivity(i);
-        finish();
     }
 }

@@ -23,7 +23,7 @@ public abstract class BottomNavigationHelperRest extends AppCompatActivity imple
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getContentViewId());
-        navigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationBar);
+        navigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationBarRest);
         navigationView.setOnNavigationItemSelectedListener(this);
     }
 
