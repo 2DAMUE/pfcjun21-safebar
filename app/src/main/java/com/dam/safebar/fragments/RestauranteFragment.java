@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +52,7 @@ public class RestauranteFragment extends Fragment {
     TextView tvAforo;
     TextView tvDescrip;
     Button btnReservar;
+    RatingBar rtbRestaurante;
 
     public RestauranteFragment() {
         // Required empty public constructor
@@ -87,6 +89,7 @@ public class RestauranteFragment extends Fragment {
         tvAforo = view.findViewById(R.id.tvAforoRestauranteFrag);
         tvDescrip = view.findViewById(R.id.tvDescripRestauranteFrag);
         btnReservar = view.findViewById(R.id.btnReservarRestauranteFrag);
+        rtbRestaurante = view.findViewById(R.id.ratingBarRestaurante);
 
         dbRef = FirebaseDatabase.getInstance().getReference("datos/restaurantes");
         mFotoStorageRef = FirebaseStorage.getInstance().getReference().child("fotosR");
@@ -117,6 +120,7 @@ public class RestauranteFragment extends Fragment {
         tvPrecio.setText(String.valueOf(restaurante.getPrecioMedio()));
         tvAforo.setText(String.valueOf(restaurante.getAforo()));
         tvDescrip.setText(restaurante.getDescripcion());
+        rtbRestaurante.setRating(restaurante.getCalificacion());
     }
 
     //    @Override
