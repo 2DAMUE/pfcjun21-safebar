@@ -11,59 +11,59 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.dam.safebar.R;
 import com.dam.safebar.adapters.ReservasAdapter;
+import com.dam.safebar.adapters.ReservasRestAdapter;
+import com.dam.safebar.javabeans.ReservaRest;
 import com.dam.safebar.javabeans.ReservaUsu;
+
 
 import java.util.ArrayList;
 
 
-public class ReservasUsuFragment extends Fragment {
+public class ReservasRestFragment extends Fragment {
     RecyclerView rv;
-    ArrayList<ReservaUsu> listareservas;
+    ArrayList<ReservaRest> listareservas;
+    TextView tvFecha;
+    TextView tvHora;
+    TextView tvNumPer;
+    Button btnReservas;
 
-
-
-
-    public ReservasUsuFragment() {
+    public ReservasRestFragment() {
         // Required empty public constructor
     }
 
 
-    public ReservasUsuFragment newInstance(ArrayList<ReservaUsu> listareservas) {
-        ReservasUsuFragment fragment = new ReservasUsuFragment();
+    public static ReservasRestFragment newInstance(ArrayList<ReservaRest> listareservas) {
+        ReservasRestFragment fragment = new ReservasRestFragment();
         Bundle args = new Bundle();
-        args.putParcelableArrayList("LISTA_RESV", listareservas);
+        args.putParcelableArrayList("LISTA_RESV REST", listareservas);
         fragment.setArguments(args);
         return fragment;
     }
-
-
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            listareservas = getArguments().getParcelableArrayList("LISTA_RESV");
+            listareservas = getArguments().getParcelableArrayList("LISTA_RESV REST");
+
         }
     }
-
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_reservas_usu, container, false);
 
-        rv = view.findViewById(R.id.rvReservas);
+        View view = inflater.inflate(R.layout.fragment_reservas_rest, container, false);
+        rv = view.findViewById(R.id.rvReservasRest);
 
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        ReservasAdapter reserAdap = new ReservasAdapter(listareservas);
-  //     reserAdap.setListener(new View.OnClickListener() {
+       ReservasRestAdapter reserRestAdap = new ReservasRestAdapter(listareservas);
+        //     reserAdap.setListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
 //                int i = rv.getChildAdapterPosition(v);
@@ -72,12 +72,9 @@ public class ReservasUsuFragment extends Fragment {
 //            }
 //        });
 
-        rv.setAdapter(reserAdap);
+       rv.setAdapter(reserRestAdap);
         return view;
-
-
     }
-
 
 
 }

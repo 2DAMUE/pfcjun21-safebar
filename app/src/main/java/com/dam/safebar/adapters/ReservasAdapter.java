@@ -60,6 +60,7 @@ public class ReservasAdapter extends RecyclerView.Adapter<ReservasAdapter.Reserv
         TextView aforo;
         TextView fecha;
         TextView hora;
+        TextView restaurante;
 
 
         public ReservaUsuViewHolder(@NonNull View itemView) {
@@ -68,6 +69,7 @@ public class ReservasAdapter extends RecyclerView.Adapter<ReservasAdapter.Reserv
             aforo = itemView.findViewById(R.id.tvNumPersonasReservasItem);
             hora = itemView.findViewById(R.id.tvHoraReservasItem);
             fecha =itemView.findViewById(R.id.tvFechaReservasItem);
+            restaurante= itemView.findViewById(R.id.tvNombreResReservasItem);
 
         }
 
@@ -75,6 +77,7 @@ public class ReservasAdapter extends RecyclerView.Adapter<ReservasAdapter.Reserv
             aforo.setText(String.valueOf(reservaUsu.getNumPersonas()));
             hora.setText(reservaUsu.getHora());
             fecha.setText(reservaUsu.getFecha());
+            restaurante.setText(reservaUsu.getNombreRest());
 
         }
 
