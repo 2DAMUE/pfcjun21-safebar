@@ -6,13 +6,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.dam.safebar.fragments.BookingFragment;
 import com.dam.safebar.fragments.InicioFragment;
 import com.dam.safebar.fragments.RestauranteFragment;
 import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.ReservarListener;
+import com.google.android.material.appbar.MaterialToolbar;
 
 public class Rest extends AppCompatActivity implements ReservarListener {
 
@@ -27,6 +27,17 @@ public class Rest extends AppCompatActivity implements ReservarListener {
         restUID = getIntent().getStringExtra(Inicio.COD_REST_UID);
         restNom = getIntent().getStringExtra(Inicio.COD_REST_NOM);
 
+        MaterialToolbar tb = findViewById(R.id.topAppBar);
+        tb.setTitle(restNom);
+        tb.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
+
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         RestauranteFragment restf = new RestauranteFragment().newInstance(restUID, restNom);
@@ -34,9 +45,12 @@ public class Rest extends AppCompatActivity implements ReservarListener {
         ft.addToBackStack(null);
         ft.commit();
 
-
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 
     @Override
     public void abrirReservar(String restUID, String restNom) {
@@ -48,6 +62,7 @@ public class Rest extends AppCompatActivity implements ReservarListener {
         ft.addToBackStack(null);
         ft.commit();
 
+        //TODO: Firebase
 
     }
 

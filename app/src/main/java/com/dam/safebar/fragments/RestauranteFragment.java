@@ -15,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.dam.safebar.Inicio;
 import com.dam.safebar.R;
 import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.PerfilRestListener;

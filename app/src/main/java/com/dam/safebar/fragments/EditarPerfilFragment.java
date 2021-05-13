@@ -107,7 +107,7 @@ public class EditarPerfilFragment extends Fragment {
         etPw = view.findViewById(R.id.etEditPerfFragPW);
         etDirec = view.findViewById(R.id.etEditPerfFragDirec);
         btnGuardar = view.findViewById(R.id.btnGuardarEditPerfFrag);
-        //Button btnCancelar = view.findViewById(R.id.btnCancelarEditPerfFrag);
+        Button btnCancelar = view.findViewById(R.id.btnCancelarEditPerfFrag);
 
         fba = FirebaseAuth.getInstance();
         user = fba.getCurrentUser();
@@ -117,6 +117,13 @@ public class EditarPerfilFragment extends Fragment {
         fotoCambiada = false;
 
         addListener();
+
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
 
         imbEditarImagen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -204,6 +211,7 @@ public class EditarPerfilFragment extends Fragment {
 
         return view;
     }
+
 
     public static float convertDpToPixel(float dp, Context context){
         return dp * ((float) context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT);

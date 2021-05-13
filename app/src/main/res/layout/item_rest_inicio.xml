@@ -18,69 +18,107 @@
             <ImageView
                 android:id="@+id/imgItemRVInicio"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="160dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"/>
 
             <TextView
-                android:id="@+id/tvKmItemRVInicio"
+                android:id="@+id/tvNomItemRVInicio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="Nombre restaurante"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/green_dark"
                 android:textAlignment="center"
-                android:textSize="16sp"/>
+                android:textSize="22sp"
+                android:layout_marginTop="4dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_localizacion_inicio"/>
+                <TextView
+                    android:id="@+id/tvKmItemRVInicio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A XX km de ti"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/green_light"
+                    android:textAlignment="center"
+                    android:textSize="16sp"/>
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/tvNomItemRVInicio"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:textSize="22sp"/>
+            <TextView
+                android:id="@+id/tvDirecItemRVInicio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="direccion"
+                android:fontFamily="@font/roboto_light"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textStyle="italic"/>
 
-                    <TextView
-                        android:id="@+id/tvDirecItemRVInicio"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:textSize="18sp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="6dp">
 
                     <TextView
                         android:id="@+id/tvAforoItemRVInicio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="aforo"
+                        android:layout_weight="1"
                         android:textAlignment="center"
                         android:textSize="18sp"/>
 
-                </LinearLayout>
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="30dp"
+                        android:alpha="0.10"
+                        android:background="@color/cardview_dark_background"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_weight="2">
-
-                    <TextView
-                        android:id="@+id/tvCalifItemRVInicio"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
+                        android:gravity="center"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/tvCalifItemRVInicio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="calificacion"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_estrella"/>
+
+                    </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="30dp"
+                    android:alpha="0.10"
+                    android:background="@color/cardview_dark_background"/>
+
 
                     <TextView
                         android:id="@+id/tvPrecioItemRVInicio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="precio"
                         android:textAlignment="center"
                         android:textSize="18sp"
                         android:layout_weight="1"/>
@@ -90,7 +128,5 @@
             </LinearLayout>
 
         </LinearLayout>
-
-    </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

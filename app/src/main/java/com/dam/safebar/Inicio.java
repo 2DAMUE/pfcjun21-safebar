@@ -2,18 +2,23 @@ package com.dam.safebar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.dam.safebar.adapters.BottomNavigationHelper;
+import com.dam.safebar.fragments.ConfiguracionFragment;
 import com.dam.safebar.fragments.InicioFragment;
 import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.InicioListener;
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.radiobutton.MaterialRadioButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,6 +40,7 @@ public class Inicio extends BottomNavigationHelper implements InicioListener {
     DatabaseReference dbRef;
     StorageReference mFotoStorageRef;
     ValueEventListener vel;
+    MaterialToolbar tb;
 
     @Override
     public int getContentViewId() {
@@ -52,6 +58,9 @@ public class Inicio extends BottomNavigationHelper implements InicioListener {
 //        @BottomNavigationHelper monta directamente el layoutt
 //        setContentView(R.layout.activity_inicio);
 
+        tb = findViewById(R.id.topAppBarInicio);
+        tb.setNavigationIcon(null);
+
         listaRestaurantes = new ArrayList<>();
 
         dbRef = FirebaseDatabase.getInstance().getReference("datos/restaurantes");
@@ -59,6 +68,16 @@ public class Inicio extends BottomNavigationHelper implements InicioListener {
 
         addListener();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Fragment f = getSupportFragmentManager().findFragmentById(R.id.flInicio);
+        if (f instanceof InicioFragment) {
+
+        } else {
+            super.onBackPressed();
+        }
     }
 
     private void cargarInicioFragment() {
@@ -122,7 +141,7 @@ public class Inicio extends BottomNavigationHelper implements InicioListener {
         i.putExtra(COD_REST_UID, restUID);
         i.putExtra(COD_REST_NOM, restNom);
         startActivity(i);
-        finish();
+//        finish();
     }
 }
 

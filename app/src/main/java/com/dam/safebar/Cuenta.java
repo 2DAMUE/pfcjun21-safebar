@@ -1,11 +1,14 @@
 package com.dam.safebar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.dam.safebar.adapters.BottomNavigationHelper;
@@ -16,8 +19,11 @@ import com.dam.safebar.fragments.CuentaFragment;
 import com.dam.safebar.fragments.EditarPerfilFragment;
 import com.dam.safebar.fragments.ProtocoloCovidFragment;
 import com.dam.safebar.listeners.CuentaListener;
+import com.google.android.material.appbar.MaterialToolbar;
 
 public class Cuenta extends BottomNavigationHelper implements CuentaListener {
+
+    MaterialToolbar tb;
 
     @Override
     public int getContentViewId() {
@@ -33,12 +39,35 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        tb = findViewById(R.id.topAppBarCuenta);
+        tb.setNavigationIcon(null);
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         CuentaFragment cf = new CuentaFragment().newInstance();
         ft.add(R.id.flCuenta, cf);
         ft.addToBackStack(null);
         ft.commit();
+
+
+
+        tb.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+//                if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+//                    tb.setNavigationIcon(null);
+//                    tb.setTitle("Cuenta");
+//                } else {
+//                    if (true) {
+//                        Fragment f = getSupportFragmentManager().findFragmentById(R.id.flCuenta);
+//                        if (f instanceof ConfiguracionFragment) {
+//                            tb.setTitle("Configuración");
+//                        }
+//                    }
+//                    tb.setNavigationIcon(R.drawable.ic_back_arrow);
+//                }
+            }
+        });
 
     }
 
@@ -50,6 +79,9 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
         ft.replace(R.id.flCuenta, cff);
         ft.addToBackStack(null);
         ft.commit();
+
+        tb.setTitle("Configuración");
+        tb.setNavigationIcon(R.drawable.ic_back_arrow);
     }
 
     @Override
@@ -60,6 +92,9 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
         ft.replace(R.id.flCuenta, au);
         ft.addToBackStack(null);
         ft.commit();
+
+        tb.setTitle("About Us");
+        tb.setNavigationIcon(R.drawable.ic_back_arrow);
     }
 
     @Override
@@ -70,6 +105,9 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
         ft.replace(R.id.flCuenta, af);
         ft.addToBackStack(null);
         ft.commit();
+
+        tb.setTitle("Ayuda");
+        tb.setNavigationIcon(R.drawable.ic_back_arrow);
     }
 
     @Override
@@ -80,6 +118,9 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
         ft.replace(R.id.flCuenta, pcf);
         ft.addToBackStack(null);
         ft.commit();
+
+        tb.setTitle("Protocolo Covid");
+        tb.setNavigationIcon(R.drawable.ic_back_arrow);
     }
 
     @Override
@@ -90,6 +131,9 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
         ft.replace(R.id.flCuenta, epf);
         ft.addToBackStack(null);
         ft.commit();
+
+        tb.setTitle("Editar perfil");
+        tb.setNavigationIcon(R.drawable.ic_back_arrow);
     }
 
     @Override
@@ -99,7 +143,35 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
         finish();
     }
 
-//    public void resetActionBar(boolean childAction, int drawerMode)
+    @Override
+    public void onBackPressed() {
+//        Fragment f = getSupportFragmentManager().findFragmentById(R.id.flCuenta);
+//        if (f instanceof CuentaFragment) {
+//            tb.setNavigationIcon(null);
+//            tb.setTitle("Cuenta");
+//        } else if (f instanceof ConfiguracionFragment) {
+//            super.onBackPressed();
+//            tb.setTitle("Configuración");
+//        }
+
+        super.onBackPressed();
+        if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+
+            tb.setNavigationIcon(null);
+            tb.setTitle("Cuenta");
+            Log.i("cuenta", "volviendo a cuenta..");
+        } else {
+            if (true) {
+                Fragment f = getSupportFragmentManager().findFragmentById(R.id.flCuenta);
+                if (f instanceof ConfiguracionFragment) {
+                    tb.setTitle("Configuración");
+                }
+            }
+            tb.setNavigationIcon(R.drawable.ic_back_arrow);
+        }
+    }
+
+    //    public void resetActionBar(boolean childAction, int drawerMode)
 //    {
 //        if (childAction) {
 //            // [Undocumented?] trick to get up button icon to show
