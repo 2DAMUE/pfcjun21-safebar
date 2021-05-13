@@ -47,8 +47,7 @@ public class Rest extends AppCompatActivity implements ReservarListener {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(this, Inicio.class);
-        startActivity(i);
+        finish();
     }
 
     @Override

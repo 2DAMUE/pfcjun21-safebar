@@ -54,18 +54,18 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
             @Override
             public void onClick(View v) {
                 onBackPressed();
-                if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
-                    tb.setNavigationIcon(null);
-                    tb.setTitle("Cuenta");
-                } else {
-                    if (true) {
-                        Fragment f = getSupportFragmentManager().findFragmentById(R.id.flCuenta);
-                        if (f instanceof ConfiguracionFragment) {
-                            tb.setTitle("Configuración");
-                        }
-                    }
-                    tb.setNavigationIcon(R.drawable.ic_back_arrow);
-                }
+//                if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+//                    tb.setNavigationIcon(null);
+//                    tb.setTitle("Cuenta");
+//                } else {
+//                    if (true) {
+//                        Fragment f = getSupportFragmentManager().findFragmentById(R.id.flCuenta);
+//                        if (f instanceof ConfiguracionFragment) {
+//                            tb.setTitle("Configuración");
+//                        }
+//                    }
+//                    tb.setNavigationIcon(R.drawable.ic_back_arrow);
+//                }
             }
         });
 
@@ -143,7 +143,35 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
         finish();
     }
 
-//    public void resetActionBar(boolean childAction, int drawerMode)
+    @Override
+    public void onBackPressed() {
+//        Fragment f = getSupportFragmentManager().findFragmentById(R.id.flCuenta);
+//        if (f instanceof CuentaFragment) {
+//            tb.setNavigationIcon(null);
+//            tb.setTitle("Cuenta");
+//        } else if (f instanceof ConfiguracionFragment) {
+//            super.onBackPressed();
+//            tb.setTitle("Configuración");
+//        }
+
+        super.onBackPressed();
+        if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+
+            tb.setNavigationIcon(null);
+            tb.setTitle("Cuenta");
+            Log.i("cuenta", "volviendo a cuenta..");
+        } else {
+            if (true) {
+                Fragment f = getSupportFragmentManager().findFragmentById(R.id.flCuenta);
+                if (f instanceof ConfiguracionFragment) {
+                    tb.setTitle("Configuración");
+                }
+            }
+            tb.setNavigationIcon(R.drawable.ic_back_arrow);
+        }
+    }
+
+    //    public void resetActionBar(boolean childAction, int drawerMode)
 //    {
 //        if (childAction) {
 //            // [Undocumented?] trick to get up button icon to show

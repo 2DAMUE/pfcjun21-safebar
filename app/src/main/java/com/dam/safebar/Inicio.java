@@ -68,6 +68,16 @@ public class Inicio extends BottomNavigationHelper implements InicioListener {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Fragment f = getSupportFragmentManager().findFragmentById(R.id.flInicio);
+        if (f instanceof InicioFragment) {
+
+        } else {
+            super.onBackPressed();
+        }
+    }
+
     private void cargarInicioFragment() {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
