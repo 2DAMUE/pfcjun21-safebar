@@ -57,26 +57,26 @@ public class ReservasRestAdapter extends RecyclerView.Adapter<ReservasRestAdapte
 
     public static class ReservaRestViewHolder extends RecyclerView.ViewHolder {
 
-        TextView aforo;
+        TextView numPersonas;
         TextView fecha;
         TextView hora;
-        TextView usuario;
+        TextView nombreUsu;
 
 
         public ReservaRestViewHolder(@NonNull View itemView) {
             super(itemView);
-            aforo = itemView.findViewById(R.id.tvAforoReservasRestItem);
+            numPersonas = itemView.findViewById(R.id.tvNumPersonasReservasRestItem);
             hora = itemView.findViewById(R.id.tvHoraReservasRestItem);
-            fecha =itemView.findViewById(R.id.tvFechaReservasRestItem);
-            usuario =itemView.findViewById(R.id.tvIDReservasRestItem);
+            fecha = itemView.findViewById(R.id.tvFechaReservasRestItem);
+            nombreUsu = itemView.findViewById(R.id.tvNomUsuReservasRestItem);
 
         }
 
         public void bindItem(ReservaRest reservaRest) {
-            aforo.setText(String.valueOf(reservaRest.getNumPersonas()));
+            numPersonas.setText(String.valueOf(reservaRest.getNumPersonas()));
             hora.setText(reservaRest.getHora());
             fecha.setText(reservaRest.getFecha());
-            usuario.setText(reservaRest.getUserUID());
+            nombreUsu.setText(reservaRest.getUserUID());
 
         }
 

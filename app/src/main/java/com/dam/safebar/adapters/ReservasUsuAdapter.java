@@ -14,12 +14,12 @@ import com.dam.safebar.javabeans.ReservaUsu;
 
 import java.util.ArrayList;
 
-public class ReservasAdapter extends RecyclerView.Adapter<ReservasAdapter.ReservaUsuViewHolder> implements View.OnClickListener {
+public class ReservasUsuAdapter extends RecyclerView.Adapter<ReservasUsuAdapter.ReservaUsuViewHolder> implements View.OnClickListener {
 
     ArrayList<ReservaUsu> datos;
     View.OnClickListener listener;
 
-    public ReservasAdapter(ArrayList<ReservaUsu> datos) {
+    public ReservasUsuAdapter(ArrayList<ReservaUsu> datos) {
         this.datos = datos;
     }
 
@@ -57,7 +57,7 @@ public class ReservasAdapter extends RecyclerView.Adapter<ReservasAdapter.Reserv
     public static class ReservaUsuViewHolder extends RecyclerView.ViewHolder {
 
         Button reservar;
-        TextView aforo;
+        TextView numPersonas;
         TextView fecha;
         TextView hora;
         TextView restaurante;
@@ -66,7 +66,7 @@ public class ReservasAdapter extends RecyclerView.Adapter<ReservasAdapter.Reserv
         public ReservaUsuViewHolder(@NonNull View itemView) {
             super(itemView);
             reservar = itemView.findViewById(R.id.btnReservarReservasItem);
-            aforo = itemView.findViewById(R.id.tvNumPersonasReservasItem);
+            numPersonas = itemView.findViewById(R.id.tvNumPersonasReservasItem);
             hora = itemView.findViewById(R.id.tvHoraReservasItem);
             fecha =itemView.findViewById(R.id.tvFechaReservasItem);
             restaurante= itemView.findViewById(R.id.tvNombreResReservasItem);
@@ -74,7 +74,7 @@ public class ReservasAdapter extends RecyclerView.Adapter<ReservasAdapter.Reserv
         }
 
         public void bindItem(ReservaUsu reservaUsu) {
-            aforo.setText(String.valueOf(reservaUsu.getNumPersonas()));
+            numPersonas.setText(String.valueOf(reservaUsu.getNumPersonas()));
             hora.setText(reservaUsu.getHora());
             fecha.setText(reservaUsu.getFecha());
             restaurante.setText(reservaUsu.getNombreRest());
