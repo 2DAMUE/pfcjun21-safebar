@@ -93,20 +93,16 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
 
                     if (listaFechas.size() != 0) {
 
-
-
                         for (int i=0; i<= listaFechas.size()-1; i++) {
                             //Log.i("ERROR1 FECHA", listaFechas.get(i));
 
-                            addListener2(listaFechas.get(i));
-
+                            if (i == listaFechas.size()-1) {
+                                addListener2(listaFechas.get(i),1);
+                            } else {
+                                addListener2(listaFechas.get(i),2);
+                            }
 
                         }
-
-
-
-
-
 
                     }
 
@@ -131,7 +127,7 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
         }
     }
 
-    private void addListener2(String fechaArray) {
+    private void addListener2(String fechaArray, int codFecha) {
 
         onPause();
 
@@ -153,8 +149,17 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
                     if (listaHoras.size() != 0) {
 
                         for (int i=0; i<= listaHoras.size()-1; i++) {
-                            addListener3(fechaArray, listaHoras.get(i));
-                            Log.i("ERROR1 HORA", listaHoras.get(i) + " " + fechaArray);
+
+                            if (i == listaHoras.size()-1) {
+                                addListener3(fechaArray, listaHoras.get(i), codFecha,1);
+                            } else {
+                                addListener3(fechaArray, listaHoras.get(i), codFecha, 2);
+                            }
+
+
+
+
+                            //Log.i("ERROR1 HORA", listaHoras.get(i) + " " + fechaArray);
                         }
 
 ////                        for (String horaArray: listaHoras) {
@@ -177,7 +182,7 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
         }
     }
 
-    private void addListener3(String fechaArray, String horaArray) {
+    private void addListener3(String fechaArray, String horaArray, int codFecha, int codHora) {
 
         onPause();
 
@@ -214,7 +219,7 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
 
                     }
 
-                    if (listaReservas.size() == 10) {
+                    if (codFecha == 1 && codHora == 1) {
                         ArrayList<ReservaRest> listaReservasFrag = listaReservas;
                         Log.i("WWW", listaReservasFrag.get(1).getFecha());
                         Log.i("WWW", listaReservasFrag.get(3).getFecha());
