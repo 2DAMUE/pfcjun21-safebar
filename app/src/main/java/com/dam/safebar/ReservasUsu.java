@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.dam.safebar.adapters.BottomNavigationHelper;
+import com.dam.safebar.fragments.QRFragment;
 import com.dam.safebar.fragments.ReservasUsuFragment;
 import com.dam.safebar.javabeans.ReservaUsu;
 import com.dam.safebar.javabeans.Restaurante;
@@ -157,9 +158,14 @@ public class ReservasUsu extends BottomNavigationHelper implements ReservasUsuLi
     }
 
     @Override
-    public void abrirFragmentQR(String codigo) {
+    public void abrirFragmentQR(String codigoReserva) {
 
-        //TODO: Abrir qrFragment
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        QRFragment qrf = new QRFragment().newInstance(codigoReserva);
+        ft.add(R.id.flReservas, qrf);
+        ft.addToBackStack(null);
+        ft.commit();
 
 
     }

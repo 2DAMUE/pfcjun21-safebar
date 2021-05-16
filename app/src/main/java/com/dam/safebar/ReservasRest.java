@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.dam.safebar.adapters.BottomNavigationHelperRest;
+import com.dam.safebar.fragments.CheckQRFragment;
 import com.dam.safebar.fragments.ReservasRestFragment;
 import com.dam.safebar.fragments.ReservasUsuFragment;
 import com.dam.safebar.javabeans.ReservaRest;
@@ -309,9 +310,14 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
 
 
     @Override
-    public void abrirFragmentCheckQR(String codigo) {
+    public void abrirFragmentCheckQR() {
 
-        //TODO: abrir fragment para comprobar QR
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        CheckQRFragment cqrf = new CheckQRFragment().newInstance();
+        ft.add(R.id.flReservasRest, cqrf);
+        ft.addToBackStack(null);
+        ft.commit();
 
     }
 }
