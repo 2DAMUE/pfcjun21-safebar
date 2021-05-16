@@ -39,8 +39,13 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         tb = findViewById(R.id.topAppBarCuenta);
         tb.setNavigationIcon(null);
+
+        //PRUEBA GUARDAR
+        setSupportActionBar(tb);
+
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         CuentaFragment cf = new CuentaFragment().newInstance();
@@ -153,22 +158,28 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
 //            super.onBackPressed();
 //            tb.setTitle("Configuración");
 //        }
+        Fragment f = getSupportFragmentManager().findFragmentById(R.id.flCuenta);
+        if (f instanceof CuentaFragment) {
 
-        super.onBackPressed();
-        if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
-
-            tb.setNavigationIcon(null);
-            tb.setTitle("Cuenta");
-            Log.i("cuenta", "volviendo a cuenta..");
         } else {
-            if (true) {
-                Fragment f = getSupportFragmentManager().findFragmentById(R.id.flCuenta);
-                if (f instanceof ConfiguracionFragment) {
-                    tb.setTitle("Configuración");
+            super.onBackPressed();
+            if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+
+                tb.setNavigationIcon(null);
+                tb.setTitle("Cuenta");
+                Log.i("cuenta", "volviendo a cuenta..");
+            } else {
+                f = getSupportFragmentManager().findFragmentById(R.id.flCuenta);
+                if (true) {
+
+                    if (f instanceof ConfiguracionFragment) {
+                        tb.setTitle("Configuración");
+                    }
                 }
+                tb.setNavigationIcon(R.drawable.ic_back_arrow);
             }
-            tb.setNavigationIcon(R.drawable.ic_back_arrow);
         }
+
     }
 
     //    public void resetActionBar(boolean childAction, int drawerMode)

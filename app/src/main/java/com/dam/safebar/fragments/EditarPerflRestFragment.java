@@ -8,10 +8,14 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -78,7 +82,6 @@ public class EditarPerflRestFragment extends Fragment {
     EditText etPrecio;
     EditText etAforo;
     EditText etDescrip;
-    Button btnGuardar;
 
     public EditarPerflRestFragment() {
         // Required empty public constructor
@@ -109,6 +112,10 @@ public class EditarPerflRestFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_editar_perfl_rest, container, false);
 
+        //BTN GUARDAR EN ACTIONBAR
+        setHasOptionsMenu(true);
+        ((AppCompatActivity) getActivity()).getSupportActionBar();
+
 
         imageView = view.findViewById(R.id.imgEditPerfRestFrag);
         imbEditarImagen = view.findViewById(R.id.imbEditPerfRestFrag);
@@ -120,7 +127,6 @@ public class EditarPerflRestFragment extends Fragment {
         etPrecio = view.findViewById(R.id.etEditPerfRestFragPrecio);
         etAforo = view.findViewById(R.id.etEditPerfRestFragAforo);
         etDescrip = view.findViewById(R.id.etEditPerfRestFragDescrip);
-        btnGuardar = view.findViewById(R.id.btnEditPerfRestFragGuardar);
 
 
         fba = FirebaseAuth.getInstance();
@@ -145,94 +151,178 @@ public class EditarPerflRestFragment extends Fragment {
             }
         });
 
-
-
-        btnGuardar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                nombreRest = etNombre.getText().toString().trim();
-                email = etEmail.getText().toString().trim();
-                password = etPW.getText().toString().trim();
-                direc = etDirec.getText().toString().trim();
-                telef = etTelef.getText().toString().trim();
-                precio = etPrecio.getText().toString().trim();
-                aforo = etAforo.getText().toString().trim();
-                descrip = etDescrip.getText().toString().trim();
-
-
-                if (fotoCambiada) {
-                    final StorageReference fotoRef = mFotoStorageRef.child(selectedUri.getEncodedPath());
-                    UploadTask ut = fotoRef.putFile(selectedUri);
-                    Task<Uri> urlTask = ut.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                        @Override
-                        public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                            if (!task.isSuccessful()) {
-                                throw task.getException();
-                            }
-
-                            return fotoRef.getDownloadUrl();
-                        }
-                    }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Uri> task) {
-                            if (task.isSuccessful()) {
-                                Uri downloadUri = task.getResult();
-                                restEditado = new Restaurante(nombreRest, downloadUri.toString(), email, password, direc,
-                                        telef, Integer.parseInt(precio), Integer.parseInt(aforo), descrip);
-
-                                user.updateEmail(email);
-                                user.updatePassword(password);
-
-                                dbRef.child(user.getUid()).setValue(restEditado);
-                                Snackbar snackbar = Snackbar
-                                        .make(getActivity().getWindow().getDecorView().getRootView(), R.string.perfil_modificado_ok, Snackbar.LENGTH_LONG)
-                                        .setBackgroundTint(getResources().getColor(R.color.green_dark));
-
-
-                                //View para introducir margen por encima del BottomBar
-                                View snackBarView = snackbar.getView();
-                                snackBarView.setTranslationY(-(convertDpToPixel(56, getActivity())));
-                                snackbar.show();
-
-                                listener.volverPerfilRest();
-
-                            }
-                        }
-                    });
-                } else {
-                    restEditado = new Restaurante(nombreRest, restEditado.getUrlFoto(), email, password, direc,
-                            telef, Integer.parseInt(precio), Integer.parseInt(aforo), descrip);
-
-                    user.updateEmail(email);
-                    user.updatePassword(password);
-
-                    dbRef.child(user.getUid()).setValue(restEditado);
-                    Snackbar snackbar = Snackbar
-                            .make(getActivity().getWindow().getDecorView().getRootView(), R.string.perfil_modificado_ok, Snackbar.LENGTH_LONG)
-                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
-
-
-                    //View para introducir margen por encima del BottomBar
-                    View snackBarView = snackbar.getView();
-                    snackBarView.setTranslationY(-(convertDpToPixel(56, getActivity())));
-                    snackbar.show();
-
-                    listener.volverPerfilRest();
-                }
-            }
-        });
-
-
-
+//        btnGuardar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                nombreRest = etNombre.getText().toString().trim();
+//                email = etEmail.getText().toString().trim();
+//                password = etPW.getText().toString().trim();
+//                direc = etDirec.getText().toString().trim();
+//                telef = etTelef.getText().toString().trim();
+//                precio = etPrecio.getText().toString().trim();
+//                aforo = etAforo.getText().toString().trim();
+//                descrip = etDescrip.getText().toString().trim();
+//
+//
+//                if (fotoCambiada) {
+//                    final StorageReference fotoRef = mFotoStorageRef.child(selectedUri.getEncodedPath());
+//                    UploadTask ut = fotoRef.putFile(selectedUri);
+//                    Task<Uri> urlTask = ut.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+//                        @Override
+//                        public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+//                            if (!task.isSuccessful()) {
+//                                throw task.getException();
+//                            }
+//
+//                            return fotoRef.getDownloadUrl();
+//                        }
+//                    }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<Uri> task) {
+//                            if (task.isSuccessful()) {
+//                                Uri downloadUri = task.getResult();
+//                                restEditado = new Restaurante(nombreRest, downloadUri.toString(), email, password, direc,
+//                                        telef, Integer.parseInt(precio), Integer.parseInt(aforo), descrip);
+//
+//                                user.updateEmail(email);
+//                                user.updatePassword(password);
+//
+//                                dbRef.child(user.getUid()).setValue(restEditado);
+//                                Snackbar snackbar = Snackbar
+//                                        .make(getActivity().getWindow().getDecorView().getRootView(), R.string.perfil_modificado_ok, Snackbar.LENGTH_LONG)
+//                                        .setBackgroundTint(getResources().getColor(R.color.green_dark));
+//
+//
+//                                //View para introducir margen por encima del BottomBar
+//                                View snackBarView = snackbar.getView();
+//                                snackBarView.setTranslationY(-(convertDpToPixel(56, getActivity())));
+//                                snackbar.show();
+//
+//                                listener.volverPerfilRest();
+//
+//                            }
+//                        }
+//                    });
+//                } else {
+//                    restEditado = new Restaurante(nombreRest, restLoged.getUrlFoto(), email, password, direc,
+//                            telef, Integer.parseInt(precio), Integer.parseInt(aforo), descrip);
+//
+//                    user.updateEmail(email);
+//                    user.updatePassword(password);
+//
+//                    dbRef.child(user.getUid()).setValue(restEditado);
+//                    Snackbar snackbar = Snackbar
+//                            .make(getActivity().getWindow().getDecorView().getRootView(), R.string.perfil_modificado_ok, Snackbar.LENGTH_LONG)
+//                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+//
+//
+//                    //View para introducir margen por encima del BottomBar
+//                    View snackBarView = snackbar.getView();
+//                    snackBarView.setTranslationY(-(convertDpToPixel(56, getActivity())));
+//                    snackbar.show();
+//
+//                    listener.volverPerfilRest();
+//                }
+//            }
+//        });
 
         return view;
 
     }
 
-    public static float convertDpToPixel(float dp, Context context){
-        return dp * ((float) context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT);
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.editar_perfil_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.itemGuardarPerfil) {
+
+
+            nombreRest = etNombre.getText().toString().trim();
+            email = etEmail.getText().toString().trim();
+            password = etPW.getText().toString().trim();
+            direc = etDirec.getText().toString().trim();
+            telef = etTelef.getText().toString().trim();
+            precio = etPrecio.getText().toString().trim();
+            aforo = etAforo.getText().toString().trim();
+            descrip = etDescrip.getText().toString().trim();
+
+
+            if (fotoCambiada) {
+                final StorageReference fotoRef = mFotoStorageRef.child(selectedUri.getEncodedPath());
+                UploadTask ut = fotoRef.putFile(selectedUri);
+                Task<Uri> urlTask = ut.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                    @Override
+                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                        if (!task.isSuccessful()) {
+                            throw task.getException();
+                        }
+
+                        return fotoRef.getDownloadUrl();
+                    }
+                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Uri> task) {
+                        if (task.isSuccessful()) {
+                            Uri downloadUri = task.getResult();
+                            restEditado = new Restaurante(nombreRest, downloadUri.toString(), email, password, direc,
+                                    telef, Integer.parseInt(precio), Integer.parseInt(aforo), descrip);
+
+                            user.updateEmail(email);
+                            user.updatePassword(password);
+
+                            dbRef.child(user.getUid()).setValue(restEditado);
+                            Snackbar snackbar = Snackbar
+                                    .make(getActivity().getWindow().getDecorView().getRootView(), R.string.perfil_modificado_ok, Snackbar.LENGTH_LONG)
+                                    .setBackgroundTint(getResources().getColor(R.color.green_dark));
+                            snackbar.setAnchorView(R.id.bottomNavigationBarRest);
+                            snackbar.show();
+
+
+//                            //View para introducir margen por encima del BottomBar
+//                            View snackBarView = snackbar.getView();
+//                            snackBarView.setTranslationY(-(convertDpToPixel(56, getActivity())));
+//                            snackbar.show();
+
+                            listener.volverPerfilRest();
+
+                        }
+                    }
+                });
+            } else {
+                restEditado = new Restaurante(nombreRest, restLoged.getUrlFoto(), email, password, direc,
+                        telef, Integer.parseInt(precio), Integer.parseInt(aforo), descrip);
+
+                user.updateEmail(email);
+                user.updatePassword(password);
+
+                dbRef.child(user.getUid()).setValue(restEditado);
+
+                Snackbar snackbar = Snackbar
+                        .make(getActivity().getWindow().getDecorView().getRootView(), R.string.perfil_modificado_ok, Snackbar.LENGTH_LONG)
+                        .setBackgroundTint(getResources().getColor(R.color.green_dark));
+                snackbar.setAnchorView(R.id.bottomNavigationBarRest);
+                snackbar.show();
+
+
+//                //View para introducir margen por encima del BottomBar
+//                View snackBarView = snackbar.getView();
+//                snackBarView.setTranslationY(-(convertDpToPixel(56, getActivity())));
+//                snackbar.show();
+
+                listener.volverPerfilRest();
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+//    public static float convertDpToPixel(float dp, Context context){
+//        return dp * ((float) context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT);
+//    }
 
 
     @Override
@@ -244,7 +334,6 @@ public class EditarPerflRestFragment extends Fragment {
                     .into(imageView);
         }
     }
-
 
     //    @Override
 //    public void onResume() {

@@ -3,6 +3,7 @@
     <color name="green_dark">#264653</color>
     <color name="green_light">#2A9D8F</color>
     <color name="yellow">#E9C46A</color>
+    <color name="yellow_dark">#b4943c</color>
     <color name="orange_dark">#E76F51</color>
     <color name="orange_light">#F4A261</color>
     <color name="white_light_alpha">#CCFFFFFF</color>

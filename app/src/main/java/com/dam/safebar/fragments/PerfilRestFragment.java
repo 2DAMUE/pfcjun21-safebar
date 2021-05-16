@@ -4,9 +4,13 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -49,7 +53,6 @@ public class PerfilRestFragment extends Fragment {
     TextView tvPrecio;
     TextView tvAforo;
     TextView tvDescrip;
-    Button btnEC;
     Button btnLO;
 
     public PerfilRestFragment() {
@@ -80,6 +83,10 @@ public class PerfilRestFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_perfil_rest, container, false);
 
+        //BTN GUARDAR EN ACTIONBAR
+        setHasOptionsMenu(true);
+        ((AppCompatActivity) getActivity()).getSupportActionBar();
+
         img = view.findViewById(R.id.imgPerfRestFrag);
         tvNom = view.findViewById(R.id.tvNombrePerfRestFrag);
         tvEmail = view.findViewById(R.id.tvEmailPerfRestFrag);
@@ -88,7 +95,6 @@ public class PerfilRestFragment extends Fragment {
         tvPrecio = view.findViewById(R.id.tvPrecioPerfRestFrag);
         tvAforo = view.findViewById(R.id.tvAforoPerfRestFrag);
         tvDescrip = view.findViewById(R.id.tvDescripPerfRestFrag);
-        btnEC = view.findViewById(R.id.btnEditCuentaPerfRestFrag);
         btnLO = view.findViewById(R.id.btnLogOutPerfRestFrag);
 
         fba = FirebaseAuth.getInstance();
@@ -96,14 +102,14 @@ public class PerfilRestFragment extends Fragment {
         dbRef = FirebaseDatabase.getInstance().getReference("datos/restaurantes");
         mFotoStorageRef = FirebaseStorage.getInstance().getReference().child("fotosR");
 
-        btnEC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                listener.abrirEditCuenta();
-
-            }
-        });
+//        btnEC.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                listener.abrirEditCuenta();
+//
+//            }
+//        });
 
         btnLO.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +120,20 @@ public class PerfilRestFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.configuracion_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.itemEditarConfiguracion) {
+            listener.abrirEditCuenta();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -146,7 +166,6 @@ public class PerfilRestFragment extends Fragment {
         Glide.with(img)
                 .load(restLoged.getUrlFoto())
                 .placeholder(null)
-                .circleCrop()
                 .into(img);
 
         tvNom.setText(restLoged.getNombreRest());

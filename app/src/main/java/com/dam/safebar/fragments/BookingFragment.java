@@ -1,12 +1,17 @@
 package com.dam.safebar.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -18,6 +23,10 @@ import com.dam.safebar.javabeans.ReservaRest;
 import com.dam.safebar.javabeans.ReservaUsu;
 import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.ReservarListener;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.timepicker.MaterialTimePicker;
+import com.google.android.material.timepicker.TimeFormat;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,7 +36,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class BookingFragment extends Fragment {
@@ -84,6 +95,7 @@ public class BookingFragment extends Fragment {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -94,6 +106,73 @@ public class BookingFragment extends Fragment {
         etHora = view.findViewById(R.id.etBookingFragHora);
         etNumPersonas = view.findViewById(R.id.etBookingFragNumPers);
         btnReservar = view.findViewById(R.id.btnBookingFragReservar);
+
+        Button btnFecha = view.findViewById(R.id.btnSelecFecha);
+        btnFecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MaterialDatePicker.Builder<?> builder = MaterialDatePicker.Builder.datePicker();
+
+                MaterialDatePicker<?> picker = builder.build();
+
+                picker.show(getChildFragmentManager(), picker.toString());
+                etFecha.setEnabled(false);
+
+                //TODO: NO SE QUE PUTAS POLLAS DICE DE RAW, NO ME DEJA METER EL '?', SE QUEDA CON WARNING
+
+                picker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
+                    @Override
+                    public void onPositiveButtonClick(Object selection) {
+                        //todo: obtener fecha mes-dia-anio
+                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
+                        String formatted = simpleDateFormat.format(selection);
+                        etFecha.setText(formatted);
+                        Log.i("BOOKING_FRAGMENT", "FECHA: " + formatted);
+
+
+                    }
+                });
+
+                picker.addOnNegativeButtonClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.i("BOOKING_FRAGMENT", "DISMISS DIALOGO FECHA");
+                    }
+                });
+            }
+        });
+
+
+        Button btnHora = view.findViewById(R.id.btnSelecHora);
+        btnHora.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MaterialTimePicker.Builder builder = new MaterialTimePicker.Builder()
+                        .setHour(13)
+                        .setMinute(0)
+                        .setInputMode(MaterialTimePicker.INPUT_MODE_CLOCK)
+                        .setTitleText("Hora de reserva")
+                        .setTimeFormat(TimeFormat.CLOCK_12H);
+
+                MaterialTimePicker picker = builder.build();
+
+                picker.show(getChildFragmentManager(), picker.toString());
+                etHora.setEnabled(false);
+
+                picker.addOnPositiveButtonClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        picker.getInputMode();
+                        String time = String.valueOf(picker.getHour()) + ":" + String.valueOf(picker.getMinute());
+                        etHora.setText(time);
+                    }
+                });
+
+            }
+        });
+
+
+        Log.i("onclick", "etFecha creado");
 
         contAforo = 0;
 

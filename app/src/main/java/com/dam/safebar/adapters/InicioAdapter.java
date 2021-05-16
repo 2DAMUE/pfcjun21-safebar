@@ -1,9 +1,11 @@
 package com.dam.safebar.adapters;
 
+import android.media.Rating;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -59,21 +61,21 @@ public class InicioAdapter extends RecyclerView.Adapter<InicioAdapter.Restaurant
     public static class RestauranteViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imagen;
-        TextView distancia;
+//        TextView distancia;
         TextView nombre;
         TextView direccion;
         TextView aforo;
-        TextView calif;
+        RatingBar rtbInicio;
         TextView precio;
 
         public RestauranteViewHolder(@NonNull View itemView) {
             super(itemView);
             imagen = itemView.findViewById(R.id.imgItemRVInicio);
-            distancia = itemView.findViewById(R.id.tvKmItemRVInicio);
+//            distancia = itemView.findViewById(R.id.tvKmItemRVInicio);
             nombre = itemView.findViewById(R.id.tvNomItemRVInicio);
             direccion = itemView.findViewById(R.id.tvDirecItemRVInicio);
             aforo = itemView.findViewById(R.id.tvAforoItemRVInicio);
-            calif = itemView.findViewById(R.id.tvCalifItemRVInicio);
+            rtbInicio = itemView.findViewById(R.id.ratingBarInicio);
             precio = itemView.findViewById(R.id.tvPrecioItemRVInicio);
 
         }
@@ -88,11 +90,11 @@ public class InicioAdapter extends RecyclerView.Adapter<InicioAdapter.Restaurant
                     .placeholder(null)
                     .into(imagen);
 
-            distancia.setText("km");
+//            distancia.setText("km");
             nombre.setText(restaurante.getNombreRest());
             direccion.setText(restaurante.getDireccion());
             aforo.setText(String.valueOf(restaurante.getAforo()));
-            calif.setText(String.valueOf(restaurante.getCalificacion()));
+            rtbInicio.setRating(restaurante.getCalificacion());
             precio.setText(String.valueOf(restaurante.getPrecioMedio()));
         }
 
