@@ -76,7 +76,7 @@ public class ReservasRestAdapter extends RecyclerView.Adapter<ReservasRestAdapte
             numPersonas.setText(String.valueOf(reservaRest.getNumPersonas()));
             hora.setText(reservaRest.getHora());
             fecha.setText(reservaRest.getFecha());
-            nombreUsu.setText(reservaRest.getUserUID());
+            nombreUsu.setText(reservaRest.getNomUsu());
 
         }
 

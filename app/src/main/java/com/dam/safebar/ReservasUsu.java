@@ -82,7 +82,7 @@ public class ReservasUsu extends BottomNavigationHelper implements ReservasUsuLi
 
                     }
 
-                    if (listaFechas != null) {
+                    if (listaFechas.size() != 0) {
                         for (String fechaArray: listaFechas) {
                             addListener2(fechaArray);
                         }

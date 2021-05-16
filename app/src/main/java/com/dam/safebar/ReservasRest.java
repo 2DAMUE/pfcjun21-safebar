@@ -1,6 +1,7 @@
 package com.dam.safebar;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -41,6 +42,7 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
 
     String fechaActual;
     String horaActual;
+    int finalConsulta;
 
     @Override
     public int getContentViewId() {
@@ -59,6 +61,10 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
         listaReservas = new ArrayList<ReservaRest>();
         listaFechas = new ArrayList<String>();
         listaHoras = new ArrayList<String>();
+
+        reservaRest = new ReservaRest();
+
+        finalConsulta = 0;
 
         fba = FirebaseAuth.getInstance();
         user = fba.getCurrentUser();
@@ -83,16 +89,36 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
                     for (DataSnapshot dss: dataSnapshot.getChildren()) {
                         fecha = dss.getKey();
                         listaFechas.add(fecha);
-
                     }
 
-                    if (listaFechas != null) {
-                        for (String fechaArray: listaFechas) {
-                            fechaActual = fechaArray;
-                            addListener2();
+                    if (listaFechas.size() != 0) {
+
+
+
+                        for (int i=0; i<= listaFechas.size()-1; i++) {
+                            //Log.i("ERROR1 FECHA", listaFechas.get(i));
+
+                            addListener2(listaFechas.get(i));
+
+
                         }
-                        cargarReservasRestFragment();
+
+
+
+
+
+
                     }
+
+
+//                    if (listaFechas.size() != 0) {
+//                        for (String fechaArray: listaFechas) {
+//                            fechaActual = fechaArray;
+//                            Log.i("ERROR FECHA", fechaActual);
+//                            addListener2();
+//                        }
+//                        cargarReservasRestFragment();
+//                    }
 
                 }
 
@@ -105,7 +131,7 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
         }
     }
 
-    private void addListener2() {
+    private void addListener2(String fechaArray) {
 
         onPause();
 
@@ -113,18 +139,29 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
             vel = new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    //Log.i("ERROR2 FECHA", fechaArray);
+
+                    listaHoras = null;
+                    listaHoras = new ArrayList<String>();
+
                     for (DataSnapshot dss: dataSnapshot.getChildren()) {
                         hora = dss.getKey();
                         listaHoras.add(hora);
 
                     }
 
-                    if (listaHoras != null) {
-                        for (String horaArray: listaHoras) {
-                            horaActual = horaArray;
-                            addListener3();
+                    if (listaHoras.size() != 0) {
+
+                        for (int i=0; i<= listaHoras.size()-1; i++) {
+                            addListener3(fechaArray, listaHoras.get(i));
+                            Log.i("ERROR1 HORA", listaHoras.get(i) + " " + fechaArray);
                         }
 
+////                        for (String horaArray: listaHoras) {
+////                            horaActual = horaArray;
+////                            addListener3(fechaArray);
+////                        }
+//
                     }
 
                     onPause();
@@ -136,11 +173,11 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
                     Toast.makeText(ReservasRest.this, "Error al cargar los datos", Toast.LENGTH_SHORT).show();
                 }
             };
-            dbRef.child(user.getUid()).child("reservas").child(fechaActual).addValueEventListener(vel);
+            dbRef.child(user.getUid()).child("reservas").child(fechaArray).addValueEventListener(vel);
         }
     }
 
-    private void addListener3() {
+    private void addListener3(String fechaArray, String horaArray) {
 
         onPause();
 
@@ -149,13 +186,40 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                    //Log.i("ERROR3 FECHA", fechaArray);
+                    Log.i("ERROR2 HORA", horaArray + " " + fechaArray);
+
                     for (DataSnapshot dss: dataSnapshot.getChildren()) {
-                        reservaRest = dss.getValue(ReservaRest.class);
+
+                        //reservaRest = dss.getValue(ReservaRest.class);
+
+                        reservaRest = null;
+                        reservaRest = new ReservaRest();
+
+                        reservaRest.setFecha(dss.getValue(ReservaRest.class).getFecha());
+                        Log.i("ERROR", reservaRest.getFecha());
+                        reservaRest.setHora(dss.getValue(ReservaRest.class).getHora());
+                        Log.i("ERROR", reservaRest.getHora());
+                        reservaRest.setUserUID(dss.getValue(ReservaRest.class).getUserUID());
+                        Log.i("ERROR", reservaRest.getUserUID());
+                        reservaRest.setNomUsu(dss.getValue(ReservaRest.class).getNomUsu());
+                        Log.i("ERROR", reservaRest.getNomUsu());
+                        reservaRest.setNumPersonas(dss.getValue(ReservaRest.class).getNumPersonas());
+                        Log.i("ERROR", String.valueOf(reservaRest.getNumPersonas()));
                         reservaRest.setCodigo(dss.getKey());
+                        Log.i("ERROR", reservaRest.getCodigo());
 
                         listaReservas.add(reservaRest);
+                        Log.i("ERROR LISTA", String.valueOf(listaReservas.size()));
 
+                    }
 
+                    if (listaReservas.size() == 10) {
+                        ArrayList<ReservaRest> listaReservasFrag = listaReservas;
+                        Log.i("WWW", listaReservasFrag.get(1).getFecha());
+                        Log.i("WWW", listaReservasFrag.get(3).getFecha());
+                        Log.i("WWW", listaReservasFrag.get(9).getFecha());
+                        cargarReservasRestFragment(listaReservasFrag);
                     }
 
                     onPause();
@@ -167,18 +231,57 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
                     Toast.makeText(ReservasRest.this, "Error al cargar los datos", Toast.LENGTH_SHORT).show();
                 }
             };
-            dbRef.child(user.getUid()).child("reservas").child(fechaActual).child(horaActual).addValueEventListener(vel);
+            dbRef.child(user.getUid()).child("reservas").child(fechaArray).child(horaArray).addValueEventListener(vel);
         }
-
-
-
 
     }
 
-    private void cargarReservasRestFragment() {
+//    private void addListener4() {
+//
+//        onPause();
+//
+//        if (vel == null) {
+//            vel = new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+//                    for (DataSnapshot dss: dataSnapshot.getChildren()) {
+//
+//                        //reservaRest = dss.getValue(ReservaRest.class);
+//
+//                        reservaRest.setFecha(dss.getValue(ReservaRest.class).getFecha());
+//                        reservaRest.setHora(dss.getValue(ReservaRest.class).getHora());
+//                        reservaRest.setUserUID(dss.getValue(ReservaRest.class).getUserUID());
+//                        reservaRest.setNomUsu(dss.getValue(ReservaRest.class).getNomUsu());
+//                        reservaRest.setNumPersonas(dss.getValue(ReservaRest.class).getNumPersonas());
+//                        reservaRest.setCodigo(dss.getKey());
+//
+//                        listaReservas.add(reservaRest);
+//
+//                    }
+//
+//                    cargarReservasRestFragment();
+//
+//                    onPause();
+//
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//                    Toast.makeText(ReservasRest.this, "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+//                }
+//            };
+//            dbRef.child(user.getUid()).child("reservas").child("08-26-2021").child("2:30").addValueEventListener(vel);
+//        }
+//
+//
+//    }
+
+    private void cargarReservasRestFragment(ArrayList<ReservaRest> listaReservasFrag) {
+        Log.i("ERROR LISTA FRAGMENT", String.valueOf(listaReservasFrag.size()));
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ReservasRestFragment resvf = new ReservasRestFragment().newInstance(listaReservas);
+        ReservasRestFragment resvf = new ReservasRestFragment().newInstance(listaReservasFrag);
         ft.add(R.id.flReservasRest, resvf);
         ft.addToBackStack(null);
         ft.commit();
