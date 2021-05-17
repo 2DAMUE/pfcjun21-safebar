@@ -52,6 +52,7 @@ public class ReservasUsu extends BottomNavigationHelper implements ReservasUsuLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Implements QRListener
         //TODO: MaterialToolbar
 
         listaReservas = new ArrayList<ReservaUsu>();
