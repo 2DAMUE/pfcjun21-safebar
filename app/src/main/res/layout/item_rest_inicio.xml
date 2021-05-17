@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp">
@@ -33,26 +34,26 @@
                 android:textSize="22sp"
                 android:layout_marginTop="4dp"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:gravity="center">-->
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_localizacion_inicio"/>
-                <TextView
-                    android:id="@+id/tvKmItemRVInicio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="A XX km de ti"
-                    android:fontFamily="@font/roboto_medium"
-                    android:textColor="@color/green_light"
-                    android:textAlignment="center"
-                    android:textSize="16sp"/>
-            </LinearLayout>
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/ic_localizacion_inicio"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/tvKmItemRVInicio"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="A XX km de ti"-->
+<!--                    android:fontFamily="@font/roboto_medium"-->
+<!--                    android:textColor="@color/green_light"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textSize="16sp"/>-->
+<!--            </LinearLayout>-->
 
             <TextView
                 android:id="@+id/tvDirecItemRVInicio"
@@ -67,18 +68,35 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:layout_marginTop="14dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="6dp">
+                android:layout_marginBottom="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:gravity="center">
 
                     <TextView
                         android:id="@+id/tvAforoItemRVInicio"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="aforo"
-                        android:layout_weight="1"
                         android:textAlignment="center"
                         android:textSize="18sp"/>
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/ic_aforo"
+                        android:layout_marginStart="4dp"/>
+
+
+                </LinearLayout>
+
+
 
                     <View
                         android:layout_width="1dp"
@@ -92,18 +110,38 @@
                         android:gravity="center"
                         android:layout_weight="1">
 
-                        <TextView
-                            android:id="@+id/tvCalifItemRVInicio"
+                        <RatingBar
+                            android:id="@+id/ratingBarInicio"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="calificacion"
-                            android:textAlignment="center"
-                            android:textSize="18sp" />
+                            android:layout_height="64dp"
+                            android:rating="2"
+                            android:layout_marginRight="-110dp"
+                            android:layout_marginLeft="-110dp"
+                            android:numStars="5"
+                            android:max="5"
+                            android:min="0"
+                            android:scaleY="0.3"
+                            android:scaleX="0.3"
+                            android:minHeight="1dp"
+                            android:maxHeight="100dp"
+                            style="@style/Theme.SafeBar.RatingBar"
+                            />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_estrella"/>
+<!--                        <TextView-->
+<!--                            android:id="@+id/tvCalifItemRVInicio"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="calificacion"-->
+<!--                            android:textAlignment="center"-->
+<!--                            android:textSize="18sp" />-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:src="@drawable/ic_rating_full"-->
+<!--                            android:scaleX="0.6"-->
+<!--                            android:scaleY="0.6"-->
+<!--                            app:tint="@android:color/darker_gray"/>-->
 
                     </LinearLayout>
 
@@ -114,14 +152,27 @@
                     android:background="@color/cardview_dark_background"/>
 
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
                     <TextView
                         android:id="@+id/tvPrecioItemRVInicio"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="precio"
                         android:textAlignment="center"
-                        android:textSize="18sp"
-                        android:layout_weight="1"/>
+                        android:textSize="18sp"/>
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/ic_euro"
+                        android:layout_marginStart="4dp"/>
+
+                </LinearLayout>
 
                 </LinearLayout>
 

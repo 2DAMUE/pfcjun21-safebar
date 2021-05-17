@@ -20,6 +20,8 @@ import com.dam.safebar.R;
 import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.PerfilRestListener;
 import com.dam.safebar.listeners.ReservarListener;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,12 +49,13 @@ public class RestauranteFragment extends Fragment {
     ImageView img;
     TextView tvNom;
     TextView tvDirec;
-    TextView tvCalif;
     TextView tvPrecio;
     TextView tvAforo;
     TextView tvDescrip;
-    Button btnReservar;
+    Button btnIndicaciones;
     RatingBar rtbRestaurante;
+
+    ExtendedFloatingActionButton fabReservar;
 
     public RestauranteFragment() {
         // Required empty public constructor
@@ -84,11 +87,10 @@ public class RestauranteFragment extends Fragment {
         img = view.findViewById(R.id.imgRestauranteFrag);
         tvNom = view.findViewById(R.id.tvNombreRestauranteFrag);
         tvDirec = view.findViewById(R.id.tvDirecRestauranteFrag);
-        tvCalif = view.findViewById(R.id.tvCalifRestauranteFrag);
         tvPrecio = view.findViewById(R.id.tvPrecioRestauranteFrag);
         tvAforo = view.findViewById(R.id.tvAforoRestauranteFrag);
         tvDescrip = view.findViewById(R.id.tvDescripRestauranteFrag);
-        btnReservar = view.findViewById(R.id.btnReservarRestauranteFrag);
+        fabReservar = view.findViewById(R.id.fabReservar);
         rtbRestaurante = view.findViewById(R.id.ratingBarRestaurante);
 
         dbRef = FirebaseDatabase.getInstance().getReference("datos/restaurantes");
@@ -96,12 +98,10 @@ public class RestauranteFragment extends Fragment {
 
         addListener();
 
-        btnReservar.setOnClickListener(new View.OnClickListener() {
+        fabReservar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 listener.abrirReservar(restUID, restNom);
-
             }
         });
 
@@ -116,7 +116,6 @@ public class RestauranteFragment extends Fragment {
 
         tvNom.setText(restaurante.getNombreRest());
         tvDirec.setText(restaurante.getDireccion());
-        tvCalif.setText(String.valueOf(restaurante.getCalificacion()));
         tvPrecio.setText(String.valueOf(restaurante.getPrecioMedio()));
         tvAforo.setText(String.valueOf(restaurante.getAforo()));
         tvDescrip.setText(restaurante.getDescripcion());

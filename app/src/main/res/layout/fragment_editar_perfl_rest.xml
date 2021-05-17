@@ -22,307 +22,432 @@
             android:orientation="horizontal">
             <ImageView
                 android:id="@+id/imgEditPerfRestFrag"
-                android:layout_width="180dp"
-                android:layout_height="180dp"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
                 android:layout_gravity="center_horizontal"
-                android:adjustViewBounds="true"/>
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_email_cuenta"/>
 
             <ImageButton
                 android:id="@+id/imbEditPerfRestFrag"
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:layout_marginLeft="-180dp"/>
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:background="@color/white_light_alpha"
+                android:src="@drawable/ic_editar"
+                android:layout_marginLeft="-140dp"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/ll1EditPerfRestFrag"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginRight="40dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvEditPerfRestFragTitNom"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="26dp"
-                android:layout_weight="1"
-                android:text="@string/edit_perf_rest_frag_tv_nombre"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/lEditPerfRestFragNom"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="6">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEditPerfRestFragNom"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="-8dp"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll2EditPerfRestFrag"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvEditPerfRestFragTitEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="26dp"
-                android:layout_weight="1"
-                android:text="@string/edit_perf_rest_frag_tv_email"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/lEditPerfRestFragEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="8">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEditPerfRestFragEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="-8dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll3EditPerfRestFrag"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvEditPerfRestFragTitPW"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="26dp"
-                android:layout_weight="1"
-                android:text="@string/edit_perf_rest_frag_tv_pw"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/lEditPerfRestFragPW"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                app:passwordToggleEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEditPerfRestFragPW"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="-8dp"
-                    android:inputType="textPassword" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll4EditPerfRestFrag"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvEditPerfRestFragTitDirec"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="26dp"
-                android:layout_weight="1"
-                android:text="@string/edit_perf_rest_frag_tv_direc"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/lEditPerfRestFragDirec"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="6">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEditPerfRestFragDirec"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="-8dp"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll5EditPerfRestFrag"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvEditPerfRestFragTitTelef"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="26dp"
-                android:layout_weight="1"
-                android:text="@string/edit_perf_rest_frag_tv_telef"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/lEditPerfRestFragTelef"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="6">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEditPerfRestFragTelef"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="-8dp"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/ll6EditPerfRestPrecio"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvEditPerfRestFragTitPrecio"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="26dp"
-                android:layout_weight="1"
-                android:text="@string/edit_perf_rest_frag_tv_precio"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/lEditPerfRestFragPrecio"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="6">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEditPerfRestFragPrecio"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="-8dp"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll7EditPerfRestFrag"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvEditPerfRestFragTitAforo"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="26dp"
-                android:layout_weight="1"
-                android:text="@string/edit_perf_rest_frag_tv_aforo"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/lEditPerfRestFragAforo"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="6">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEditPerfRestFragAforo"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="-8dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:id="@+id/ll8EditPerfRestFrag"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tvEditPerfRestFragTitDescrip"
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:layout_marginTop="26dp"
-                android:layout_weight="1"
-                android:text="@string/edit_perf_rest_frag_tv_descrip"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/lEditPerfRestFragDescrip"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginTop="-16dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEditPerfRestFragDescrip"
-                    android:layout_width="340dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="-8dp"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnEditPerfRestFragGuardar"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginBottom="50dp"
-            android:text="@string/edit_perf_rest_frag_btn_guardar"
-            android:textSize="22sp"/>
+            android:layout_height="60dp"
+            android:hint="@string/edit_perf_rest_frag_tv_nombre"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+
+            style="@style/TextInput.Outlined.WithBackground">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEditPerfRestFragNom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:hint="@string/edit_perf_rest_frag_tv_email"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+
+            style="@style/TextInput.Outlined.WithBackground">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEditPerfRestFragEmail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:hint="@string/edit_perf_rest_frag_tv_pw"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+
+            style="@style/TextInput.Outlined.WithBackground">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEditPerfRestFragPW"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:hint="@string/edit_perf_rest_frag_tv_direc"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+
+            style="@style/TextInput.Outlined.WithBackground">
+            <com.google.android.material.textfield.TextInputEditText
+                android:singleLine="true"
+                android:id="@+id/etEditPerfRestFragDirec"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:hint="@string/edit_perf_rest_frag_tv_telef"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+
+            style="@style/TextInput.Outlined.WithBackground">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEditPerfRestFragTelef"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:hint="@string/edit_perf_rest_frag_tv_precio"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+
+            style="@style/TextInput.Outlined.WithBackground">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEditPerfRestFragPrecio"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:hint="@string/edit_perf_rest_frag_tv_aforo"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+
+            style="@style/TextInput.Outlined.WithBackground">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEditPerfRestFragAforo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/edit_perf_rest_frag_tv_descrip"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+
+            style="@style/TextInput.Outlined.WithBackground">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEditPerfRestFragDescrip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/ll1EditPerfRestFrag"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_marginLeft="40dp"-->
+<!--            android:layout_marginTop="0dp"-->
+<!--            android:layout_marginRight="40dp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvEditPerfRestFragTitNom"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginTop="26dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="@string/edit_perf_rest_frag_tv_nombre"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/lEditPerfRestFragNom"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="6">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/etEditPerfRestFragNom"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginStart="-8dp"/>-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/ll2EditPerfRestFrag"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_marginLeft="40dp"-->
+<!--            android:layout_marginRight="40dp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvEditPerfRestFragTitEmail"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginTop="26dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="@string/edit_perf_rest_frag_tv_email"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textStyle="bold"/>-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/lEditPerfRestFragEmail"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="8">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/etEditPerfRestFragEmail"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginStart="-8dp" />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/ll3EditPerfRestFrag"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_marginLeft="40dp"-->
+<!--            android:layout_marginRight="40dp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvEditPerfRestFragTitPW"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginTop="26dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="@string/edit_perf_rest_frag_tv_pw"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textStyle="bold"/>-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/lEditPerfRestFragPW"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="3"-->
+<!--                app:passwordToggleEnabled="true">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/etEditPerfRestFragPW"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginStart="-8dp"-->
+<!--                    android:inputType="textPassword" />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/ll4EditPerfRestFrag"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_marginLeft="40dp"-->
+<!--            android:layout_marginRight="40dp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvEditPerfRestFragTitDirec"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginTop="26dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="@string/edit_perf_rest_frag_tv_direc"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textStyle="bold"/>-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/lEditPerfRestFragDirec"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="6">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/etEditPerfRestFragDirec"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    android:layout_marginStart="-8dp"/>-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/ll5EditPerfRestFrag"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_marginLeft="40dp"-->
+<!--            android:layout_marginRight="40dp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvEditPerfRestFragTitTelef"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginTop="26dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="@string/edit_perf_rest_frag_tv_telef"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textStyle="bold"/>-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/lEditPerfRestFragTelef"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="6">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/etEditPerfRestFragTelef"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    android:layout_marginStart="-8dp"/>-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        </LinearLayout>-->
+
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/ll6EditPerfRestPrecio"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_marginLeft="40dp"-->
+<!--            android:layout_marginRight="40dp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvEditPerfRestFragTitPrecio"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginTop="26dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="@string/edit_perf_rest_frag_tv_precio"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textStyle="bold"/>-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/lEditPerfRestFragPrecio"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="6">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/etEditPerfRestFragPrecio"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    android:layout_marginStart="-8dp"/>-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/ll7EditPerfRestFrag"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_marginLeft="40dp"-->
+<!--            android:layout_marginRight="40dp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvEditPerfRestFragTitAforo"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginTop="26dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="@string/edit_perf_rest_frag_tv_aforo"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textStyle="bold"/>-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/lEditPerfRestFragAforo"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="6">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/etEditPerfRestFragAforo"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    android:layout_marginStart="-8dp" />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        </LinearLayout>-->
+
+
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/ll8EditPerfRestFrag"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="180dp"-->
+<!--            android:layout_marginLeft="40dp"-->
+<!--            android:layout_marginRight="40dp"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvEditPerfRestFragTitDescrip"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="100dp"-->
+<!--                android:layout_marginTop="26dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="@string/edit_perf_rest_frag_tv_descrip"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textStyle="bold"/>-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/lEditPerfRestFragDescrip"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_marginTop="-16dp">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/etEditPerfRestFragDescrip"-->
+<!--                    android:layout_width="340dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginStart="-8dp"/>-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        </LinearLayout>-->
+
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/btnEditPerfRestFragGuardar"-->
+<!--            android:layout_width="300dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginTop="40dp"-->
+<!--            android:layout_marginStart="50dp"-->
+<!--            android:layout_marginLeft="50dp"-->
+<!--            android:layout_marginBottom="50dp"-->
+<!--            android:text="@string/edit_perf_rest_frag_btn_guardar"-->
+<!--            android:textSize="22sp"/>-->
 
 
 

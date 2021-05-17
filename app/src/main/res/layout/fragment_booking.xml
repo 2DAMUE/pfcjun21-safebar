@@ -3,39 +3,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".fragments.BookingFragment">
 
 
-    <com.google.android.material.textfield.TextInputLayout
+    <LinearLayout
         android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:hint="Fecha"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_gravity="center"
-        android:layout_marginTop="150dp"
-        style="@style/TextInput.Outlined.WithBackground">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etBookingFragFecha"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="@color/black"
-            android:inputType="text"/>
-    </com.google.android.material.textfield.TextInputLayout>
+        android:layout_marginTop="140dp"
+        android:gravity="center">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:hint="Hora"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        style="@style/TextInput.Outlined.WithBackground">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etBookingFragHora"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="@color/black"
-            android:inputType="text"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:hint="Fecha"
+            android:focusable="false"
+            android:layout_gravity="center"
+            android:focusableInTouchMode="false"
+            style="@style/TextInput.Outlined.WithBackground">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etBookingFragFecha"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"
+                android:inputType="text"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/ic_calendario"-->
+<!--            android:layout_marginLeft="6dp"/>-->
+        <Button
+            android:id="@+id/btnSelecFecha"
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_calendario"
+            android:drawableTint="@color/white"
+            android:backgroundTint="@color/green_light"
+            android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        >
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="Hora"
+            android:layout_gravity="center"
+            style="@style/TextInput.Outlined.WithBackground">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etBookingFragHora"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"
+                android:inputType="text"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnSelecHora"
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_reloj"
+            android:drawableTint="@color/white"
+            android:backgroundTint="@color/green_light"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
+
+
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="300dp"

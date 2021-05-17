@@ -21,15 +21,6 @@
             app:titleTextAppearance="@style/Text.AppBar"
             app:navigationIcon="@drawable/ic_back_arrow"
             >
-            <!--            <TextView-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="match_parent"-->
-            <!--                android:text="Hola Safebar"-->
-            <!--                android:textSize="32sp"-->
-            <!--                android:gravity="center_vertical"-->
-            <!--                android:textColor="@color/white"-->
-            <!--                android:fontFamily="@font/roboto_light"-->
-            <!--                android:textStyle="bold"/>-->
 
         </com.google.android.material.appbar.MaterialToolbar>
 

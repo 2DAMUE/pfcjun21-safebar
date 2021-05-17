@@ -1,99 +1,389 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".fragments.PerfilRestFragment">
 
-    <ImageView
-        android:id="@+id/imgPerfRestFrag"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="16dp"
-        android:layout_gravity="center"/>
-
-    <TextView
-        android:id="@+id/tvNombrePerfRestFrag"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginStart="120dp"
-        android:text="@string/perf_rest_frag_tv_nombre"
-        android:textSize="20sp"/>
-
-    <TextView
-        android:id="@+id/tvEmailPerfRestFrag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="120dp"
-        android:text="@string/perf_rest_frag_tv_email"
-        android:textSize="20sp"/>
+        android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/tvDirecPerfRestFrag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="120dp"
-        android:text="@string/perf_rest_frag_tv_direc"
-        android:textSize="20sp"/>
+        <ImageView
+            android:id="@+id/imgPerfRestFrag"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"/>
 
-    <TextView
-        android:id="@+id/tvTelefPerfRestFrag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="120dp"
-        android:text="668777666"
-        android:textSize="20sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp">
 
-    <TextView
-        android:id="@+id/tvPrecioPerfRestFrag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="120dp"
-        android:text="@string/perf_rest_frag_tv_precio"
-        android:textSize="20sp"/>
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_persona"
+                android:layout_marginEnd="12dp"/>
 
-    <TextView
-        android:id="@+id/tvAforoPerfRestFrag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="120dp"
-        android:text="@string/perf_rest_frag_tv_aforo"
-        android:textSize="20sp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvDescripPerfRestFrag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="120dp"
-        android:text="@string/perf_rest_frag_tv_descrip"
-        android:textSize="20sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edit_perf_rest_frag_tv_nombre"
+                    android:textSize="18sp"
+                    android:textColor="@color/green_light"
+                    style="@style/Text.Titulo"/>
+
+                <TextView
+                    android:id="@+id/tvNombrePerfRestFrag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green_dark"
+                    android:text="Nombre restaurante"
+                    style="@style/Text.Subtitulo.RobotoMedium"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="30dp">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_email"
+                android:layout_marginEnd="12dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/editperf_frag_tv_email"
+                    android:textSize="18sp"
+                    android:textColor="@color/green_light"
+                    style="@style/Text.Titulo"/>
+
+                <TextView
+                    android:id="@+id/tvEmailPerfRestFrag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green_dark"
+                    android:text="email@email.com"
+                    style="@style/Text.Subtitulo.RobotoMedium"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="30dp">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_localizacion"
+                android:layout_marginEnd="12dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/editperf_frag_tv_direc"
+                    android:textSize="18sp"
+                    android:textColor="@color/green_light"
+                    style="@style/Text.Titulo"/>
+
+                <TextView
+                    android:id="@+id/tvDirecPerfRestFrag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green_dark"
+                    android:text="Calle falsa 123, Madrid"
+                    style="@style/Text.Subtitulo.RobotoMedium"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="30dp">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_telefono_48"
+                android:layout_marginEnd="12dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edit_perf_rest_frag_tv_telef"
+                    android:textSize="18sp"
+                    android:textColor="@color/green_light"
+                    style="@style/Text.Titulo"/>
+
+                <TextView
+                    android:id="@+id/tvTelefPerfRestFrag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green_dark"
+                    android:text="636 636 636"
+                    style="@style/Text.Subtitulo.RobotoMedium"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="30dp">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_euro"
+                android:layout_marginEnd="12dp"
+                app:tint="@color/green_dark" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edit_perf_rest_frag_tv_precio"
+                    android:textSize="18sp"
+                    android:textColor="@color/green_light"
+                    style="@style/Text.Titulo"/>
+
+                <TextView
+                    android:id="@+id/tvPrecioPerfRestFrag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green_dark"
+                    android:text="36 €"
+                    style="@style/Text.Subtitulo.RobotoMedium"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="30dp">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_aforo"
+                android:layout_marginEnd="12dp"
+                app:tint="@color/green_dark" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edit_perf_rest_frag_tv_aforo"
+                    android:textSize="18sp"
+                    android:textColor="@color/green_light"
+                    style="@style/Text.Titulo"/>
+
+                <TextView
+                    android:id="@+id/tvAforoPerfRestFrag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green_dark"
+                    android:text="22"
+                    style="@style/Text.Subtitulo.RobotoMedium"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="30dp">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_descripcion"
+                android:layout_marginEnd="12dp"
+                app:tint="@color/green_dark" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edit_perf_rest_frag_tv_descrip"
+                    android:textSize="18sp"
+                    android:textColor="@color/green_light"
+                    style="@style/Text.Titulo"/>
+
+                <TextView
+                    android:id="@+id/tvDescripPerfRestFrag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green_dark"
+                    android:text="@string/perf_rest_frag_tv_descrip"
+                    style="@style/Text.Subtitulo.RobotoMedium"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvNombrePerfRestFrag"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="50dp"-->
+    <!--        android:layout_marginStart="120dp"-->
+    <!--        android:text="@string/perf_rest_frag_tv_nombre"-->
+    <!--        android:textSize="20sp"/>-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvEmailPerfRestFrag"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="24dp"-->
+    <!--        android:layout_marginStart="120dp"-->
+    <!--        android:text="@string/perf_rest_frag_tv_email"-->
+    <!--        android:textSize="20sp"/>-->
+
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvDirecPerfRestFrag"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="24dp"-->
+    <!--        android:layout_marginStart="120dp"-->
+    <!--        android:text="@string/perf_rest_frag_tv_direc"-->
+    <!--        android:textSize="20sp"/>-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvTelefPerfRestFrag"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="24dp"-->
+    <!--        android:layout_marginStart="120dp"-->
+    <!--        android:text="668777666"-->
+    <!--        android:textSize="20sp"/>-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvPrecioPerfRestFrag"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="24dp"-->
+    <!--        android:layout_marginStart="120dp"-->
+    <!--        android:text="@string/perf_rest_frag_tv_precio"-->
+    <!--        android:textSize="20sp"/>-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvAforoPerfRestFrag"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="24dp"-->
+    <!--        android:layout_marginStart="120dp"-->
+    <!--        android:text="@string/perf_rest_frag_tv_aforo"-->
+    <!--        android:textSize="20sp"/>-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvDescripPerfRestFrag"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="24dp"-->
+    <!--        android:layout_marginStart="120dp"-->
+    <!--        android:text="@string/perf_rest_frag_tv_descrip"-->
+    <!--        android:textSize="20sp"/>-->
 
 
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnEditCuentaPerfRestFrag"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="120dp"
-        android:text="@string/config_frag_btn_edit_perf"/>
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/btnEditCuentaPerfRestFrag"-->
+<!--            android:layout_width="150dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginStart="120dp"-->
+<!--            android:text="@string/config_frag_btn_edit_perf"/>-->
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnLogOutPerfRestFrag"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="120dp"
-        android:text="@string/config_frag_btn_log_out"
-        android:backgroundTint="@color/green_light"/>
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/btnLogOutPerfRestFrag"-->
+<!--            android:layout_width="150dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:layout_marginStart="120dp"-->
+<!--            android:text="@string/config_frag_btn_log_out"-->
+<!--            android:backgroundTint="@color/green_light"/>-->
 
-</LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogOutPerfRestFrag"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_gravity="center"
+            android:text="@string/config_frag_btn_log_out"
+            android:textColor="@color/orange_dark"
+            android:textSize="18sp"
+            android:drawableEnd="@drawable/ic_logout"
+            android:drawableTint="@color/orange_dark"
+            style="@style/Widget.MaterialComponents.Button.TextButton"/>
+    </LinearLayout>
+
+</ScrollView>

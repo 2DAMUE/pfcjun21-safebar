@@ -4,9 +4,13 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -28,6 +32,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.zip.Inflater;
+
 public class ConfiguracionFragment extends Fragment {
 
     CuentaListener listener;
@@ -44,9 +50,7 @@ public class ConfiguracionFragment extends Fragment {
     TextView tvNom;
     TextView tvEmail;
     TextView tvDirec;
-    Button btnEP;
     Button btnLO;
-
 
     public ConfiguracionFragment() {
         // Required empty public constructor
@@ -75,11 +79,14 @@ public class ConfiguracionFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_configuracion, container, false);
 
+        //BTN EDITAR
+        setHasOptionsMenu(true);
+        ((AppCompatActivity) getActivity()).getSupportActionBar();
+
         img = view.findViewById(R.id.imgConfigFrag);
         tvNom = view.findViewById(R.id.tvNombreConfigFrag);
         tvEmail = view.findViewById(R.id.tvEmailConfigFrag);
         tvDirec = view.findViewById(R.id.tvDirecConfigFrag);
-        btnEP = view.findViewById(R.id.btnEditPerfConfigFrag);
         btnLO = view.findViewById(R.id.btnLogOutConfigFrag);
 
 
@@ -88,12 +95,12 @@ public class ConfiguracionFragment extends Fragment {
         dbRef = FirebaseDatabase.getInstance().getReference("datos/usuarios");
         mFotoStorageRef = FirebaseStorage.getInstance().getReference().child("fotos");
 
-        btnEP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.abrirEditPerf();
-            }
-        });
+//        btnEP.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                listener.abrirEditPerf();
+//            }
+//        });
 
         btnLO.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,6 +112,20 @@ public class ConfiguracionFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.configuracion_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.itemEditarConfiguracion) {
+            listener.abrirEditPerf();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

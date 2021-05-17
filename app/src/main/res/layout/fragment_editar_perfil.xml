@@ -89,34 +89,4 @@
             android:textColor="@color/black"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="24dp">
-
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnGuardarEditPerfFrag"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginEnd="4dp"
-            android:text="@string/editperf_frag_btn_guardar"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCancelarEditPerfFrag"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginStart="4dp"
-            android:text="@string/ditperf_frag_btn_cancelar"
-            android:backgroundTint="@color/green_light"/>
-
-
-    </LinearLayout>
-
 </LinearLayout>

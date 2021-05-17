@@ -58,6 +58,7 @@ public abstract class BottomNavigationHelper extends AppCompatActivity implement
             }
             finish();
         }, 300);
+        //delayMillis original = 300
         return true;
     }
 
