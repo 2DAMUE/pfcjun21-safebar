@@ -3,7 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.QRFragment">
+    tools:context=".fragments.QRFragment"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/imQR"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:src="@drawable/ic_persona"/>
+    <Button
+        android:id="@+id/btnOnClicl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GENERAR QR"/>
 
 
 

@@ -315,7 +315,7 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         CheckQRFragment cqrf = new CheckQRFragment().newInstance();
-        ft.add(R.id.flReservasRest, cqrf);
+        ft.replace(R.id.flReservasRest, cqrf);
         ft.addToBackStack(null);
         ft.commit();
 

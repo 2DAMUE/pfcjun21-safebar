@@ -72,6 +72,7 @@ public class ReservasRestFragment extends Fragment {
                 int i = rv.getChildAdapterPosition(v);
                 ReservaRest reservaRest = listaReservas.get(i);
                 listener.abrirFragmentCheckQR();
+                Log.i("qr", "OnClick RESERVA");
             }
         });
 

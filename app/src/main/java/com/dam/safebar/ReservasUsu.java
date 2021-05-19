@@ -164,7 +164,7 @@ public class ReservasUsu extends BottomNavigationHelper implements ReservasUsuLi
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         QRFragment qrf = new QRFragment().newInstance(codigoReserva);
-        ft.add(R.id.flReservas, qrf);
+        ft.replace(R.id.flReservas, qrf);
         ft.addToBackStack(null);
         ft.commit();
 

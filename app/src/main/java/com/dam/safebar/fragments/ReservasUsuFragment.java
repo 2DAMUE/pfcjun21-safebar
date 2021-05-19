@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.dam.safebar.R;
 import com.dam.safebar.adapters.ReservasUsuAdapter;
 import com.dam.safebar.javabeans.ReservaUsu;
 import com.dam.safebar.listeners.InicioListener;
+import com.dam.safebar.listeners.QRListener;
 import com.dam.safebar.listeners.ReservasUsuListener;
 
 import java.util.ArrayList;

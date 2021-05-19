@@ -12,7 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.dam.safebar.R;
 import com.dam.safebar.javabeans.ReservaUsu;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ReservasUsuAdapter extends RecyclerView.Adapter<ReservasUsuAdapter.ReservaUsuViewHolder> implements View.OnClickListener {
 
@@ -56,7 +59,6 @@ public class ReservasUsuAdapter extends RecyclerView.Adapter<ReservasUsuAdapter.
 
     public static class ReservaUsuViewHolder extends RecyclerView.ViewHolder {
 
-        Button reservar;
         TextView numPersonas;
         TextView fecha;
         TextView hora;
@@ -65,7 +67,6 @@ public class ReservasUsuAdapter extends RecyclerView.Adapter<ReservasUsuAdapter.
 
         public ReservaUsuViewHolder(@NonNull View itemView) {
             super(itemView);
-            reservar = itemView.findViewById(R.id.btnReservarReservasItem);
             numPersonas = itemView.findViewById(R.id.tvNumPersonasReservasItem);
             hora = itemView.findViewById(R.id.tvHoraReservasItem);
             fecha =itemView.findViewById(R.id.tvFechaReservasItem);
@@ -76,8 +77,31 @@ public class ReservasUsuAdapter extends RecyclerView.Adapter<ReservasUsuAdapter.
         public void bindItem(ReservaUsu reservaUsu) {
             numPersonas.setText(String.valueOf(reservaUsu.getNumPersonas()));
             hora.setText(reservaUsu.getHora());
-            fecha.setText(reservaUsu.getFecha());
+            //PRUEBAS
+//            fecha.setText(reservaUsu.getFecha());
+
             restaurante.setText(reservaUsu.getNombreRest());
+
+
+            //TODO: funciona perfectamente, formato de fecha mas bonito, crear metodo o adornar esto
+            //PRUEBAS
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
+            SimpleDateFormat dateInput = new SimpleDateFormat("MM-dd-yyyy");
+
+            Date inputDate = null;
+            try {
+                inputDate = dateInput.parse(reservaUsu.getFecha());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            String formateado = "NULO";
+
+            if (inputDate != null) {
+                formateado = dateFormat.format(inputDate);
+            }
+            fecha.setText(formateado);
+
 
         }
 
