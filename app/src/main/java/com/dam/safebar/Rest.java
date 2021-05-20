@@ -27,8 +27,8 @@ public class Rest extends AppCompatActivity implements ReservarListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurante);
 
-        restUID = getIntent().getStringExtra(Inicio.COD_REST_UID);
-        restNom = getIntent().getStringExtra(Inicio.COD_REST_NOM);
+        restUID = getIntent().getStringExtra("restUID");
+        restNom = getIntent().getStringExtra("restNom");
 
         MaterialToolbar tb = findViewById(R.id.topAppBar);
         tb.setTitle(restNom);

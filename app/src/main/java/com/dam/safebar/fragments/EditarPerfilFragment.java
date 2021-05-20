@@ -250,7 +250,13 @@ public class EditarPerfilFragment extends Fragment {
                             user.updateEmail(email);
                             user.updatePassword(password);
 
-                            dbRef.child(user.getUid()).setValue(usuEditado);
+                            //dbRef.child(user.getUid()).setValue(usuEditado);
+                            dbRef.child(user.getUid()).child("direccion").setValue(usuEditado.getDireccion());
+                            dbRef.child(user.getUid()).child("email").setValue(usuEditado.getEmail());
+                            dbRef.child(user.getUid()).child("nombre").setValue(usuEditado.getNombre());
+                            dbRef.child(user.getUid()).child("password").setValue(usuEditado.getPassword());
+                            dbRef.child(user.getUid()).child("urlFoto").setValue(downloadUri.toString());
+
                             Snackbar snackbar = Snackbar
                                     .make(getActivity().getWindow().getDecorView().getRootView(), R.string.perfil_modificado_ok, Snackbar.LENGTH_LONG)
                                     .setBackgroundTint(getResources().getColor(R.color.green_dark));
@@ -272,7 +278,13 @@ public class EditarPerfilFragment extends Fragment {
                 user.updateEmail(email);
                 user.updatePassword(password);
 
-                dbRef.child(user.getUid()).setValue(usuEditado);
+                //dbRef.child(user.getUid()).setValue(usuEditado);
+                dbRef.child(user.getUid()).child("direccion").setValue(usuEditado.getDireccion());
+                dbRef.child(user.getUid()).child("email").setValue(usuEditado.getEmail());
+                dbRef.child(user.getUid()).child("nombre").setValue(usuEditado.getNombre());
+                dbRef.child(user.getUid()).child("password").setValue(usuEditado.getPassword());
+                dbRef.child(user.getUid()).child("urlFoto").setValue(usuLoged.getUrlFoto());
+
                 Snackbar snackbar = Snackbar
                         .make(getActivity().getWindow().getDecorView().getRootView(), R.string.perfil_modificado_ok, Snackbar.LENGTH_LONG)
                         .setBackgroundTint(getResources().getColor(R.color.orange_dark));

@@ -41,6 +41,6 @@
     <string name="edit_perf_rest_frag_tv_telef">Teléfono</string>
     <string name="selecciona_imagen">Selecciona una imagen</string>
     <string name="perfil_modificado_ok">Tu perfil ha sido modificado con éxito</string>
-    <string name="filtros_frag_btn_filtrar">Filtrar</string>
+    <string name="filtros_frag_btn_filtrar">Buscar</string>
     <string name="restaurante_frag_btn_reservaRest">Validar</string>
 </resources>
