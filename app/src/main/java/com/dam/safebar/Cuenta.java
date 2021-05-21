@@ -43,7 +43,6 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
         tb = findViewById(R.id.topAppBarCuenta);
         tb.setNavigationIcon(null);
 
-        //PRUEBA GUARDAR
         setSupportActionBar(tb);
 
         FragmentManager fm = getSupportFragmentManager();

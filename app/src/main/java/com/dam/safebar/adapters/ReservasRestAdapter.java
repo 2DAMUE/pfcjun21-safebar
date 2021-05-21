@@ -13,7 +13,10 @@ import com.dam.safebar.R;
 import com.dam.safebar.javabeans.ReservaRest;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ReservasRestAdapter extends RecyclerView.Adapter<ReservasRestAdapter.ReservaRestViewHolder> implements View.OnClickListener {
 
@@ -77,6 +80,25 @@ public class ReservasRestAdapter extends RecyclerView.Adapter<ReservasRestAdapte
             hora.setText(reservaRest.getHora());
             fecha.setText(reservaRest.getFecha());
             nombreUsu.setText(reservaRest.getNomUsu());
+
+
+            //Cambiar el formato a DD Mes AAAA
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
+            SimpleDateFormat dateInput = new SimpleDateFormat("MM-dd-yyyy");
+
+            Date inputDate = null;
+            try {
+                inputDate = dateInput.parse(reservaRest.getFecha());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            String formateado = "FORMAT ERROR";
+
+            if (inputDate != null) {
+                formateado = dateFormat.format(inputDate);
+            }
+            fecha.setText(formateado);
 
         }
 

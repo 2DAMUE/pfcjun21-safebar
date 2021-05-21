@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.dam.safebar">
+
+    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +16,8 @@
                 android:theme="@style/Theme.SafeBar.NoStatusBar"/>
         <activity android:name=".LogInRest"
             android:theme="@style/Theme.SafeBar.NoStatusBar"/>
-        <activity android:name=".ReservasRest" />
+        <activity android:name=".ReservasRest"
+            android:theme="@style/Theme.SafeBar.NoActionBar"/>
         <activity android:name=".PerfilRest"
             android:theme="@style/Theme.SafeBar.NoActionBar"/>
         <activity android:name=".Rest"
@@ -21,7 +25,8 @@
         <activity android:name=".Cuenta"
             android:theme="@style/Theme.SafeBar.NoActionBar"/>
 
-        <activity android:name=".ReservasUsu" />
+        <activity android:name=".ReservasUsu"
+            android:theme="@style/Theme.SafeBar.NoActionBar"/>
         <activity android:name=".Buscar" />
         <activity android:name=".Inicio"
             android:theme="@style/Theme.SafeBar.NoActionBar"/>
@@ -42,9 +47,11 @@
 
         </activity>
 
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+
 
 </manifest>

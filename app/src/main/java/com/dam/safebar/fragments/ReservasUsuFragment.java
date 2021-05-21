@@ -4,10 +4,13 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +19,7 @@ import com.dam.safebar.R;
 import com.dam.safebar.adapters.ReservasUsuAdapter;
 import com.dam.safebar.javabeans.ReservaUsu;
 import com.dam.safebar.listeners.InicioListener;
+import com.dam.safebar.listeners.QRListener;
 import com.dam.safebar.listeners.ReservasUsuListener;
 
 import java.util.ArrayList;
@@ -58,6 +62,7 @@ public class ReservasUsuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_reservas_usu, container, false);
+        getActionBar();
 
         rv = view.findViewById(R.id.rvReservas);
 
@@ -77,6 +82,20 @@ public class ReservasUsuFragment extends Fragment {
         return view;
 
 
+    }
+
+    private void getActionBar() {
+        AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
+        if (appCompatActivity != null) {
+            ActionBar actionBar = appCompatActivity.getSupportActionBar();
+
+            if (actionBar != null) {
+                actionBar.setTitle(getResources().getString(R.string.title_reservas));
+                actionBar.setHomeAsUpIndicator(null);
+                actionBar.setDisplayHomeAsUpEnabled(false);
+            }
+
+        }
     }
 
 

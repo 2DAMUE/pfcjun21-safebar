@@ -50,4 +50,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:19.2.0'
     implementation 'com.google.firebase:firebase-storage:19.2.2'
     implementation 'jp.wasabeef:glide-transformations:4.3.0'
+    implementation 'com.google.zxing:core:3.3.0'
+    implementation('com.journeyapps:zxing-android-embedded:4.2.0') { transitive = false }
+    implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
 }

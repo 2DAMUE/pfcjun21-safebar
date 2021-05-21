@@ -2,19 +2,18 @@ package com.dam.safebar.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -24,8 +23,12 @@ import com.dam.safebar.javabeans.ReservaUsu;
 import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.javabeans.Usuario;
 import com.dam.safebar.listeners.ReservarListener;
+import com.google.android.material.datepicker.CalendarConstraints;
+import com.google.android.material.datepicker.DateValidatorPointForward;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,7 +38,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.StorageReference;
+import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
+import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -46,6 +50,7 @@ public class BookingFragment extends Fragment {
 
     public static final String COD_REST_UID_BOOKING = "RUID";
     public static final String COD_REST_NOM_BOOKING = "RNOM";
+    public static final int NUMERO_MAX_PERSONAS = 9;
 
     String restUID;
     String restNom;
@@ -68,6 +73,7 @@ public class BookingFragment extends Fragment {
     String sNumPersonas;
     int numPersonas;
     int contAforo;
+    boolean isCena;
 
 
     EditText etFecha;
@@ -108,12 +114,23 @@ public class BookingFragment extends Fragment {
         etHora = view.findViewById(R.id.etBookingFragHora);
         etNumPersonas = view.findViewById(R.id.etBookingFragNumPers);
         btnReservar = view.findViewById(R.id.btnBookingFragReservar);
+        SwitchMaterial comidaCena = view.findViewById(R.id.switchComidaCena);
+        comidaCena.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                isCena = isChecked;
+            }
+        });
 
         Button btnFecha = view.findViewById(R.id.btnSelecFecha);
         btnFecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MaterialDatePicker.Builder<?> builder = MaterialDatePicker.Builder.datePicker();
+                CalendarConstraints.Builder calendarConstraints  =
+                        new CalendarConstraints.Builder().setValidator(DateValidatorPointForward.now());
+                MaterialDatePicker.Builder<?> builder =
+                        MaterialDatePicker.Builder.datePicker().setCalendarConstraints(calendarConstraints.build());
+
 
                 MaterialDatePicker<?> picker = builder.build();
 
@@ -149,26 +166,64 @@ public class BookingFragment extends Fragment {
         btnHora.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MaterialTimePicker.Builder builder = new MaterialTimePicker.Builder()
-                        .setHour(13)
-                        .setMinute(0)
-                        .setInputMode(MaterialTimePicker.INPUT_MODE_CLOCK)
-                        .setTitleText("Hora de reserva")
-                        .setTimeFormat(TimeFormat.CLOCK_12H);
 
-                MaterialTimePicker picker = builder.build();
+                if (isCena) {
+                    TimePickerDialog tp = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
+                        @Override
+                        public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
+                            String minuteAux = String.valueOf(minute);
+                            if (minute <10) {
+                                minuteAux = "0" + minute;
+                            }
+                            etHora.setText(hourOfDay + ":" + minuteAux);
+                        }
+                    }, true);
+                    tp.enableMinutes(false);
+                    tp.setMaxTime(22,0,0);
+                    tp.setMinTime(20,0,0);
+                    tp.setTimeInterval(1);
+                    tp.show(getFragmentManager(), "Datepickerdialog");
 
-                picker.show(getChildFragmentManager(), picker.toString());
-                etHora.setEnabled(false);
 
-                picker.addOnPositiveButtonClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        picker.getInputMode();
-                        String time = String.valueOf(picker.getHour()) + ":" + String.valueOf(picker.getMinute());
-                        etHora.setText(time);
-                    }
-                });
+                } else {
+                    TimePickerDialog tp = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
+                        @Override
+                        public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
+                            String minuteAux = String.valueOf(minute);
+                            if (minute <10) {
+                                minuteAux = "0" + minute;
+                            }
+                            etHora.setText(hourOfDay + ":" + minuteAux);
+                        }
+                    }, true);
+                    tp.enableMinutes(false);
+                    tp.setMaxTime(15,0,0);
+                    tp.setMinTime(13,0,0);
+                    tp.setTimeInterval(1);
+                    tp.show(getFragmentManager(), "Datepickerdialog");
+
+                }
+
+//                MaterialTimePicker.Builder builder = new MaterialTimePicker.Builder()
+//                        .setHour(13)
+//                        .setMinute(0)
+//                        .setInputMode(MaterialTimePicker.INPUT_MODE_CLOCK)
+//                        .setTitleText("Hora de reserva")
+//                        .setTimeFormat(TimeFormat.CLOCK_12H);
+//
+//                MaterialTimePicker picker = builder.build();
+//
+//                picker.show(getChildFragmentManager(), picker.toString());
+//                etHora.setEnabled(false);
+//
+//                picker.addOnPositiveButtonClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        picker.getInputMode();
+//                        String time = String.valueOf(picker.getHour()) + ":" + String.valueOf(picker.getMinute());
+//                        etHora.setText(time);
+//                    }
+//                });
 
             }
         });
@@ -241,6 +296,7 @@ public class BookingFragment extends Fragment {
 
                     for (DataSnapshot dss : dataSnapshot.getChildren()) {
                         reservaRestCheck = dss.getValue(ReservaRest.class);
+                        //TODO: cambiar NumPersonas
                         contAforo = contAforo + reservaRestCheck.getNumPersonas();
                     }
 
@@ -322,6 +378,9 @@ public class BookingFragment extends Fragment {
         }
 
     }
+
+
+
 
     @Override
     public void onPause() {

@@ -1,10 +1,13 @@
 package com.dam.safebar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -15,6 +18,7 @@ import com.dam.safebar.fragments.ReservasUsuFragment;
 import com.dam.safebar.javabeans.ReservaRest;
 import com.dam.safebar.javabeans.ReservaUsu;
 import com.dam.safebar.listeners.ReservasRestListener;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -44,6 +48,7 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
     String fechaActual;
     String horaActual;
     int finalConsulta;
+    MaterialToolbar tb;
 
     @Override
     public int getContentViewId() {
@@ -57,6 +62,14 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
+        //AppBar
+        tb = findViewById(R.id.topAppbarReservasRest);
+        tb.setNavigationIcon(null);
+
+        setSupportActionBar(tb);
 
 
         listaReservas = new ArrayList<ReservaRest>();
@@ -73,9 +86,23 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
 
         addListener();
 
+        tb.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
 
     }
-//u
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, ReservasRest.class));
+//        super.onBackPressed();
+    }
+
+    //u
     //    @Override
 //    public void onResume() {
 //        super.onResume();
@@ -315,7 +342,7 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         CheckQRFragment cqrf = new CheckQRFragment().newInstance();
-        ft.add(R.id.flReservasRest, cqrf);
+        ft.replace(R.id.flReservasRest, cqrf);
         ft.addToBackStack(null);
         ft.commit();
 

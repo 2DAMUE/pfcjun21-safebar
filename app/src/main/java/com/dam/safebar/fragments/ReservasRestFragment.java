@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -61,6 +63,9 @@ public class ReservasRestFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_reservas_rest, container, false);
+
+        getActionBar();
+
         rv = view.findViewById(R.id.rvReservasRest);
 
         rv.setHasFixedSize(true);
@@ -72,11 +77,27 @@ public class ReservasRestFragment extends Fragment {
                 int i = rv.getChildAdapterPosition(v);
                 ReservaRest reservaRest = listaReservas.get(i);
                 listener.abrirFragmentCheckQR();
+                Log.i("qr", "OnClick RESERVA");
             }
         });
 
        rv.setAdapter(reserRestAdap);
         return view;
+    }
+
+    //Metodo para obtener el ActionBar del Activity
+    private void getActionBar() {
+        AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
+        if (appCompatActivity != null) {
+            ActionBar actionBar = appCompatActivity.getSupportActionBar();
+
+            if (actionBar != null) {
+                actionBar.setTitle(getResources().getString(R.string.title_reservas));
+                actionBar.setHomeAsUpIndicator(null);
+                actionBar.setDisplayHomeAsUpEnabled(false);
+            }
+
+        }
     }
 
 
