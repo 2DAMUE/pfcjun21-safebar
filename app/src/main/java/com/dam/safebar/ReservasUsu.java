@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.dam.safebar.adapters.BottomNavigationHelper;
@@ -13,6 +15,7 @@ import com.dam.safebar.fragments.ReservasUsuFragment;
 import com.dam.safebar.javabeans.ReservaUsu;
 import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.ReservasUsuListener;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -54,6 +57,15 @@ public class ReservasUsu extends BottomNavigationHelper implements ReservasUsuLi
 
         //Implementar QRListener
         //TODO: MaterialToolbar
+        MaterialToolbar tb = findViewById(R.id.topAppbarReservasUsu);
+        setSupportActionBar(tb);
+
+        tb.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         listaReservas = new ArrayList<ReservaUsu>();
         listaFechas = new ArrayList<String>();
@@ -133,6 +145,12 @@ public class ReservasUsu extends BottomNavigationHelper implements ReservasUsuLi
 
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, ReservasUsu.class));
+//        super.onBackPressed();
     }
 
     private void cargarReservasUsuFragment() {

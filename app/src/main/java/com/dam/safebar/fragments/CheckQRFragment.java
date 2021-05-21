@@ -6,12 +6,18 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.dam.safebar.R;
 import com.dam.safebar.listeners.CheckQRListener;
@@ -24,6 +30,8 @@ public class CheckQRFragment extends Fragment {
 
     CheckQRListener listener;
     Button btnEscanear;
+    TextView tvCodigo;
+    ImageView imResult;
 
 
     public CheckQRFragment() {
@@ -55,9 +63,17 @@ public class CheckQRFragment extends Fragment {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null) {
             if (result.getContents() != null) {
-                btnEscanear.setText(String.valueOf(result.getContents()));
+                btnEscanear.setVisibility(View.GONE);
+                imResult.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_check_100, null));
+                String resultConcat = getResources().getString(R.string.reserva_verificada) + "\n ID: " + result.getContents();
+                tvCodigo.setText(resultConcat);
+                tvCodigo.setTextColor(getResources().getColor(R.color.green_light));
+
+                //TODO: qr leido correctamente
+
             } else {
-                btnEscanear.setText("ERROR EN LECTURA");
+                tvCodigo.setText(getResources().getString(R.string.error_lectura_qr));
+                tvCodigo.setTextColor(getResources().getColor(R.color.orange_dark));
             }
         }
     }
@@ -67,6 +83,10 @@ public class CheckQRFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_check_qr, container, false);
+        imResult = view.findViewById(R.id.imgQRStatus);
+        tvCodigo = view.findViewById(R.id.tvCodigo);
+
+        getActionBar();
 
         btnEscanear = view.findViewById(R.id.btnEscanear);
 
@@ -87,6 +107,21 @@ public class CheckQRFragment extends Fragment {
 
 
         return view;
+    }
+
+    //Metodo para obtener el ActionBar del Activity
+    private void getActionBar() {
+        AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
+        if (appCompatActivity != null) {
+            ActionBar actionBar = appCompatActivity.getSupportActionBar();
+
+            if (actionBar != null) {
+                actionBar.setTitle(R.string.title_qr_rest);
+                actionBar.setDisplayHomeAsUpEnabled(true);
+                actionBar.setHomeAsUpIndicator(R.drawable.ic_back_arrow);
+            }
+
+        }
     }
 
 //    @Override

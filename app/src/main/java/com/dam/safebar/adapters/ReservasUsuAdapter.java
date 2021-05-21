@@ -77,14 +77,10 @@ public class ReservasUsuAdapter extends RecyclerView.Adapter<ReservasUsuAdapter.
         public void bindItem(ReservaUsu reservaUsu) {
             numPersonas.setText(String.valueOf(reservaUsu.getNumPersonas()));
             hora.setText(reservaUsu.getHora());
-            //PRUEBAS
-//            fecha.setText(reservaUsu.getFecha());
-
             restaurante.setText(reservaUsu.getNombreRest());
 
 
-            //TODO: funciona perfectamente, formato de fecha mas bonito, crear metodo o adornar esto
-            //PRUEBAS
+            //Cambiar el formato a DD Mes AAAA
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
             SimpleDateFormat dateInput = new SimpleDateFormat("MM-dd-yyyy");
 
@@ -95,7 +91,7 @@ public class ReservasUsuAdapter extends RecyclerView.Adapter<ReservasUsuAdapter.
                 e.printStackTrace();
             }
 
-            String formateado = "NULO";
+            String formateado = "FORMAT ERROR";
 
             if (inputDate != null) {
                 formateado = dateFormat.format(inputDate);

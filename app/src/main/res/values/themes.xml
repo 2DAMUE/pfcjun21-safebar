@@ -78,6 +78,18 @@
         <item name="errorEnabled">true</item>
     </style>
 
+    <style name="TextInput.Outlined.Dropdownmenu" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxStrokeColor">@color/statelist_et_noalpha</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="hintTextColor">@color/orange_light</item>
+        <item name="android:textColorHint">@color/green_light</item>
+        <item name="boxBackgroundColor">@color/white_alpha</item>
+        <item name="hintEnabled">true</item>
+        <item name="android:strokeColor">@color/orange_light</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Login.EditText</item>
+        <item name="errorEnabled">true</item>
+    </style>
+
     <style name="Theme.SafeBar.RatingBar" parent="Widget.AppCompat.RatingBar.Indicator">
         <item name="android:progressDrawable">@drawable/rating_bar</item>
         <item name="android:progressTint">@color/green_dark</item>

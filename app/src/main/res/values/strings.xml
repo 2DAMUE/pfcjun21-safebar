@@ -43,4 +43,9 @@
     <string name="perfil_modificado_ok">Tu perfil ha sido modificado con éxito</string>
     <string name="filtros_frag_btn_filtrar">Filtrar</string>
     <string name="restaurante_frag_btn_reservaRest">Validar</string>
+    <string name="reserva_verificada">Reserva verificada correctamente</string>
+    <string name="error_lectura_qr">Error al leer el QR</string>
+    <string name="title_reservas">Reservas</string>
+    <string name="title_qr_usu">Generar QR</string>
+    <string name="title_qr_rest">Verificar reserva</string>
 </resources>

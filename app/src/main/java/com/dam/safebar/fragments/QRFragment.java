@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -70,7 +72,7 @@ public class QRFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_qr, container, false);
-
+        getActionBar();
         imageQR = view.findViewById(R.id.imQR);
 
         //BotonPrueba
@@ -83,6 +85,21 @@ public class QRFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void getActionBar() {
+        AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
+        if (appCompatActivity != null) {
+            ActionBar actionBar = appCompatActivity.getSupportActionBar();
+
+            if (actionBar != null) {
+                actionBar.setTitle(getResources().getString(R.string.title_qr_usu));
+                actionBar.setDisplayHomeAsUpEnabled(true);
+                actionBar.setHomeAsUpIndicator(R.drawable.ic_back_arrow);
+
+            }
+
+        }
     }
 
 
