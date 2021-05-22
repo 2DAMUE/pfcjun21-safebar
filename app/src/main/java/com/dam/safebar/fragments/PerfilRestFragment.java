@@ -102,6 +102,8 @@ public class PerfilRestFragment extends Fragment {
         dbRef = FirebaseDatabase.getInstance().getReference("datos/restaurantes");
         mFotoStorageRef = FirebaseStorage.getInstance().getReference().child("fotosR");
 
+        addListener();
+
 //        btnEC.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -136,11 +138,11 @@ public class PerfilRestFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        addListener();
-    }
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        addListener();
+//    }
 
     private void addListener() {
         if (vel == null) {
@@ -163,10 +165,11 @@ public class PerfilRestFragment extends Fragment {
     }
 
     private void cargarDatosUsuario() {
-        Glide.with(img)
-                .load(restLoged.getUrlFoto())
-                .placeholder(null)
-                .into(img);
+
+//        Glide.with(img)
+//                .load(restLoged.getUrlFoto())
+//                .placeholder(null)
+//                .into(img);
 
         tvNom.setText(restLoged.getNombreRest());
         tvEmail.setText(restLoged.getEmail());

@@ -17,6 +17,7 @@ import com.dam.safebar.fragments.ReservasRestFragment;
 import com.dam.safebar.fragments.ReservasUsuFragment;
 import com.dam.safebar.javabeans.ReservaRest;
 import com.dam.safebar.javabeans.ReservaUsu;
+import com.dam.safebar.listeners.CheckQRListener;
 import com.dam.safebar.listeners.ReservasRestListener;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,7 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ReservasRest extends BottomNavigationHelperRest implements ReservasRestListener {
+public class ReservasRest extends BottomNavigationHelperRest implements ReservasRestListener, CheckQRListener {
 
     ArrayList<ReservaRest> listaReservas;
 
@@ -39,6 +40,7 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
     FirebaseUser user;
     DatabaseReference dbRef;
     ValueEventListener vel;
+
 
     String fecha;
     ArrayList<String> listaFechas;
@@ -249,9 +251,7 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
 
                     if (codFecha == 1 && codHora == 1) {
                         ArrayList<ReservaRest> listaReservasFrag = listaReservas;
-                        Log.i("WWW", listaReservasFrag.get(1).getFecha());
-                        Log.i("WWW", listaReservasFrag.get(3).getFecha());
-                        Log.i("WWW", listaReservasFrag.get(9).getFecha());
+                        onPause();
                         cargarReservasRestFragment(listaReservasFrag);
                     }
 
@@ -339,6 +339,8 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
     @Override
     public void abrirFragmentCheckQR() {
 
+        removeListener();
+
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         CheckQRFragment cqrf = new CheckQRFragment().newInstance();
@@ -346,6 +348,12 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
         ft.addToBackStack(null);
         ft.commit();
 
+
+    }
+
+    @Override
+    public void reiniciarReservasRest() {
+        startActivity(new Intent(this, ReservasUsu.class));
     }
 }
 

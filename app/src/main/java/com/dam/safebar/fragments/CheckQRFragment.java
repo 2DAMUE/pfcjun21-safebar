@@ -18,10 +18,22 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.dam.safebar.R;
+import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.CheckQRListener;
 import com.dam.safebar.listeners.InicioListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -33,6 +45,10 @@ public class CheckQRFragment extends Fragment {
     TextView tvCodigo;
     ImageView imResult;
 
+    FirebaseAuth fba;
+    FirebaseUser user;
+    DatabaseReference dbRef;
+    ValueEventListener vel;
 
     public CheckQRFragment() {
         // Required empty public constructor
@@ -71,6 +87,11 @@ public class CheckQRFragment extends Fragment {
 
                 //TODO: qr leido correctamente
 
+                //addListener();
+
+               dbRef.child("restaurantes").child(user.getUid()).child("reservas").removeValue();
+//               dbRef.child("usuarios").child(String.valueOf(result.getContents())).setValue(null);
+
             } else {
                 tvCodigo.setText(getResources().getString(R.string.error_lectura_qr));
                 tvCodigo.setTextColor(getResources().getColor(R.color.orange_dark));
@@ -89,6 +110,10 @@ public class CheckQRFragment extends Fragment {
         getActionBar();
 
         btnEscanear = view.findViewById(R.id.btnEscanear);
+
+        fba = FirebaseAuth.getInstance();
+        user = fba.getCurrentUser();
+        dbRef = FirebaseDatabase.getInstance().getReference("datos");
 
         btnEscanear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,22 +149,63 @@ public class CheckQRFragment extends Fragment {
         }
     }
 
-//    @Override
-//    public void onAttach(@NonNull Context context) {
-//        super.onAttach(context);
-//        if (context instanceof CheckQRListener) {
-//            listener = (CheckQRListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
+    //    @Override
+//    public void onResume() {
+//        super.onResume();
+//        addListener();
+//    }
+
+//    private void addListener() {
+//        if (vel == null) {
+//            vel = new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+//                    restLoged = dataSnapshot.getValue(Restaurante.class);
+//                    cargarDatosUsuario();
+//
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//                    Toast.makeText(getContext(), "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+//                }
+//            };
+//            dbRef.child(user.getUid()).addValueEventListener(vel);
 //        }
 //    }
 //
+//
 //    @Override
-//    public void onDetach() {
-//        super.onDetach();
-//        listener = null;
+//    public void onPause() {
+//        super.onPause();
+//        removeListener();
 //    }
+//
+//    private void removeListener() {
+//        if (vel != null) {
+//            dbRef.removeEventListener(vel);
+//            vel = null;
+//        }
+//
+//    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof CheckQRListener) {
+            listener = (CheckQRListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
+    }
 
 
 
