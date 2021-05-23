@@ -5,6 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Buscar">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbaar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBarBusqueda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Búsqueda"
+            app:titleTextColor="@color/white"
+            app:titleTextAppearance="@style/Text.AppBar"
+            >
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <FrameLayout
         android:id="@+id/flBuscar"
         android:layout_width="match_parent"
