@@ -6,6 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".CheckQR">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbaar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBarQRRest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Verificar QR"
+            app:titleTextColor="@color/white"
+            app:titleTextAppearance="@style/Text.AppBar"
+            app:navigationIcon="@drawable/ic_back_arrow"
+            >
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout
         android:id="@+id/flCheckQR"
@@ -14,13 +33,5 @@
         app:layout_constraintTop_toBottomOf="@id/appbaar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
-
-    <include
-        layout="@layout/bottom_navigation_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

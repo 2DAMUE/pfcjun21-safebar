@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SafeBar">
-        <activity android:name=".CheckQR"></activity>
+        <activity android:name=".CheckQR"
+            android:theme="@style/Theme.SafeBar.NoActionBar"></activity>
         <activity
             android:name=".SignUpRest"
             android:theme="@style/Theme.SafeBar.NoStatusBar" />
