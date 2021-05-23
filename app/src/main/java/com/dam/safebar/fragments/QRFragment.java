@@ -27,7 +27,7 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 public class QRFragment extends Fragment {
 
-    QRListener listener;
+    //QRListener listener;
     ImageView imageQR;
     String codigoReserva;
 

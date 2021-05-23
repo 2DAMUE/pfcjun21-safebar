@@ -180,14 +180,10 @@ public class ReservasUsu extends BottomNavigationHelper implements ReservasUsuLi
     }
 
     @Override
-    public void abrirFragmentQR(String codigoReserva) {
-
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        QRFragment qrf = new QRFragment().newInstance(codigoReserva);
-        ft.replace(R.id.flReservas, qrf);
-        ft.addToBackStack(null);
-        ft.commit();
+    public void abrirActivityMostrarQR(String codigoReserva) {
+        Intent i = new Intent(ReservasUsu.this, MostrarQR.class);
+        i.putExtra("codQR", codigoReserva);
+        startActivity(i);
 
 
     }

@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SafeBar">
-        <activity android:name=".CheckQR"></activity>
+        <activity android:name=".MostrarQR"></activity>
+        <activity android:name=".CheckQR" />
         <activity
             android:name=".SignUpRest"
             android:theme="@style/Theme.SafeBar.NoStatusBar" />
@@ -43,7 +44,7 @@
             android:theme="@style/Theme.SafeBar.NoStatusBar" />
         <activity
             android:name=".LogIn"
-            android:theme="@style/Theme.SafeBar.NoStatusBar"></activity>
+            android:theme="@style/Theme.SafeBar.NoStatusBar" />
         <activity
             android:name=".Splash"
             android:theme="@style/Theme.SafeBar.NoStatusBar.Splash">
