@@ -23,6 +23,7 @@ import com.dam.safebar.adapters.InicioAdapter;
 import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.BuscarListener;
 import com.dam.safebar.listeners.InicioListener;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
@@ -65,6 +66,15 @@ public class FiltrosFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_filtros, container, false);
 
         etNomRest = view.findViewById(R.id.etEditFiltFragFil);
+        TextInputLayout textLayout = view.findViewById(R.id.lEditFiltFragFil);
+        textLayout.setEndIconOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "clickao", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
         btnBuscar = view.findViewById(R.id.btnFiltrarFiltrosFrag);
         rv = view.findViewById(R.id.rvFiltros);
 

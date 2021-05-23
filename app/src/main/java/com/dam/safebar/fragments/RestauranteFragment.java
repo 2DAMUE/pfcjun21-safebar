@@ -1,6 +1,8 @@
 package com.dam.safebar.fragments;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -92,6 +94,7 @@ public class RestauranteFragment extends Fragment {
         tvDescrip = view.findViewById(R.id.tvDescripRestauranteFrag);
         fabReservar = view.findViewById(R.id.fabReservar);
         rtbRestaurante = view.findViewById(R.id.ratingBarRestaurante);
+        btnIndicaciones = view.findViewById(R.id.btnNavegarRestauranteFrag);
 
         dbRef = FirebaseDatabase.getInstance().getReference("datos/restaurantes");
         mFotoStorageRef = FirebaseStorage.getInstance().getReference().child("fotosR");
@@ -102,6 +105,17 @@ public class RestauranteFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 listener.abrirReservar(restUID, restNom);
+            }
+        });
+
+        btnIndicaciones.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String add = restaurante.getDireccion();
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + add);
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent);
             }
         });
 
