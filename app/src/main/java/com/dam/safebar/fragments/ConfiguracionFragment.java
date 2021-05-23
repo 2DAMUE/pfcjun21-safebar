@@ -95,12 +95,7 @@ public class ConfiguracionFragment extends Fragment {
         dbRef = FirebaseDatabase.getInstance().getReference("datos/usuarios");
         mFotoStorageRef = FirebaseStorage.getInstance().getReference().child("fotos");
 
-//        btnEP.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                listener.abrirEditPerf();
-//            }
-//        });
+        addListener();
 
         btnLO.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,11 +123,11 @@ public class ConfiguracionFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        addListener();
-    }
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        addListener();
+//    }
 
     private void addListener() {
         if (vel == null) {
@@ -155,6 +150,9 @@ public class ConfiguracionFragment extends Fragment {
     }
 
     private void cargarDatosUsuario() {
+
+        removeListener();
+
         Glide.with(this)
                 .load(usuLoged.getUrlFoto())
                 .placeholder(null)

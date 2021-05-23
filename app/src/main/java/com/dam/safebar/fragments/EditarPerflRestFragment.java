@@ -151,82 +151,6 @@ public class EditarPerflRestFragment extends Fragment {
             }
         });
 
-//        btnGuardar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                nombreRest = etNombre.getText().toString().trim();
-//                email = etEmail.getText().toString().trim();
-//                password = etPW.getText().toString().trim();
-//                direc = etDirec.getText().toString().trim();
-//                telef = etTelef.getText().toString().trim();
-//                precio = etPrecio.getText().toString().trim();
-//                aforo = etAforo.getText().toString().trim();
-//                descrip = etDescrip.getText().toString().trim();
-//
-//
-//                if (fotoCambiada) {
-//                    final StorageReference fotoRef = mFotoStorageRef.child(selectedUri.getEncodedPath());
-//                    UploadTask ut = fotoRef.putFile(selectedUri);
-//                    Task<Uri> urlTask = ut.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-//                        @Override
-//                        public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-//                            if (!task.isSuccessful()) {
-//                                throw task.getException();
-//                            }
-//
-//                            return fotoRef.getDownloadUrl();
-//                        }
-//                    }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<Uri> task) {
-//                            if (task.isSuccessful()) {
-//                                Uri downloadUri = task.getResult();
-//                                restEditado = new Restaurante(nombreRest, downloadUri.toString(), email, password, direc,
-//                                        telef, Integer.parseInt(precio), Integer.parseInt(aforo), descrip);
-//
-//                                user.updateEmail(email);
-//                                user.updatePassword(password);
-//
-//                                dbRef.child(user.getUid()).setValue(restEditado);
-//                                Snackbar snackbar = Snackbar
-//                                        .make(getActivity().getWindow().getDecorView().getRootView(), R.string.perfil_modificado_ok, Snackbar.LENGTH_LONG)
-//                                        .setBackgroundTint(getResources().getColor(R.color.green_dark));
-//
-//
-//                                //View para introducir margen por encima del BottomBar
-//                                View snackBarView = snackbar.getView();
-//                                snackBarView.setTranslationY(-(convertDpToPixel(56, getActivity())));
-//                                snackbar.show();
-//
-//                                listener.volverPerfilRest();
-//
-//                            }
-//                        }
-//                    });
-//                } else {
-//                    restEditado = new Restaurante(nombreRest, restLoged.getUrlFoto(), email, password, direc,
-//                            telef, Integer.parseInt(precio), Integer.parseInt(aforo), descrip);
-//
-//                    user.updateEmail(email);
-//                    user.updatePassword(password);
-//
-//                    dbRef.child(user.getUid()).setValue(restEditado);
-//                    Snackbar snackbar = Snackbar
-//                            .make(getActivity().getWindow().getDecorView().getRootView(), R.string.perfil_modificado_ok, Snackbar.LENGTH_LONG)
-//                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
-//
-//
-//                    //View para introducir margen por encima del BottomBar
-//                    View snackBarView = snackbar.getView();
-//                    snackBarView.setTranslationY(-(convertDpToPixel(56, getActivity())));
-//                    snackbar.show();
-//
-//                    listener.volverPerfilRest();
-//                }
-//            }
-//        });
-
         return view;
 
     }
@@ -383,6 +307,7 @@ public class EditarPerflRestFragment extends Fragment {
 
     private void cargarDatosUsuario() {
 
+        removeListener();
 
         Glide.with(imageView)
                 .load(restLoged.getUrlFoto())

@@ -37,6 +37,15 @@
         android:text="ESCANEAR QR"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
+    <Button
+        android:id="@+id/btnValidar"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Validar"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
 
 
 </LinearLayout>

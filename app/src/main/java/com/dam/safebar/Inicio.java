@@ -137,6 +137,9 @@ public class Inicio extends BottomNavigationHelper implements InicioListener {
 
     @Override
     public void abrirRestaurante(String restUID, String restNom) {
+
+        removeListener();
+
         Intent i = new Intent(Inicio.this, Rest.class);
         i.putExtra(COD_REST_UID, restUID);
         i.putExtra(COD_REST_NOM, restNom);

@@ -116,7 +116,7 @@ public class ReservasUsu extends BottomNavigationHelper implements ReservasUsuLi
 
     private void addListener2(String fechaArray) {
 
-        onPause();
+        removeListener();
 
         if (vel == null) {
             vel = new ValueEventListener() {
@@ -130,7 +130,7 @@ public class ReservasUsu extends BottomNavigationHelper implements ReservasUsuLi
                         listaReservas.add(reservaUsu);
                     }
 
-                    onPause();
+                    removeListener();
 
                 }
 
@@ -154,6 +154,9 @@ public class ReservasUsu extends BottomNavigationHelper implements ReservasUsuLi
     }
 
     private void cargarReservasUsuFragment() {
+
+        removeListener();
+
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ReservasUsuFragment resvf = new ReservasUsuFragment().newInstance(listaReservas);
@@ -161,7 +164,13 @@ public class ReservasUsu extends BottomNavigationHelper implements ReservasUsuLi
         ft.addToBackStack(null);
         ft.commit();
     }
-
+//
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        addListener();
+//    }
+//
     @Override
     public void onPause() {
         super.onPause();
@@ -177,14 +186,24 @@ public class ReservasUsu extends BottomNavigationHelper implements ReservasUsuLi
     }
 
     @Override
-    public void abrirFragmentQR(String codigoReserva) {
+    protected void onStop() {
+        super.onStop();
+        removeListener();
+    }
 
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        QRFragment qrf = new QRFragment().newInstance(codigoReserva);
-        ft.replace(R.id.flReservas, qrf);
-        ft.addToBackStack(null);
-        ft.commit();
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        removeListener();
+    }
+
+    @Override
+    public void abrirActivityMostrarQR(String codigoReserva) {
+        Intent i = new Intent(ReservasUsu.this, MostrarQR.class);
+        getSupportFragmentManager().popBackStack();
+        i.putExtra("codQR", codigoReserva);
+        startActivity(i);
+
 
 
     }

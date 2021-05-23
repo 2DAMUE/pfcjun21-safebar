@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -125,6 +126,26 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
 
         tb.setTitle("Protocolo Covid");
         tb.setNavigationIcon(R.drawable.ic_back_arrow);
+    }
+
+    @Override
+    public void llamar() {
+        Uri telf = Uri.parse("tel:918047755");
+        Intent llamada = new Intent(Intent.ACTION_DIAL, telf);
+
+        if (llamada.resolveActivity(getPackageManager()) != null) {
+            startActivity(llamada);
+        } else {
+            Toast.makeText(this, "Ha ocurrido una error inesperado", Toast.LENGTH_LONG).show();
+
+        }
+    }
+
+    @Override
+    public void mandarCorreo(String email) {
+        Intent it = new Intent(Intent.ACTION_SENDTO);
+        it.setData(Uri.parse("mailto:" + email));
+        startActivity(it);
     }
 
     @Override

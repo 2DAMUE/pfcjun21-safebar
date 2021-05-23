@@ -5,6 +5,11 @@
 
     <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
 
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.DIAL" />
+        </intent>
+    </queries>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,25 +17,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SafeBar">
-        <activity android:name=".SignUpRest"
-                android:theme="@style/Theme.SafeBar.NoStatusBar"/>
-        <activity android:name=".LogInRest"
-            android:theme="@style/Theme.SafeBar.NoStatusBar"/>
-        <activity android:name=".ReservasRest"
-            android:theme="@style/Theme.SafeBar.NoActionBar"/>
-        <activity android:name=".PerfilRest"
-            android:theme="@style/Theme.SafeBar.NoActionBar"/>
-        <activity android:name=".Rest"
-            android:theme="@style/Theme.SafeBar.NoActionBar"/>
-        <activity android:name=".Cuenta"
-            android:theme="@style/Theme.SafeBar.NoActionBar"/>
-
-        <activity android:name=".ReservasUsu"
-            android:theme="@style/Theme.SafeBar.NoActionBar"/>
+        <activity android:name=".CheckQR"
+            android:theme="@style/Theme.SafeBar.NoActionBar"></activity>
+        <activity android:name=".MostrarQR"
+            android:theme="@style/Theme.SafeBar.NoActionBar"></activity>
+        <activity
+            android:name=".SignUpRest"
+            android:theme="@style/Theme.SafeBar.NoStatusBar" />
+        <activity
+            android:name=".LogInRest"
+            android:theme="@style/Theme.SafeBar.NoStatusBar" />
+        <activity
+            android:name=".ReservasRest"
+            android:theme="@style/Theme.SafeBar.NoActionBar" />
+        <activity
+            android:name=".PerfilRest"
+            android:theme="@style/Theme.SafeBar.NoActionBar" />
+        <activity
+            android:name=".Rest"
+            android:theme="@style/Theme.SafeBar.NoActionBar" />
+        <activity
+            android:name=".Cuenta"
+            android:theme="@style/Theme.SafeBar.NoActionBar" />
+        <activity
+            android:name=".ReservasUsu"
+            android:theme="@style/Theme.SafeBar.NoActionBar" />
         <activity android:name=".Buscar"
             android:theme="@style/Theme.SafeBar.NoActionBar"/>
-        <activity android:name=".Inicio"
-            android:theme="@style/Theme.SafeBar.NoActionBar"/>
+        <activity
+            android:name=".Inicio"
+            android:theme="@style/Theme.SafeBar.NoActionBar" />
         <activity
             android:name=".SignUp"
             android:theme="@style/Theme.SafeBar.NoStatusBar" />

@@ -76,7 +76,7 @@ public class ReservasRestFragment extends Fragment {
             public void onClick(View v) {
                 int i = rv.getChildAdapterPosition(v);
                 ReservaRest reservaRest = listaReservas.get(i);
-                listener.abrirFragmentCheckQR();
+                listener.abrirActivityCheckQR(reservaRest);
                 Log.i("qr", "OnClick RESERVA");
             }
         });

@@ -27,7 +27,7 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 public class QRFragment extends Fragment {
 
-    QRListener listener;
+    //QRListener listener;
     ImageView imageQR;
     String codigoReserva;
 
@@ -80,7 +80,7 @@ public class QRFragment extends Fragment {
         btnGenerar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createQR("0192019201HOLA");
+                createQR(codigoReserva);
             }
         });
 

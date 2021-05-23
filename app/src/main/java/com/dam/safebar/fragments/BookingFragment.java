@@ -111,7 +111,9 @@ public class BookingFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_booking, container, false);
 
         etFecha = view.findViewById(R.id.etBookingFragFecha);
+        etFecha.setEnabled(false);
         etHora = view.findViewById(R.id.etBookingFragHora);
+        etHora.setEnabled(false);
         etNumPersonas = view.findViewById(R.id.etBookingFragNumPers);
         btnReservar = view.findViewById(R.id.btnBookingFragReservar);
         SwitchMaterial comidaCena = view.findViewById(R.id.switchComidaCena);
@@ -137,7 +139,7 @@ public class BookingFragment extends Fragment {
                 picker.show(getChildFragmentManager(), picker.toString());
                 etFecha.setEnabled(false);
 
-                //TODO: NO SE QUE PUTAS POLLAS DICE DE RAW, NO ME DEJA METER EL '?', SE QUEDA CON WARNING
+                //TODO: NO SE QUE DICE DE RAW, NO ME DEJA METER EL '?', SE QUEDA CON WARNING
 
                 picker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
                     @Override
@@ -286,7 +288,7 @@ public class BookingFragment extends Fragment {
 //    }
 
     private void addListener1() {
-        onPause();
+        removeListener();
         if (vel == null) {
             vel = new ValueEventListener() {
                 @Override
@@ -319,7 +321,7 @@ public class BookingFragment extends Fragment {
 
     private void addListener2() {
 
-        onPause();
+        removeListener();
 
         if (vel == null) {
             vel = new ValueEventListener() {
@@ -350,7 +352,7 @@ public class BookingFragment extends Fragment {
 
     private void addListener3() {
 
-        onPause();
+        removeListener();
 
         if (vel == null) {
             vel = new ValueEventListener() {
@@ -362,6 +364,8 @@ public class BookingFragment extends Fragment {
 
                     dbRef.child("usuarios").child(user.getUid()).child("reservas").child(fecha).child(codigoReserva).setValue(reservaUsu);
                     dbRef.child("restaurantes").child(restUID).child("reservas").child(fecha).child(hora).child(codigoReserva).setValue(reservaRest);
+
+                    removeListener();
 
                     Toast.makeText(getContext(), "Reserva realizada con exito!", Toast.LENGTH_SHORT).show();
 

@@ -55,6 +55,7 @@ public class RestauranteFragment extends Fragment {
     TextView tvAforo;
     TextView tvDescrip;
     Button btnIndicaciones;
+    Button btnLlamar;
     RatingBar rtbRestaurante;
 
     ExtendedFloatingActionButton fabReservar;
@@ -94,6 +95,8 @@ public class RestauranteFragment extends Fragment {
         tvDescrip = view.findViewById(R.id.tvDescripRestauranteFrag);
         fabReservar = view.findViewById(R.id.fabReservar);
         rtbRestaurante = view.findViewById(R.id.ratingBarRestaurante);
+        btnLlamar = view.findViewById(R.id.btnLlamarRestauranteFrag);
+        //btnNavegar = view.findViewById(R.id.btnNavegarRestauranteFrag);
         btnIndicaciones = view.findViewById(R.id.btnNavegarRestauranteFrag);
 
         dbRef = FirebaseDatabase.getInstance().getReference("datos/restaurantes");
@@ -119,10 +122,24 @@ public class RestauranteFragment extends Fragment {
             }
         });
 
+
+        btnLlamar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                listener.llamar(restaurante.getTelefono());
+
+            }
+        });
+
+
         return view;
     }
 
     private void cargarDatos() {
+
+        removeListener();
+
         Glide.with(img)
                 .load(restaurante.getUrlFoto())
                 .placeholder(null)

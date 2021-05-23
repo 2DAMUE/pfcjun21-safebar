@@ -74,7 +74,7 @@ public class ReservasUsuFragment extends Fragment {
             public void onClick(View v) {
                 int i = rv.getChildAdapterPosition(v);
                 ReservaUsu reservaUsu = listaReservas.get(i);
-                listener.abrirFragmentQR(reservaUsu.getCodigo());
+                listener.abrirActivityMostrarQR(reservaUsu.getCodigo());
             }
         });
 
