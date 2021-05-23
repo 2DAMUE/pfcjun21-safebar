@@ -14,7 +14,8 @@
         android:theme="@style/Theme.SafeBar">
         <activity android:name=".CheckQR"
             android:theme="@style/Theme.SafeBar.NoActionBar"></activity>
-        <activity android:name=".MostrarQR"></activity>
+        <activity android:name=".MostrarQR"
+            android:theme="@style/Theme.SafeBar.NoActionBar"></activity>
 
         <activity
             android:name=".SignUpRest"
