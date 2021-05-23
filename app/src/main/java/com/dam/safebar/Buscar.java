@@ -127,10 +127,16 @@ public class Buscar extends BottomNavigationHelper implements BuscarListener {
                         nomRestFB = "";
                         nomRestFB = restaurante.getNombreRest().toUpperCase();
 
-                        if (nombreR.equals(nomRestFB.substring(0,tamNom))) {
+                        try {
+                            if (nombreR.equals(nomRestFB.substring(0,tamNom))) {
 
-                            listaRestaurantes.add(restaurante);
+                                listaRestaurantes.add(restaurante);
+                            }
+                        } catch (IndexOutOfBoundsException e) {
+                            Log.i("BUSCAR_JAVA", "INDEX OUT OF BOUNDS");
+                            e.printStackTrace();
                         }
+
 
 
                     }

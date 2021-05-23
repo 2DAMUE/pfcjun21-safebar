@@ -48,4 +48,6 @@
     <string name="title_reservas">Reservas</string>
     <string name="title_qr_usu">Generar QR</string>
     <string name="title_qr_rest">Verificar reserva</string>
+    <string name="debes_introducir_nombre">Debes introducir un nombre</string>
+    <string name="aceptar">ACEPTAR</string>
 </resources>

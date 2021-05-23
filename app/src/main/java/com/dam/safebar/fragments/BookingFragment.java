@@ -116,7 +116,9 @@ public class BookingFragment extends Fragment {
         etHora.setEnabled(false);
         etNumPersonas = view.findViewById(R.id.etBookingFragNumPers);
         btnReservar = view.findViewById(R.id.btnBookingFragReservar);
+
         SwitchMaterial comidaCena = view.findViewById(R.id.switchComidaCena);
+
         comidaCena.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -169,42 +171,41 @@ public class BookingFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                TimePickerDialog tp;
                 if (isCena) {
-                    TimePickerDialog tp = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
+                    tp = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
                         @Override
                         public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
                             String minuteAux = String.valueOf(minute);
-                            if (minute <10) {
+                            if (minute < 10) {
                                 minuteAux = "0" + minute;
                             }
-                            etHora.setText(hourOfDay + ":" + minuteAux);
+                            String hora = hourOfDay + ":" + minuteAux;
+                            etHora.setText(hora);
                         }
                     }, true);
-                    tp.enableMinutes(false);
                     tp.setMaxTime(22,0,0);
                     tp.setMinTime(20,0,0);
-                    tp.setTimeInterval(1);
-                    tp.show(getFragmentManager(), "Datepickerdialog");
-
 
                 } else {
-                    TimePickerDialog tp = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
+                    tp = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
                         @Override
                         public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
                             String minuteAux = String.valueOf(minute);
-                            if (minute <10) {
+                            if (minute < 10) {
                                 minuteAux = "0" + minute;
                             }
-                            etHora.setText(hourOfDay + ":" + minuteAux);
+                            String hora = hourOfDay + ":" + minuteAux;
+                            etHora.setText(hora);
                         }
                     }, true);
-                    tp.enableMinutes(false);
                     tp.setMaxTime(15,0,0);
                     tp.setMinTime(13,0,0);
-                    tp.setTimeInterval(1);
-                    tp.show(getFragmentManager(), "Datepickerdialog");
 
                 }
+                tp.enableMinutes(false);
+                tp.setTimeInterval(1);
+                tp.show(getFragmentManager(), "Datepickerdialog");
 
 //                MaterialTimePicker.Builder builder = new MaterialTimePicker.Builder()
 //                        .setHour(13)

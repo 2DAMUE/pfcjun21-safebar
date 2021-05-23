@@ -23,6 +23,7 @@ import com.dam.safebar.adapters.InicioAdapter;
 import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.BuscarListener;
 import com.dam.safebar.listeners.InicioListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
@@ -37,7 +38,6 @@ public class FiltrosFragment extends Fragment {
     String nombreRest;
 
     EditText etNomRest;
-    Button btnBuscar;
 
     public FiltrosFragment() {
         // Required empty public constructor
@@ -67,20 +67,16 @@ public class FiltrosFragment extends Fragment {
 
         etNomRest = view.findViewById(R.id.etEditFiltFragFil);
         TextInputLayout textLayout = view.findViewById(R.id.lEditFiltFragFil);
-        textLayout.setEndIconOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "clickao", Toast.LENGTH_SHORT).show();
-            }
-        });
 
 
-        btnBuscar = view.findViewById(R.id.btnFiltrarFiltrosFrag);
         rv = view.findViewById(R.id.rvFiltros);
 
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         InicioAdapter inicAdap = new InicioAdapter(listaRestaurantes);
+
+
+
         inicAdap.setListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,20 +88,29 @@ public class FiltrosFragment extends Fragment {
 
         rv.setAdapter(inicAdap);
 
-        btnBuscar.setOnClickListener(new View.OnClickListener() {
+        textLayout.setEndIconOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 nombreRest = etNomRest.getText().toString().trim();
 
                 if (nombreRest.isEmpty()) {
-                    Toast.makeText(getContext(), "Debes introducir un nombre!", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar
+                            .make(getActivity().getWindow().getDecorView().getRootView(), R.string.debes_introducir_nombre, Snackbar.LENGTH_LONG)
+                            .setBackgroundTint(getResources().getColor(R.color.green_dark));
+                    snackbar.setAction(getResources().getString(R.string.aceptar), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            snackbar.dismiss();
+                        }
+                    });
+                    snackbar.setAnchorView(R.id.bottomNavigationBar);
+                    snackbar.show();
                 } else {
                     listener.buscarRestaurantes(nombreRest);
                 }
-
             }
         });
+
         return view;
     }
 

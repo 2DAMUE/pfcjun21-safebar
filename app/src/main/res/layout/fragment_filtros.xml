@@ -12,7 +12,7 @@
         android:id="@+id/lEditFiltFragFil"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         app:endIconMode="custom"
@@ -25,14 +25,6 @@
             android:layout_height="match_parent"/>
 
     </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnFiltrarFiltrosFrag"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:text="@string/filtros_frag_btn_filtrar"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFiltros"

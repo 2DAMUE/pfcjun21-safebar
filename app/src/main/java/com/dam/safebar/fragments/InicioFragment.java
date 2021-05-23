@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.dam.safebar.adapters.InicioAdapter;
 import com.dam.safebar.javabeans.Datos;
 import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.InicioListener;
+import com.google.android.gms.dynamic.IFragmentWrapper;
 
 import java.util.ArrayList;
 
@@ -32,15 +34,23 @@ public class InicioFragment extends Fragment {
 
     public InicioFragment newInstance(ArrayList<Restaurante> listaRestaurantes) {
         InicioFragment fragment = new InicioFragment();
-        Bundle args = new Bundle();
-        args.putParcelableArrayList("LISTA_REST", listaRestaurantes);
-        fragment.setArguments(args);
+
+        Log.i("PARCERROR", String.valueOf(listaRestaurantes.size()));
+        if (listaRestaurantes.size()>0) {
+            Bundle args = new Bundle();
+            args.putParcelableArrayList("LISTA_REST", listaRestaurantes);
+            fragment.setArguments(args);
+        }
+        Log.i("PARCERROR", "InicioFragment NewInstance()");
+
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i("PARCERROR", "InicioFragment onCreate");
+
         if (getArguments() != null) {
             listaRestaurantes = getArguments().getParcelableArrayList("LISTA_REST");
         }

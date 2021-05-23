@@ -18,6 +18,7 @@ import com.dam.safebar.fragments.RestauranteFragment;
 import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.ReservarListener;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.snackbar.Snackbar;
 
 public class Rest extends AppCompatActivity implements ReservarListener {
 
@@ -91,6 +92,14 @@ public class Rest extends AppCompatActivity implements ReservarListener {
 
     @Override
     public void booking() {
+
+        //TODO da error
+//        Snackbar snackbar = Snackbar
+//                .make(getWindow().getDecorView().getRootView(), R.string.perfil_modificado_ok, Snackbar.LENGTH_LONG)
+//                .setBackgroundTint(getResources().getColor(R.color.green_dark));
+//        snackbar.setAnchorView(R.id.llInicio);
+//        snackbar.show();
+//        Log.i("PARCERROR", "Rest booking()");
 
         Intent i = new Intent(Rest.this, Inicio.class);
         startActivity(i);

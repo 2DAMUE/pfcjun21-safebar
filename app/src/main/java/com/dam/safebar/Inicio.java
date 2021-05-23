@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -55,6 +56,7 @@ public class Inicio extends BottomNavigationHelper implements InicioListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i("PARCERROR", "Inicio OnCreate");
 //        @BottomNavigationHelper monta directamente el layoutt
 //        setContentView(R.layout.activity_inicio);
 
@@ -81,6 +83,7 @@ public class Inicio extends BottomNavigationHelper implements InicioListener {
     }
 
     private void cargarInicioFragment() {
+        Log.i("PARCERROR", "cargarInicioFragment()");
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         InicioFragment if1 = new InicioFragment().newInstance(listaRestaurantes);
