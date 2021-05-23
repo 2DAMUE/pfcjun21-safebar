@@ -77,6 +77,7 @@ public class Rest extends AppCompatActivity implements ReservarListener {
 
     @Override
     public void booking() {
+
         Intent i = new Intent(Rest.this, Inicio.class);
         startActivity(i);
     }

@@ -22,6 +22,9 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.dam.safebar.R;
+import com.dam.safebar.ReservasRest;
+import com.dam.safebar.javabeans.ReservaRest;
+import com.dam.safebar.javabeans.ReservaUsu;
 import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.CheckQRListener;
 import com.dam.safebar.listeners.InicioListener;
@@ -44,22 +47,26 @@ public class CheckQRFragment extends Fragment {
     Button btnEscanear;
     TextView tvCodigo;
     ImageView imResult;
+    Button btnValidar;
+
+    ReservaRest reservaRest;
 
     FirebaseAuth fba;
     FirebaseUser user;
     DatabaseReference dbRef;
     ValueEventListener vel;
 
+    String codigdoReservaUsu;
+
     public CheckQRFragment() {
         // Required empty public constructor
     }
 
 
-    public CheckQRFragment newInstance() {
+    public CheckQRFragment newInstance(ReservaRest reservaRest) {
         CheckQRFragment fragment = new CheckQRFragment();
         Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
+        args.putParcelable("RESERV_REST", reservaRest);
         fragment.setArguments(args);
         return fragment;
     }
@@ -67,10 +74,9 @@ public class CheckQRFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
+        if (getArguments() != null) {
+            reservaRest = getArguments().getParcelable("RESERV_REST");
+        }
     }
 
     @Override
@@ -84,13 +90,8 @@ public class CheckQRFragment extends Fragment {
                 String resultConcat = getResources().getString(R.string.reserva_verificada) + "\n ID: " + result.getContents();
                 tvCodigo.setText(resultConcat);
                 tvCodigo.setTextColor(getResources().getColor(R.color.green_light));
-
-                //TODO: qr leido correctamente
-
-                //addListener();
-
-               dbRef.child("restaurantes").child(user.getUid()).child("reservas").removeValue();
-//               dbRef.child("usuarios").child(String.valueOf(result.getContents())).setValue(null);
+                codigdoReservaUsu = String.valueOf(result.getContents());
+                btnValidar.setEnabled(true);
 
             } else {
                 tvCodigo.setText(getResources().getString(R.string.error_lectura_qr));
@@ -110,6 +111,9 @@ public class CheckQRFragment extends Fragment {
         getActionBar();
 
         btnEscanear = view.findViewById(R.id.btnEscanear);
+        btnValidar= view.findViewById(R.id.btnValidar);
+
+        btnValidar.setEnabled(false);
 
         fba = FirebaseAuth.getInstance();
         user = fba.getCurrentUser();
@@ -126,10 +130,30 @@ public class CheckQRFragment extends Fragment {
             }
         });
 
+        btnValidar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                if (reservaRest.getCodigo().equals(codigdoReservaUsu)) {
+
+                    dbRef.child("restaurantes").child(user.getUid()).child("reservas").child(reservaRest.getFecha()).
+                            child(reservaRest.getHora()).child(reservaRest.getCodigo()).removeValue();
+
+                    dbRef.child("usuarios").child(reservaRest.getUserUID()).child("reservas").child(reservaRest.getFecha()).
+                            child(reservaRest.getCodigo()).removeValue();
+
+
+                    listener.volverActivityReservasRest();
+
+                } else {
+                    Toast.makeText(getContext(), "No coicide", Toast.LENGTH_SHORT).show();
+                }
 
 
 
-
+            }
+        });
 
         return view;
     }
@@ -161,8 +185,18 @@ public class CheckQRFragment extends Fragment {
 //                @Override
 //                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 //
-//                    restLoged = dataSnapshot.getValue(Restaurante.class);
-//                    cargarDatosUsuario();
+//                    ReservaUsu reservaUsu = dataSnapshot.getValue(ReservaUsu.class);
+//                    reservaUsu.setCodigo(reservaRest.getCodigo());
+//
+//                    if (reservaUsu != null) {
+//
+//
+//
+//
+//                    }
+//
+//                    Toast.makeText(getContext(), "La reserva no existe", Toast.LENGTH_SHORT).show();
+//
 //
 //                }
 //
@@ -171,10 +205,10 @@ public class CheckQRFragment extends Fragment {
 //                    Toast.makeText(getContext(), "Error al cargar los datos", Toast.LENGTH_SHORT).show();
 //                }
 //            };
-//            dbRef.child(user.getUid()).addValueEventListener(vel);
+//            dbRef.child("usuarios").child(reservaRest.getUserUID()).child("reservas").child(reservaRest.getFecha()).
+//                    child(reservaRest.getCodigo()).addValueEventListener(vel);
 //        }
 //    }
-//
 //
 //    @Override
 //    public void onPause() {
@@ -189,6 +223,9 @@ public class CheckQRFragment extends Fragment {
 //        }
 //
 //    }
+
+
+
 
     @Override
     public void onAttach(@NonNull Context context) {

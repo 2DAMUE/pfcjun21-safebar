@@ -121,7 +121,9 @@ public class CuentaFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                   usuario = dataSnapshot.getValue(Usuario.class);
+                    usuario = dataSnapshot.getValue(Usuario.class);
+
+                    removeListener();
 
                     tvEmail.setText(usuario.getEmail());
 

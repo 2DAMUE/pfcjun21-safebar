@@ -30,7 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ReservasRest extends BottomNavigationHelperRest implements ReservasRestListener, CheckQRListener {
+public class ReservasRest extends BottomNavigationHelperRest implements ReservasRestListener {
 
     ArrayList<ReservaRest> listaReservas;
 
@@ -104,7 +104,7 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
 //        super.onBackPressed();
     }
 
-    //u
+
     //    @Override
 //    public void onResume() {
 //        super.onResume();
@@ -136,16 +136,6 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
 
                     }
 
-
-//                    if (listaFechas.size() != 0) {
-//                        for (String fechaArray: listaFechas) {
-//                            fechaActual = fechaArray;
-//                            Log.i("ERROR FECHA", fechaActual);
-//                            addListener2();
-//                        }
-//                        cargarReservasRestFragment();
-//                    }
-
                 }
 
                 @Override
@@ -159,13 +149,12 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
 
     private void addListener2(String fechaArray, int codFecha) {
 
-        onPause();
+        removeListener();
 
         if (vel == null) {
             vel = new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    //Log.i("ERROR2 FECHA", fechaArray);
 
                     listaHoras = null;
                     listaHoras = new ArrayList<String>();
@@ -187,19 +176,11 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
                             }
 
 
-
-
-                            //Log.i("ERROR1 HORA", listaHoras.get(i) + " " + fechaArray);
                         }
 
-////                        for (String horaArray: listaHoras) {
-////                            horaActual = horaArray;
-////                            addListener3(fechaArray);
-////                        }
-//
+
                     }
 
-                    onPause();
 
                 }
 
@@ -214,7 +195,8 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
 
     private void addListener3(String fechaArray, String horaArray, int codFecha, int codHora) {
 
-        onPause();
+
+        removeListener();
 
         if (vel == null) {
             vel = new ValueEventListener() {
@@ -249,13 +231,15 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
 
                     }
 
+                    removeListener();
+
                     if (codFecha == 1 && codHora == 1) {
                         ArrayList<ReservaRest> listaReservasFrag = listaReservas;
-                        onPause();
+
                         cargarReservasRestFragment(listaReservasFrag);
                     }
 
-                    onPause();
+
 
                 }
 
@@ -269,49 +253,12 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
 
     }
 
-//    private void addListener4() {
-//
-//        onPause();
-//
-//        if (vel == null) {
-//            vel = new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                    for (DataSnapshot dss: dataSnapshot.getChildren()) {
-//
-//                        //reservaRest = dss.getValue(ReservaRest.class);
-//
-//                        reservaRest.setFecha(dss.getValue(ReservaRest.class).getFecha());
-//                        reservaRest.setHora(dss.getValue(ReservaRest.class).getHora());
-//                        reservaRest.setUserUID(dss.getValue(ReservaRest.class).getUserUID());
-//                        reservaRest.setNomUsu(dss.getValue(ReservaRest.class).getNomUsu());
-//                        reservaRest.setNumPersonas(dss.getValue(ReservaRest.class).getNumPersonas());
-//                        reservaRest.setCodigo(dss.getKey());
-//
-//                        listaReservas.add(reservaRest);
-//
-//                    }
-//
-//                    cargarReservasRestFragment();
-//
-//                    onPause();
-//
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//                    Toast.makeText(ReservasRest.this, "Error al cargar los datos", Toast.LENGTH_SHORT).show();
-//                }
-//            };
-//            dbRef.child(user.getUid()).child("reservas").child("08-26-2021").child("2:30").addValueEventListener(vel);
-//        }
-//
-//
-//    }
+
 
     private void cargarReservasRestFragment(ArrayList<ReservaRest> listaReservasFrag) {
-        Log.i("ERROR LISTA FRAGMENT", String.valueOf(listaReservasFrag.size()));
+
+        removeListener();
+
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ReservasRestFragment resvf = new ReservasRestFragment().newInstance(listaReservasFrag);
@@ -337,24 +284,19 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
 
 
     @Override
-    public void abrirFragmentCheckQR() {
+    public void abrirActivityCheckQR(ReservaRest reservaRest) {
 
         removeListener();
 
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        CheckQRFragment cqrf = new CheckQRFragment().newInstance();
-        ft.replace(R.id.flReservasRest, cqrf);
-        ft.addToBackStack(null);
-        ft.commit();
-
+        Intent i = new Intent(ReservasRest.this, CheckQR.class);
+        i.putExtra("fechaQR", reservaRest.getFecha());
+        i.putExtra("horaQR", reservaRest.getHora());
+        i.putExtra("codReservQR", reservaRest.getCodigo());
+        i.putExtra("uidQR", reservaRest.getUserUID());
+        startActivity(i);
 
     }
 
-    @Override
-    public void reiniciarReservasRest() {
-        startActivity(new Intent(this, ReservasUsu.class));
-    }
 }
 
 

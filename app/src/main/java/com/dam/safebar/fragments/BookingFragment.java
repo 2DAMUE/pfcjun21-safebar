@@ -288,7 +288,7 @@ public class BookingFragment extends Fragment {
 //    }
 
     private void addListener1() {
-        onPause();
+        removeListener();
         if (vel == null) {
             vel = new ValueEventListener() {
                 @Override
@@ -321,7 +321,7 @@ public class BookingFragment extends Fragment {
 
     private void addListener2() {
 
-        onPause();
+        removeListener();
 
         if (vel == null) {
             vel = new ValueEventListener() {
@@ -352,7 +352,7 @@ public class BookingFragment extends Fragment {
 
     private void addListener3() {
 
-        onPause();
+        removeListener();
 
         if (vel == null) {
             vel = new ValueEventListener() {
@@ -364,6 +364,8 @@ public class BookingFragment extends Fragment {
 
                     dbRef.child("usuarios").child(user.getUid()).child("reservas").child(fecha).child(codigoReserva).setValue(reservaUsu);
                     dbRef.child("restaurantes").child(restUID).child("reservas").child(fecha).child(hora).child(codigoReserva).setValue(reservaRest);
+
+                    removeListener();
 
                     Toast.makeText(getContext(), "Reserva realizada con exito!", Toast.LENGTH_SHORT).show();
 

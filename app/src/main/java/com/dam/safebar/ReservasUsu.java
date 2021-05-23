@@ -154,6 +154,9 @@ public class ReservasUsu extends BottomNavigationHelper implements ReservasUsuLi
     }
 
     private void cargarReservasUsuFragment() {
+
+        removeListener();
+
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ReservasUsuFragment resvf = new ReservasUsuFragment().newInstance(listaReservas);

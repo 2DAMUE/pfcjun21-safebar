@@ -138,76 +138,6 @@ public class EditarPerfilFragment extends Fragment {
             }
         });
 
-//        btnGuardar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                nombre = etNom.getText().toString().trim();
-//                email = etEmail.getText().toString().trim();
-//                password = etPw.getText().toString().trim();
-//                direc = etDirec.getText().toString().trim();
-//
-//                if (fotoCambiada) {
-//                    final StorageReference fotoRef = mFotoStorageRef.child(selectedUri.getEncodedPath());
-//                    UploadTask ut = fotoRef.putFile(selectedUri);
-//                    Task<Uri> urlTask = ut.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-//                        @Override
-//                        public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-//                            if (!task.isSuccessful()) {
-//                                throw task.getException();
-//                            }
-//
-//                            return fotoRef.getDownloadUrl();
-//                        }
-//                    }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<Uri> task) {
-//                            if (task.isSuccessful()) {
-//                                Uri downloadUri = task.getResult();
-//                                usuEditado = new Usuario(downloadUri.toString() ,  nombre, email, password, direc);
-//
-//                                user.updateEmail(email);
-//                                user.updatePassword(password);
-//
-//                                dbRef.child(user.getUid()).setValue(usuEditado);
-//                                Snackbar snackbar = Snackbar
-//                                        .make(getActivity().getWindow().getDecorView().getRootView(), R.string.perfil_modificado_ok, Snackbar.LENGTH_LONG)
-//                                        .setBackgroundTint(getResources().getColor(R.color.green_dark));
-//
-//
-//                                //View para introducir margen por encima del BottomBar
-//                                View snackBarView = snackbar.getView();
-//                                snackBarView.setTranslationY(-(convertDpToPixel(56, getActivity())));
-//                                snackbar.show();
-//
-//                                listener.abrirConfiguracion();
-//
-//                            }
-//                        }
-//                    });
-//                } else {
-//                    usuEditado = new Usuario(usuLoged.getUrlFoto() , nombre, email, password, direc);
-//
-//                    user.updateEmail(email);
-//                    user.updatePassword(password);
-//
-//                    dbRef.child(user.getUid()).setValue(usuEditado);
-//                    Snackbar snackbar = Snackbar
-//                            .make(getActivity().getWindow().getDecorView().getRootView(), R.string.perfil_modificado_ok, Snackbar.LENGTH_LONG)
-//                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
-//
-//
-//                    //View para introducir margen por encima del BottomBar
-//                    View snackBarView = snackbar.getView();
-//                    snackBarView.setTranslationY(-(convertDpToPixel(56, getActivity())));
-//                    snackbar.show();
-//
-//                    listener.abrirConfiguracion();
-//                }
-//
-//
-//
-//            }
-//        });
 
         return view;
     }
@@ -346,6 +276,7 @@ public class EditarPerfilFragment extends Fragment {
 
     private void cargarDatosUsuario() {
 
+        removeListener();
 
         Glide.with(imageView)
                 .load(usuLoged.getUrlFoto())

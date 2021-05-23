@@ -150,6 +150,7 @@ public class Buscar extends BottomNavigationHelper implements BuscarListener {
 
     @Override
     public void abrirRestaurante(String restUID, String restNom) {
+
         Intent intent = new Intent(Buscar.this, Rest.class);
         intent.putExtra(COD_REST_UID_FILTROS, restUID);
         intent.putExtra(COD_REST_NOM_FILTROS, restNom);
@@ -157,6 +158,8 @@ public class Buscar extends BottomNavigationHelper implements BuscarListener {
     }
 
     private void recargarFiltrosFrag() {
+
+        removeListener();
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
