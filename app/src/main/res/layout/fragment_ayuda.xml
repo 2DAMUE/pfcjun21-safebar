@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragments.AyudaFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:id="@+id/tvFragmentDesFoto1"
         android:layout_width="match_parent"
@@ -14,4 +15,26 @@
         android:textSize="24sp"
         android:text="@string/tvFragementAyuda"/>
 
-</FrameLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLlamarAyudaFrag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="llamar"
+        android:drawableRight="@drawable/ic_telefono"
+        android:backgroundTint="@color/green_dark"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEmailAyudaFrag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="Email"
+        android:backgroundTint="@color/statelist_btn_orange"
+        />
+
+</LinearLayout>

@@ -6,9 +6,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.dam.safebar.fragments.BookingFragment;
 import com.dam.safebar.fragments.InicioFragment;
@@ -62,6 +64,19 @@ public class Rest extends AppCompatActivity implements ReservarListener {
     }
 
     @Override
+    public void llamar(String telef) {
+        Uri telf = Uri.parse("tel:" + telef);
+        Intent llamada = new Intent(Intent.ACTION_DIAL, telf);
+
+        if (llamada.resolveActivity(getPackageManager()) != null) {
+            startActivity(llamada);
+        } else {
+            Toast.makeText(this, "Ha ocurrido una error inesperado", Toast.LENGTH_LONG).show();
+
+        }
+    }
+
+    @Override
     public void abrirReservar(String restUID, String restNom) {
 
         FragmentManager fm = getSupportFragmentManager();
@@ -71,7 +86,6 @@ public class Rest extends AppCompatActivity implements ReservarListener {
         ft.addToBackStack(null);
         ft.commit();
 
-        //TODO: Firebase
 
     }
 
