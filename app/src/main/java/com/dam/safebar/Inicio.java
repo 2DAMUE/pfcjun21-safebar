@@ -20,6 +20,7 @@ import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.InicioListener;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.radiobutton.MaterialRadioButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -59,6 +60,17 @@ public class Inicio extends BottomNavigationHelper implements InicioListener {
         Log.i("PARCERROR", "Inicio OnCreate");
 //        @BottomNavigationHelper monta directamente el layoutt
 //        setContentView(R.layout.activity_inicio);
+
+        if (getIntent().getStringExtra("SNACKBAR") != null) {
+            if (getIntent().getStringExtra("SNACKBAR").equals("SB")) {
+                Snackbar snackbar = Snackbar
+                .make(getWindow().getDecorView().getRootView(), R.string.reserva_realizada, Snackbar.LENGTH_LONG)
+                .setBackgroundTint(getResources().getColor(R.color.green_dark));
+                snackbar.setAnchorView(R.id.bottomNavigationBar);
+                snackbar.show();
+                Log.i("PARCERROR", "Rest booking()");
+            }
+        }
 
         tb = findViewById(R.id.topAppBarInicio);
         tb.setNavigationIcon(null);

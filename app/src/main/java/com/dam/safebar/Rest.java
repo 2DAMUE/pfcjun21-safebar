@@ -102,6 +102,7 @@ public class Rest extends AppCompatActivity implements ReservarListener {
 //        Log.i("PARCERROR", "Rest booking()");
 
         Intent i = new Intent(Rest.this, Inicio.class);
+        i.putExtra("SNACKBAR", "SB");
         startActivity(i);
     }
 }

@@ -20,6 +20,7 @@ import com.dam.safebar.javabeans.ReservaUsu;
 import com.dam.safebar.listeners.CheckQRListener;
 import com.dam.safebar.listeners.ReservasRestListener;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -265,6 +266,14 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
         ft.add(R.id.flReservasRest, resvf);
         ft.addToBackStack(null);
         ft.commit();
+
+        //todo: snackbar
+
+        Snackbar snackbar = Snackbar
+                .make(getWindow().getDecorView().getRootView(), R.string.reserva_realizada, Snackbar.LENGTH_LONG)
+                .setBackgroundTint(getResources().getColor(R.color.green_dark));
+        snackbar.setAnchorView(R.id.bottomNavigationBar);
+        snackbar.show();
     }
 
     @Override

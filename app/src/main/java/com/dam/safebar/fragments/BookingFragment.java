@@ -74,6 +74,7 @@ public class BookingFragment extends Fragment {
     int numPersonas;
     int contAforo;
     boolean isCena;
+    String resOk = "";
 
 
     EditText etFecha;
@@ -332,7 +333,16 @@ public class BookingFragment extends Fragment {
                     restaurante = dataSnapshot.getValue(Restaurante.class);
 
                     if (contAforo > restaurante.getAforo()) {
-                        Toast.makeText(getContext(), "Aforo completo!", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getContext(), "Aforo completo!", Toast.LENGTH_SHORT).show();
+
+                        //TODO: snackbar aforo completo
+
+                        Snackbar snackbar = Snackbar
+                                .make(getActivity().getWindow().getDecorView().getRootView(), R.string.reserva_realizada, Snackbar.LENGTH_LONG)
+                                .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+                        snackbar.setAnchorView(R.id.bottomNavigationBar);
+                        snackbar.show();
+
                     } else {
 
                         addListener3();
@@ -368,7 +378,8 @@ public class BookingFragment extends Fragment {
 
                     removeListener();
 
-                    Toast.makeText(getContext(), "Reserva realizada con exito!", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), "Reserva realizada con exito!", Toast.LENGTH_SHORT).show();
+
 
                     listener.booking();
 
