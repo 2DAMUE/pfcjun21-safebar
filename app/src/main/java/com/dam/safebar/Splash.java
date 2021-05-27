@@ -3,7 +3,9 @@ package com.dam.safebar;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.os.Build;
@@ -23,11 +25,14 @@ public class Splash extends AppCompatActivity {
 
     ImageView logo;
     TextView nombre;
+    SharedPreferences loginDataCheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        loginDataCheck = getSharedPreferences("loginData", Context.MODE_PRIVATE);
 
         logo = findViewById(R.id.ivLogoChefSplash);
         nombre = findViewById(R.id.tvNombreApp);
@@ -42,14 +47,16 @@ public class Splash extends AppCompatActivity {
         logo.startAnimation(fadeIn);
         nombre.startAnimation(fadeIn);
 
-        //Para comprobar si existe usuario Logueado. Salta al inicio si ya hay sesion abierta.
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        if (user != null) {
-//            openDelay(false);
-//        } else {
-//            openDelay(true);
-//        }
-        openDelay(true);
+        boolean rememberMe = loginDataCheck.getBoolean("REMEMBER_ME", false);
+
+        if (rememberMe) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (user != null) {
+                openDelay(false);
+            }
+        } else {
+            openDelay(true);
+        }
 
     }
 
