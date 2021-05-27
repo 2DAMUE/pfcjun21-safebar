@@ -18,6 +18,7 @@ import com.dam.safebar.fragments.RestauranteFragment;
 import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.ReservarListener;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 public class Rest extends AppCompatActivity implements ReservarListener {
@@ -72,7 +73,12 @@ public class Rest extends AppCompatActivity implements ReservarListener {
         if (llamada.resolveActivity(getPackageManager()) != null) {
             startActivity(llamada);
         } else {
-            Toast.makeText(this, "Ha ocurrido una error inesperado", Toast.LENGTH_LONG).show();
+            Snackbar snackbar = Snackbar
+                    .make(getWindow().getDecorView().getRootView(), R.string.error_llamada, Snackbar.LENGTH_LONG)
+                    .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+            snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+            snackbar.setAnchorView(R.id.btnRestReservar);
+            snackbar.show();
 
         }
     }
@@ -92,14 +98,6 @@ public class Rest extends AppCompatActivity implements ReservarListener {
 
     @Override
     public void booking() {
-
-        //TODO da error
-//        Snackbar snackbar = Snackbar
-//                .make(getWindow().getDecorView().getRootView(), R.string.perfil_modificado_ok, Snackbar.LENGTH_LONG)
-//                .setBackgroundTint(getResources().getColor(R.color.green_dark));
-//        snackbar.setAnchorView(R.id.llInicio);
-//        snackbar.show();
-//        Log.i("PARCERROR", "Rest booking()");
 
         Intent i = new Intent(Rest.this, Inicio.class);
         i.putExtra("SNACKBAR", "SB");

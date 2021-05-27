@@ -153,7 +153,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_weight="1"
-                android:text="Navegar"
+                android:text="@string/navegar"
                 android:drawableRight="@drawable/ic_indicaciones"/>
 
             <com.google.android.material.button.MaterialButton
@@ -163,25 +163,38 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="16dp"
                 android:layout_weight="1"
-                android:text="llamar"
+                android:text="@string/llamar"
                 android:drawableRight="@drawable/ic_telefono"
                 android:backgroundTint="@color/green_dark"
                 />
         </LinearLayout>
     </LinearLayout>
-
-
-
-
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/fabReservar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRestReservar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_margin="16dp"
+        app:cornerRadius="0dp"
+        android:insetBottom="0dp"
+        android:insetTop="0dp"
         android:text="@string/restaurante_frag_btn_reservar"
-        app:icon="@drawable/ic_add" />
+        android:fontFamily="@font/oswald_light"
+        android:textSize="24sp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+        />
+
+
+
+
+<!--    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton-->
+<!--        android:id="@+id/fabReservar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        android:layout_margin="16dp"-->
+<!--        android:text="@string/restaurante_frag_btn_reservar"-->
+<!--        app:icon="@drawable/ic_add" />-->
 
 
 

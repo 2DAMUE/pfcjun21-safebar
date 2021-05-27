@@ -28,6 +28,8 @@ import com.dam.safebar.javabeans.ReservaUsu;
 import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.CheckQRListener;
 import com.dam.safebar.listeners.InicioListener;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -123,7 +125,7 @@ public class CheckQRFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 IntentIntegrator scaner = IntentIntegrator.forSupportFragment(CheckQRFragment.this);
-                scaner.setPrompt("Escanea el QR del cliente");
+                scaner.setPrompt(getString(R.string.escanea_qr));
                 scaner.setOrientationLocked(false);
                 scaner.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
                 scaner.initiateScan();
@@ -147,7 +149,11 @@ public class CheckQRFragment extends Fragment {
                     listener.volverActivityReservasRest();
 
                 } else {
-                    Toast.makeText(getContext(), "No coicide", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar
+                            .make(getActivity().getWindow().getDecorView().getRootView(), R.string.error_qr_no_coincide, Snackbar.LENGTH_LONG)
+                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+                    snackbar.setAnchorView(R.id.flCheckQR);
+                    snackbar.show();
                 }
 
 

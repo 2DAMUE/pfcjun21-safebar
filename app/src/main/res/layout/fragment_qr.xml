@@ -3,20 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.QRFragment"
     android:orientation="vertical"
     android:gravity="center">
 
     <ImageView
         android:id="@+id/imQR"
+        android:layout_marginTop="100dp"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:src="@drawable/ic_persona"/>
-    <Button
-        android:id="@+id/btnOnClicl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="GENERAR QR"/>
+        android:src="@drawable/ic_qr"
+        app:tint="@color/green_dark"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom">
+        <Button
+            android:id="@+id/btnOnClicl"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="@string/generar_qr"
+            app:cornerRadius="0dp"
+            android:insetBottom="0dp"
+            android:insetTop="0dp"
+            android:fontFamily="@font/oswald_light"
+            android:textSize="24sp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"/>
+    </LinearLayout>
+
 
 
 

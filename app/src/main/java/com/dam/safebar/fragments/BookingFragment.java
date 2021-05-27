@@ -2,6 +2,7 @@ package com.dam.safebar.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,7 +18,9 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.dam.safebar.Inicio;
 import com.dam.safebar.R;
+import com.dam.safebar.ReservasUsu;
 import com.dam.safebar.javabeans.ReservaRest;
 import com.dam.safebar.javabeans.ReservaUsu;
 import com.dam.safebar.javabeans.Restaurante;
@@ -27,6 +30,7 @@ import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.DateValidatorPointForward;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.timepicker.MaterialTimePicker;
@@ -252,7 +256,16 @@ public class BookingFragment extends Fragment {
                 sNumPersonas = etNumPersonas.getText().toString().trim();
 
                 if (fecha.isEmpty() || hora.isEmpty() || sNumPersonas.isEmpty()) {
-                    Toast.makeText(getContext(), "Faltan datos!", Toast.LENGTH_SHORT).show();
+
+                    Snackbar snackbar = Snackbar
+                            .make(getActivity().getWindow().getDecorView().getRootView(), R.string.faltan_datos, Snackbar.LENGTH_LONG)
+                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+                    snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                    snackbar.setAnchorView(R.id.btnBookingFragReservar);
+                    snackbar.show();
+
+
+
                 } else {
                     numPersonas = Integer.parseInt(sNumPersonas);
                     codigoReserva = crearCodigoReserva();
@@ -312,7 +325,12 @@ public class BookingFragment extends Fragment {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(getContext(), "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar
+                            .make(getActivity().getWindow().getDecorView().getRootView(), R.string.error_carga_datos, Snackbar.LENGTH_LONG)
+                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+                    snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                    snackbar.setAnchorView(R.id.btnBookingFragReservar);
+                    snackbar.show();
                 }
             };
             dbRef.child("restaurantes").child(restUID).child("reservas").child(fecha).child(hora).addValueEventListener(vel);
@@ -333,14 +351,12 @@ public class BookingFragment extends Fragment {
                     restaurante = dataSnapshot.getValue(Restaurante.class);
 
                     if (contAforo > restaurante.getAforo()) {
-//                        Toast.makeText(getContext(), "Aforo completo!", Toast.LENGTH_SHORT).show();
-
-                        //TODO: snackbar aforo completo
 
                         Snackbar snackbar = Snackbar
-                                .make(getActivity().getWindow().getDecorView().getRootView(), R.string.reserva_realizada, Snackbar.LENGTH_LONG)
+                                .make(getActivity().getWindow().getDecorView().getRootView(), R.string.aforo_completo, Snackbar.LENGTH_LONG)
                                 .setBackgroundTint(getResources().getColor(R.color.orange_dark));
-                        snackbar.setAnchorView(R.id.bottomNavigationBar);
+                        snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                        snackbar.setAnchorView(R.id.btnBookingFragReservar);
                         snackbar.show();
 
                     } else {
@@ -353,7 +369,12 @@ public class BookingFragment extends Fragment {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(getContext(), "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar
+                            .make(getActivity().getWindow().getDecorView().getRootView(), R.string.error_carga_datos, Snackbar.LENGTH_LONG)
+                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+                    snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                    snackbar.setAnchorView(R.id.btnBookingFragReservar);
+                    snackbar.show();
                 }
             };
             dbRef.child("restaurantes").child(restUID).addValueEventListener(vel);
@@ -378,16 +399,18 @@ public class BookingFragment extends Fragment {
 
                     removeListener();
 
-//                    Toast.makeText(getContext(), "Reserva realizada con exito!", Toast.LENGTH_SHORT).show();
-
-
                     listener.booking();
 
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(getContext(), "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar
+                            .make(getActivity().getWindow().getDecorView().getRootView(), R.string.error_carga_datos, Snackbar.LENGTH_LONG)
+                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+                    snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                    snackbar.setAnchorView(R.id.btnBookingFragReservar);
+                    snackbar.show();
                 }
             };
             dbRef.child("usuarios").child(user.getUid()).addValueEventListener(vel);

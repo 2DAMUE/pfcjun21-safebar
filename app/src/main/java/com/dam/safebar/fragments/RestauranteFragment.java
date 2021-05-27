@@ -24,6 +24,8 @@ import com.dam.safebar.listeners.PerfilRestListener;
 import com.dam.safebar.listeners.ReservarListener;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -56,9 +58,8 @@ public class RestauranteFragment extends Fragment {
     TextView tvDescrip;
     Button btnIndicaciones;
     Button btnLlamar;
+    Button btnReservar;
     RatingBar rtbRestaurante;
-
-    ExtendedFloatingActionButton fabReservar;
 
     public RestauranteFragment() {
         // Required empty public constructor
@@ -93,7 +94,9 @@ public class RestauranteFragment extends Fragment {
         tvPrecio = view.findViewById(R.id.tvPrecioRestauranteFrag);
         tvAforo = view.findViewById(R.id.tvAforoRestauranteFrag);
         tvDescrip = view.findViewById(R.id.tvDescripRestauranteFrag);
-        fabReservar = view.findViewById(R.id.fabReservar);
+
+        btnReservar = view.findViewById(R.id.btnRestReservar);
+
         rtbRestaurante = view.findViewById(R.id.ratingBarRestaurante);
         btnLlamar = view.findViewById(R.id.btnLlamarRestauranteFrag);
         //btnNavegar = view.findViewById(R.id.btnNavegarRestauranteFrag);
@@ -104,7 +107,7 @@ public class RestauranteFragment extends Fragment {
 
         addListener();
 
-        fabReservar.setOnClickListener(new View.OnClickListener() {
+        btnReservar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 listener.abrirReservar(restUID, restNom);
@@ -171,7 +174,12 @@ public class RestauranteFragment extends Fragment {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(getContext(), "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar
+                            .make(getActivity().getWindow().getDecorView().getRootView(), R.string.error_carga_datos, Snackbar.LENGTH_LONG)
+                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+                    snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                    snackbar.setAnchorView(R.id.btnRestReservar);
+                    snackbar.show();
                 }
             };
             dbRef.child(restUID).addValueEventListener(vel);

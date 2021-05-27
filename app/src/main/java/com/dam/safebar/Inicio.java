@@ -20,6 +20,7 @@ import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.InicioListener;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.radiobutton.MaterialRadioButton;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -66,6 +67,11 @@ public class Inicio extends BottomNavigationHelper implements InicioListener {
                 Snackbar snackbar = Snackbar
                 .make(getWindow().getDecorView().getRootView(), R.string.reserva_realizada, Snackbar.LENGTH_LONG)
                 .setBackgroundTint(getResources().getColor(R.color.green_dark));
+                snackbar.setAction("VER", v -> {
+                    removeListener();
+                    startActivity(new Intent(Inicio.this, ReservasUsu.class));
+                });
+                snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
                 snackbar.setAnchorView(R.id.bottomNavigationBar);
                 snackbar.show();
                 Log.i("PARCERROR", "Rest booking()");
@@ -128,7 +134,12 @@ public class Inicio extends BottomNavigationHelper implements InicioListener {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(Inicio.this, "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar
+                            .make(getWindow().getDecorView().getRootView(), R.string.error_carga_datos, Snackbar.LENGTH_LONG)
+                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+                    snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                    snackbar.setAnchorView(R.id.bottomNavigationBar);
+                    snackbar.show();
                 }
             };
             dbRef.addValueEventListener(vel);

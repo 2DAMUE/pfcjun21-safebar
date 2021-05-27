@@ -15,6 +15,7 @@ import com.dam.safebar.fragments.CuentaFragment;
 import com.dam.safebar.javabeans.ReservaRest;
 import com.dam.safebar.listeners.CheckQRListener;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.snackbar.Snackbar;
 
 public class CheckQR extends AppCompatActivity implements CheckQRListener {
 
@@ -63,6 +64,12 @@ public class CheckQR extends AppCompatActivity implements CheckQRListener {
     public void volverActivityReservasRest() {
 
         Toast.makeText(this, "Reserva validada con exito!", Toast.LENGTH_SHORT).show();
+
+        Snackbar snackbar = Snackbar
+                .make(getWindow().getDecorView().getRootView(), R.string.reserva_validada_ok, Snackbar.LENGTH_LONG)
+                .setBackgroundTint(getResources().getColor(R.color.green_dark));
+        snackbar.setAnchorView(R.id.flCheckQR);
+        snackbar.show();
         startActivity(new Intent(this, ReservasRest.class));
 
     }

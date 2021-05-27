@@ -51,4 +51,16 @@
     <string name="debes_introducir_nombre">Debes introducir un nombre</string>
     <string name="aceptar">ACEPTAR</string>
     <string name="reserva_realizada">¡Reserva realizada con éxito!</string>
+    <string name="faltan_datos">¡Rellena todos los datos!</string>
+    <string name="error_carga_datos">Error al cargar los datos</string>
+    <string name="aforo_completo">Aforo completo</string>
+    <string name="error_llamada">No se ha podido realizar la acción</string>
+    <string name="error_qr_no_coincide">No se han encontrado coincidencias para el QR</string>
+    <string name="reserva_validada_ok">¡Reserva validada con éxito!</string>
+    <string name="escanea_qr">Escanea el QR del cliente</string>
+    <string name="generar_qr">GENERAR QR</string>
+    <string name="escanear_qr">ESCANEAR QR</string>
+    <string name="validar">Validar</string>
+    <string name="llamar">llamar</string>
+    <string name="navegar">Navegar</string>
 </resources>
