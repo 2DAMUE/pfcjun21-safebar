@@ -151,7 +151,6 @@ public class BookingFragment extends Fragment {
                 picker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
                     @Override
                     public void onPositiveButtonClick(Object selection) {
-                        //todo: obtener fecha mes-dia-anio
                         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
                         String formatted = simpleDateFormat.format(selection);
                         etFecha.setText(formatted);

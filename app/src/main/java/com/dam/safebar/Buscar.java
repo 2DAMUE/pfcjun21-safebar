@@ -92,6 +92,11 @@ public class Buscar extends BottomNavigationHelper implements BuscarListener {
 //        }
 //    }
 
+
+    @Override
+    public void onBackPressed() {
+    }
+
     @Override
     public void buscarRestaurantes(String nombre) {
 

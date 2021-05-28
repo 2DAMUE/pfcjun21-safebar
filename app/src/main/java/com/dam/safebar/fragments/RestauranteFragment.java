@@ -143,10 +143,15 @@ public class RestauranteFragment extends Fragment {
 
         removeListener();
 
-        Glide.with(img)
-                .load(restaurante.getUrlFoto())
-                .placeholder(null)
-                .into(img);
+        if (getActivity() != null) {
+            if (!getActivity().getSupportFragmentManager().isDestroyed()) {
+                Glide.with(img)
+                        .load(restaurante.getUrlFoto())
+                        .placeholder(null)
+                        .into(img);
+            }
+        }
+
 
         tvNom.setText(restaurante.getNombreRest());
         tvDirec.setText(restaurante.getDireccion());

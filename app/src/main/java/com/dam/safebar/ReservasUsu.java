@@ -1,6 +1,7 @@
 package com.dam.safebar;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -149,7 +150,11 @@ public class ReservasUsu extends BottomNavigationHelper implements ReservasUsuLi
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(this, ReservasUsu.class));
+        Fragment f = getSupportFragmentManager().findFragmentById(R.id.flReservas);
+        if (f instanceof QRFragment) {
+            startActivity(new Intent(this, ReservasUsu.class));
+        }
+
 //        super.onBackPressed();
     }
 
@@ -158,11 +163,16 @@ public class ReservasUsu extends BottomNavigationHelper implements ReservasUsuLi
         removeListener();
 
         FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ReservasUsuFragment resvf = new ReservasUsuFragment().newInstance(listaReservas);
-        ft.add(R.id.flReservas, resvf);
-        ft.addToBackStack(null);
-        ft.commit();
+        if (!fm.isDestroyed()) {
+            FragmentTransaction ft = fm.beginTransaction();
+            ReservasUsuFragment resvf = new ReservasUsuFragment().newInstance(listaReservas);
+            ft.add(R.id.flReservas, resvf);
+            ft.addToBackStack(null);
+//            ft.commit();
+            ft.commitAllowingStateLoss();
+        }
+
+
     }
 //
 //    @Override
