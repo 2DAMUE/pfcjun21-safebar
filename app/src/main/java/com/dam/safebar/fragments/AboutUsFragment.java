@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.dam.safebar.R;
 
 
@@ -40,6 +42,25 @@ public class AboutUsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_about_us, container, false);
+
+        ImageView imageView1 = (ImageView) view.findViewById(R.id.imgAboutUs1);
+        ImageView imageView2 = (ImageView) view.findViewById(R.id.imgAboutUs2);
+        ImageView imageView3 = (ImageView) view.findViewById(R.id.imgAboutUs3);
+
+        Glide.with(imageView1)
+                .load(R.drawable.img_alex)
+                .placeholder(null)
+                .into(imageView1);
+        Glide.with(imageView2)
+                .load(R.drawable.img_miguel)
+                .placeholder(null)
+                .into(imageView2);
+        Glide.with(imageView3)
+                .load(R.drawable.img_pablo)
+                .placeholder(null)
+                .into(imageView3);
+
+
         return view;
     }
 }
