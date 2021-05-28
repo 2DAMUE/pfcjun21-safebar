@@ -64,4 +64,5 @@
     <string name="llamar">llamar</string>
     <string name="navegar">Navegar</string>
     <string name="texto_about_us">Somos Alejandro García, Miguel Moneo y Pablo Sánchez, alumnos de Desarrollo de Aplicaciones Multiplataforma.\n\nDurante el proyecto hemos desarrollado un total de 14.000 líneas, implementado alrededor de 7 módulos distintos tanto para ayudarnos con la funcionalidad como adecuar la apariencia de la aplicación. \n\nPuedes encontrarnos en github como \n@alxgarci | @PabloSC900 | @ccapu</string>
+    <string name="email">Email</string>
 </resources>

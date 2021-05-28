@@ -4,37 +4,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragments.AyudaFragment">
+    tools:context=".fragments.AyudaFragment"
+    android:padding="6dp"
+    android:gravity="center_vertical">
 
 
     <TextView
         android:id="@+id/tvFragmentDesFoto1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="210dp"
         android:textSize="24sp"
-        android:text="@string/tvFragementAyuda"/>
+        android:text="@string/tvFragementAyuda"
+        android:fontFamily="@font/oswald_light"
+        android:textAlignment="center"/>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnLlamarAyudaFrag"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:text="llamar"
-        android:drawableRight="@drawable/ic_telefono"
-        android:backgroundTint="@color/green_dark"
-        />
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:padding="6dp">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnEmailAyudaFrag"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:text="Email"
-        android:backgroundTint="@color/statelist_btn_orange"
-        />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEmailAyudaFrag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:drawableEnd="@drawable/ic_email_24"
+            android:backgroundTint="@color/yellow"
+            android:layout_weight="1"
+            android:layout_marginEnd="3dp"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLlamarAyudaFrag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/llamar"
+            android:drawableEnd="@drawable/ic_telefono"
+            android:backgroundTint="@color/green_dark"
+            android:layout_weight="1"
+            android:layout_marginStart="3dp"
+            />
+    </LinearLayout>
+
+
 
 </LinearLayout>
