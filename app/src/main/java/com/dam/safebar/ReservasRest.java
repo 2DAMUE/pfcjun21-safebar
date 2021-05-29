@@ -20,6 +20,7 @@ import com.dam.safebar.javabeans.ReservaUsu;
 import com.dam.safebar.listeners.CheckQRListener;
 import com.dam.safebar.listeners.ReservasRestListener;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -83,6 +84,15 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
 
         finalConsulta = 0;
 
+        if (getIntent().getBooleanExtra(CheckQR.RES_VERIFICADA, false)) {
+                Snackbar snackbar = Snackbar
+                        .make(getWindow().getDecorView().getRootView(), R.string.reserva_validada_ok, Snackbar.LENGTH_LONG)
+                        .setBackgroundTint(getResources().getColor(R.color.green_dark));
+                snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                snackbar.setAnchorView(R.id.bottomNavigationBarRest);
+                snackbar.show();
+        }
+
         fba = FirebaseAuth.getInstance();
         user = fba.getCurrentUser();
         dbRef = FirebaseDatabase.getInstance().getReference("datos/restaurantes");
@@ -141,7 +151,12 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(ReservasRest.this, "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar
+                            .make(getWindow().getDecorView().getRootView(), R.string.error_carga_datos, Snackbar.LENGTH_LONG)
+                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+                    snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                    snackbar.setAnchorView(R.id.bottomNavigationBarRest);
+                    snackbar.show();
                 }
             };
             dbRef.child(user.getUid()).child("reservas").addValueEventListener(vel);
@@ -187,7 +202,12 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(ReservasRest.this, "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar
+                            .make(getWindow().getDecorView().getRootView(), R.string.error_carga_datos, Snackbar.LENGTH_LONG)
+                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+                    snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                    snackbar.setAnchorView(R.id.bottomNavigationBarRest);
+                    snackbar.show();
                 }
             };
             dbRef.child(user.getUid()).child("reservas").child(fechaArray).addValueEventListener(vel);
@@ -246,7 +266,12 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(ReservasRest.this, "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar
+                            .make(getWindow().getDecorView().getRootView(), R.string.error_carga_datos, Snackbar.LENGTH_LONG)
+                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+                    snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                    snackbar.setAnchorView(R.id.bottomNavigationBarRest);
+                    snackbar.show();
                 }
             };
             dbRef.child(user.getUid()).child("reservas").child(fechaArray).child(horaArray).addValueEventListener(vel);

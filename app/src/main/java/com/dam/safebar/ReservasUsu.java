@@ -17,6 +17,8 @@ import com.dam.safebar.javabeans.ReservaUsu;
 import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.ReservasUsuListener;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -108,7 +110,12 @@ public class ReservasUsu extends BottomNavigationHelper implements ReservasUsuLi
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(ReservasUsu.this, "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar
+                            .make(getWindow().getDecorView().getRootView(), R.string.error_carga_datos, Snackbar.LENGTH_LONG)
+                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+                    snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                    snackbar.setAnchorView(R.id.bottomNavigationBar);
+                    snackbar.show();
                 }
             };
             dbRef.child(user.getUid()).child("reservas").addValueEventListener(vel);
@@ -137,7 +144,12 @@ public class ReservasUsu extends BottomNavigationHelper implements ReservasUsuLi
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(ReservasUsu.this, "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar
+                            .make(getWindow().getDecorView().getRootView(), R.string.error_carga_datos, Snackbar.LENGTH_LONG)
+                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+                    snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                    snackbar.setAnchorView(R.id.bottomNavigationBar);
+                    snackbar.show();
                 }
             };
             dbRef.child(user.getUid()).child("reservas").child(fechaArray).addValueEventListener(vel);

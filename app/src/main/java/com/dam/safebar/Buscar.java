@@ -22,6 +22,8 @@ import com.dam.safebar.fragments.InicioFragment;
 import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.BuscarListener;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -152,7 +154,12 @@ public class Buscar extends BottomNavigationHelper implements BuscarListener {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(Buscar.this, "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar
+                            .make(getWindow().getDecorView().getRootView(), R.string.error_carga_datos, Snackbar.LENGTH_LONG)
+                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+                    snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                    snackbar.setAnchorView(R.id.bottomNavigationBar);
+                    snackbar.show();
                 }
             };
             dbRef.addValueEventListener(vel);

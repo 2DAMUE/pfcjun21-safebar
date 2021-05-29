@@ -18,6 +18,8 @@ import com.dam.safebar.R;
 import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.javabeans.Usuario;
 import com.dam.safebar.listeners.CuentaListener;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -131,7 +133,12 @@ public class CuentaFragment extends Fragment {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(getContext(), "Error al cargar los datos", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar
+                            .make(getActivity().getWindow().getDecorView().getRootView(), R.string.error_carga_datos, Snackbar.LENGTH_LONG)
+                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+                    snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                    snackbar.setAnchorView(R.id.bottomNavigationBar);
+                    snackbar.show();
                 }
             };
             dbRef.child(user.getUid()).addValueEventListener(vel);

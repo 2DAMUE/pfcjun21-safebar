@@ -21,6 +21,8 @@ import com.dam.safebar.fragments.EditarPerfilFragment;
 import com.dam.safebar.fragments.ProtocoloCovidFragment;
 import com.dam.safebar.listeners.CuentaListener;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 public class Cuenta extends BottomNavigationHelper implements CuentaListener {
 
@@ -136,7 +138,12 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
         if (llamada.resolveActivity(getPackageManager()) != null) {
             startActivity(llamada);
         } else {
-            Toast.makeText(this, "Ha ocurrido una error inesperado", Toast.LENGTH_LONG).show();
+            Snackbar snackbar = Snackbar
+                    .make(getWindow().getDecorView().getRootView(), R.string.unexpected_error, Snackbar.LENGTH_LONG)
+                    .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+            snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+            snackbar.setAnchorView(R.id.bottomNavigationBar);
+            snackbar.show();
 
         }
     }

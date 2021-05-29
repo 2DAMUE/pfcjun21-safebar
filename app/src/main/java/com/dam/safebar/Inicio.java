@@ -62,21 +62,32 @@ public class Inicio extends BottomNavigationHelper implements InicioListener {
 //        @BottomNavigationHelper monta directamente el layout
 //        setContentView(R.layout.activity_inicio);
 
-        if (getIntent().getStringExtra("SNACKBAR") != null) {
-            if (getIntent().getStringExtra("SNACKBAR").equals("SB")) {
-                Snackbar snackbar = Snackbar
-                .make(getWindow().getDecorView().getRootView(), R.string.reserva_realizada, Snackbar.LENGTH_LONG)
-                .setBackgroundTint(getResources().getColor(R.color.green_dark));
-                snackbar.setAction("VER", v -> {
-                    removeListener();
-                    startActivity(new Intent(Inicio.this, ReservasUsu.class));
-                });
-                snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
-                snackbar.setAnchorView(R.id.bottomNavigationBar);
-                snackbar.show();
-                Log.i("PARCERROR", "Rest booking()");
-            }
+        //TODO: problema Snackbar, intuyo que por savedInstanceState
+        if (getIntent().getBooleanExtra(Rest.BOOKING_OK, false)) {
+            Snackbar snackbar = Snackbar
+                    .make(getWindow().getDecorView().getRootView(), R.string.reserva_realizada, Snackbar.LENGTH_LONG)
+                    .setBackgroundTint(getResources().getColor(R.color.green_dark));
+
+            snackbar.setAction("VER", v -> {
+                removeListener();
+                startActivity(new Intent(Inicio.this, ReservasUsu.class));
+            });
+
+            snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+            snackbar.setAnchorView(R.id.bottomNavigationBar);
+            snackbar.show();
         }
+
+
+
+
+
+//        if (getIntent().getStringExtra("SNACKBAR") != null) {
+//            if (getIntent().getStringExtra("SNACKBAR").equals("SB")) {
+//
+//                Log.i("PARCERROR", "Rest booking()");
+//            }
+//        }
 
         tb = findViewById(R.id.topAppBarInicio);
         tb.setNavigationIcon(null);

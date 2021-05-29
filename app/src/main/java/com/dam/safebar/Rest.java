@@ -26,6 +26,8 @@ public class Rest extends AppCompatActivity implements ReservarListener {
     String restUID;
     String restNom;
 
+    public final static String BOOKING_OK = "BOOK_OK";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,7 +102,7 @@ public class Rest extends AppCompatActivity implements ReservarListener {
     public void booking() {
 
         Intent i = new Intent(Rest.this, Inicio.class);
-        i.putExtra("SNACKBAR", "SB");
+        i.putExtra(BOOKING_OK, true);
         startActivity(i);
     }
 }

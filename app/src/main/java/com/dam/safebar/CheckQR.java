@@ -19,6 +19,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class CheckQR extends AppCompatActivity implements CheckQRListener {
 
+    public final static String RES_VERIFICADA= "VERIF";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,14 +65,9 @@ public class CheckQR extends AppCompatActivity implements CheckQRListener {
     @Override
     public void volverActivityReservasRest() {
 
-        //TODO
-
-//        Snackbar snackbar = Snackbar
-//                .make(getWindow().getDecorView().getRootView(), R.string.reserva_validada_ok, Snackbar.LENGTH_LONG)
-//                .setBackgroundTint(getResources().getColor(R.color.green_dark));
-//        snackbar.setAnchorView(R.id.bottomNavigationBarRest);
-//        snackbar.show();
-        startActivity(new Intent(this, ReservasRest.class));
+        Intent i = new Intent(this, ReservasRest.class);
+        i.putExtra(RES_VERIFICADA, true);
+        startActivity(i);
 
     }
 }
