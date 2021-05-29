@@ -19,6 +19,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.checkbox.MaterialCheckBox;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
@@ -120,8 +121,11 @@ public class LogInRest extends AppCompatActivity {
                             acceder();
 
                         } else {
-                            Toast.makeText(LogInRest.this, "El usuario introducido no existe",
-                                    Toast.LENGTH_SHORT).show();
+                            Snackbar snackbar = Snackbar
+                                    .make(getWindow().getDecorView().getRootView(), R.string.user_not_found, Snackbar.LENGTH_LONG)
+                                    .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+                            snackbar.setAnchorView(R.id.llSwitchRest);
+                            snackbar.show();
                         }
 
                     }

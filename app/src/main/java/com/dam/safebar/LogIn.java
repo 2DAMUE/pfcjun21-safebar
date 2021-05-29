@@ -133,8 +133,11 @@ public class LogIn extends AppCompatActivity {
                             acceder();
 
                         } else {
-                            Toast.makeText(LogIn.this, "El usuario introducido no existe",
-                                    Toast.LENGTH_SHORT).show();
+                            Snackbar snackbar = Snackbar
+                                    .make(getWindow().getDecorView().getRootView(), R.string.user_not_found, Snackbar.LENGTH_LONG)
+                                    .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+                            snackbar.setAnchorView(R.id.llSwitch);
+                            snackbar.show();
                         }
 
                     }

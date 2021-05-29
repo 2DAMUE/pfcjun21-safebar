@@ -149,12 +149,12 @@ public class CheckQRFragment extends Fragment {
                     listener.volverActivityReservasRest();
 
                 } else {
-                    Snackbar snackbar = Snackbar
-                            .make(getActivity().getWindow().getDecorView().getRootView(), R.string.error_qr_no_coincide, Snackbar.LENGTH_LONG)
-                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
-                    snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
-                    snackbar.setAnchorView(R.id.btnValidar);
-                    snackbar.show();
+//                    Snackbar snackbar = Snackbar
+//                            .make(getActivity().getWindow().getDecorView().getRootView(), R.string.error_qr_no_coincide, Snackbar.LENGTH_LONG)
+//                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+//                    snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+//                    snackbar.setAnchorView(R.id.btnValidar);
+//                    snackbar.show();
                 }
 
 

@@ -241,7 +241,7 @@ public class EditarPerfilFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_PHOTO_ADJ && resultCode == Activity.RESULT_OK) {
             selectedUri = data.getData();
-            Glide.with(imageView.getContext()).load(selectedUri).circleCrop()
+            Glide.with(this).load(selectedUri).circleCrop()
                     .into(imageView);
         }
     }
@@ -278,7 +278,7 @@ public class EditarPerfilFragment extends Fragment {
 
         removeListener();
 
-        Glide.with(imageView)
+        Glide.with(this)
                 .load(usuLoged.getUrlFoto())
                 .placeholder(null)
                 .circleCrop()

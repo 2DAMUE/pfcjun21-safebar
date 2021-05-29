@@ -175,10 +175,16 @@ public class PerfilRestFragment extends Fragment {
 
         removeListener();
 
-        Glide.with(img)
-                .load(restLoged.getUrlFoto())
-                .placeholder(null)
-                .into(img);
+        if (getActivity() != null) {
+            Glide.with(img)
+                    .load(restLoged.getUrlFoto())
+                    .placeholder(null)
+                    .into(img);
+        }
+
+
+
+
 
         tvNom.setText(restLoged.getNombreRest());
         tvEmail.setText(restLoged.getEmail());

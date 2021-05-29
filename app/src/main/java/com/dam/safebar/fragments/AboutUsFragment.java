@@ -47,15 +47,15 @@ public class AboutUsFragment extends Fragment {
         ImageView imageView2 = (ImageView) view.findViewById(R.id.imgAboutUs2);
         ImageView imageView3 = (ImageView) view.findViewById(R.id.imgAboutUs3);
 
-        Glide.with(imageView1)
+        Glide.with(this)
                 .load(R.drawable.img_alex)
                 .placeholder(null)
                 .into(imageView1);
-        Glide.with(imageView2)
+        Glide.with(this)
                 .load(R.drawable.img_miguel)
                 .placeholder(null)
                 .into(imageView2);
-        Glide.with(imageView3)
+        Glide.with(this)
                 .load(R.drawable.img_pablo)
                 .placeholder(null)
                 .into(imageView3);

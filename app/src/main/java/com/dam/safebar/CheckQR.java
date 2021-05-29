@@ -65,11 +65,11 @@ public class CheckQR extends AppCompatActivity implements CheckQRListener {
 
         //TODO
 
-        Snackbar snackbar = Snackbar
-                .make(getWindow().getDecorView().getRootView(), R.string.reserva_validada_ok, Snackbar.LENGTH_LONG)
-                .setBackgroundTint(getResources().getColor(R.color.green_dark));
-        snackbar.setAnchorView(R.id.bottomNavigationBarRest);
-        snackbar.show();
+//        Snackbar snackbar = Snackbar
+//                .make(getWindow().getDecorView().getRootView(), R.string.reserva_validada_ok, Snackbar.LENGTH_LONG)
+//                .setBackgroundTint(getResources().getColor(R.color.green_dark));
+//        snackbar.setAnchorView(R.id.bottomNavigationBarRest);
+//        snackbar.show();
         startActivity(new Intent(this, ReservasRest.class));
 
     }

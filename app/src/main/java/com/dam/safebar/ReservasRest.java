@@ -261,11 +261,15 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
         removeListener();
 
         FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ReservasRestFragment resvf = new ReservasRestFragment().newInstance(listaReservasFrag);
-        ft.add(R.id.flReservasRest, resvf);
-        ft.addToBackStack(null);
-        ft.commit();
+        if (!fm.isDestroyed()) {
+            FragmentTransaction ft = fm.beginTransaction();
+            ReservasRestFragment resvf = new ReservasRestFragment().newInstance(listaReservasFrag);
+            ft.add(R.id.flReservasRest, resvf);
+            ft.addToBackStack(null);
+//        ft.commit();
+            ft.commitAllowingStateLoss();
+        }
+
 
         //todo: snackbar??
 
