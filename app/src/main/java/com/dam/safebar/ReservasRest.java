@@ -267,13 +267,13 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
         ft.addToBackStack(null);
         ft.commit();
 
-        //todo: snackbar
+        //todo: snackbar??
 
-        Snackbar snackbar = Snackbar
-                .make(getWindow().getDecorView().getRootView(), R.string.reserva_realizada, Snackbar.LENGTH_LONG)
-                .setBackgroundTint(getResources().getColor(R.color.green_dark));
-        snackbar.setAnchorView(R.id.bottomNavigationBar);
-        snackbar.show();
+//        Snackbar snackbar = Snackbar
+//                .make(getWindow().getDecorView().getRootView(), R.string.reserva_realizada, Snackbar.LENGTH_LONG)
+//                .setBackgroundTint(getResources().getColor(R.color.green_dark));
+//        snackbar.setAnchorView(R.id.bottomNavigationBarRest);
+//        snackbar.show();
     }
 
     @Override

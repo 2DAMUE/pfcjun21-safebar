@@ -47,46 +47,115 @@ public class Splash extends AppCompatActivity {
         logo.startAnimation(fadeIn);
         nombre.startAnimation(fadeIn);
 
-        boolean rememberMe = loginDataCheck.getBoolean("REMEMBER_ME", false);
+        int rememberMe = loginDataCheck.getInt(LogIn.REMEMBER_ME_DATA, LogIn.REMEMBER_NULL);
 
-        if (rememberMe) {
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            if (user != null) {
-                openDelay(false);
-            }
-        } else {
-            openDelay(true);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        switch (rememberMe) {
+            case LogIn.REMEMBER_REST:
+                if (user != null) {
+                    openDelay(LogIn.REMEMBER_REST);
+                } else {
+                    openDelay(LogIn.REMEMBER_NULL);
+                }
+                break;
+
+            case LogIn.REMEMBER_USER:
+                if (user != null) {
+                    openDelay(LogIn.REMEMBER_USER);
+                } else {
+                    openDelay(LogIn.REMEMBER_NULL);
+                }
+                break;
+
+            case LogIn.REMEMBER_NULL:
+                openDelay(LogIn.REMEMBER_NULL);
+                break;
+
         }
+
+//        if (rememberMe.equals("USER")) {
+//            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//            if (user != null) {
+//                openDelay(false);
+//            } else {
+//                openDelay(0);
+//            }
+//        }else if (rememberMe.equals("")) {
+//
+//        }
+//        else {
+//            openDelay(0);
+//        }
 
     }
 
-    private void openDelay(boolean b) {
+    private void openDelay(int code) {
         Handler handler = new Handler();
-        if (b) {
 
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Intent intent = new Intent(Splash
-                            .this, LogIn.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }, 3500);
+        switch (code) {
+            case LogIn.REMEMBER_REST:
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(Splash
+                                .this, PerfilRest.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }, 3500);
+                break;
 
-        } else {
+            case LogIn.REMEMBER_USER:
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(Splash
+                                .this, Inicio.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }, 3500);
+                break;
 
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Intent intent = new Intent(Splash
-                            .this, Inicio.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }, 3500);
-
+            case LogIn.REMEMBER_NULL:
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(Splash
+                                .this, LogIn.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }, 3500);
+                break;
         }
+
+//        if (b == LogIn.REMEMBER_NULL) {
+//
+//            handler.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    Intent intent = new Intent(Splash
+//                            .this, LogIn.class);
+//                    startActivity(intent);
+//                    finish();
+//                }
+//            }, 3500);
+//
+//        } else {
+//
+//            handler.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    Intent intent = new Intent(Splash
+//                            .this, Inicio.class);
+//                    startActivity(intent);
+//                    finish();
+//                }
+//            }, 3500);
+//
+//        }
     }
 
 

@@ -63,12 +63,12 @@ public class CheckQR extends AppCompatActivity implements CheckQRListener {
     @Override
     public void volverActivityReservasRest() {
 
-        Toast.makeText(this, "Reserva validada con exito!", Toast.LENGTH_SHORT).show();
+        //TODO
 
         Snackbar snackbar = Snackbar
                 .make(getWindow().getDecorView().getRootView(), R.string.reserva_validada_ok, Snackbar.LENGTH_LONG)
                 .setBackgroundTint(getResources().getColor(R.color.green_dark));
-        snackbar.setAnchorView(R.id.flCheckQR);
+        snackbar.setAnchorView(R.id.bottomNavigationBarRest);
         snackbar.show();
         startActivity(new Intent(this, ReservasRest.class));
 

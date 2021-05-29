@@ -15,14 +15,14 @@
         android:layout_marginTop="150dp"
         android:layout_marginBottom="50dp"
         android:layout_gravity="center"
-        app:tint="@color/green_dark" />
+        app:tint="@color/green_dark"
+        android:contentDescription="@string/qr_code" />
 
     <TextView
         android:id="@+id/tvCodigo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="123813920123SA"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textAlignment="center"
         android:textStyle="italic"
         style="@style/Text.Subtitulo.RobotoMedium.Italic"

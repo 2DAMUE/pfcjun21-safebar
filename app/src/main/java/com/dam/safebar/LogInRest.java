@@ -3,7 +3,9 @@ package com.dam.safebar;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
@@ -35,6 +38,11 @@ public class LogInRest extends AppCompatActivity {
     TextInputLayout etUsuarioEmail;
     TextInputLayout etPassword;
 
+    SharedPreferences loginData;
+    SharedPreferences.Editor loginDataEditor;
+
+    MaterialCheckBox chRememberRest;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +52,13 @@ public class LogInRest extends AppCompatActivity {
         etUsuarioEmail = (TextInputLayout) findViewById(R.id.lLoginUsuarioRest);
         etPassword = (TextInputLayout) findViewById(R.id.lLoginPasswordRest);
         SwitchMaterial swRest = (SwitchMaterial) findViewById(R.id.switchLoginRest);
+        chRememberRest = findViewById(R.id.chLoginRest);
+
+        loginData = getSharedPreferences("loginData", Context.MODE_PRIVATE);
+        loginDataEditor = loginData.edit();
 
         Glide.with(this)
-                .load(R.drawable.food)
+                .load(R.drawable.rest)
                 .fitCenter()
                 .apply(RequestOptions.bitmapTransform(new BlurTransformation(6, 1)))
                 .into(background);
@@ -64,6 +76,14 @@ public class LogInRest extends AppCompatActivity {
                     if (checkEmpty(etPassword)) {
 
                         etPassword.setError(null);
+
+                        if (chRememberRest.isChecked()) {
+                            loginDataEditor.putInt(LogIn.REMEMBER_ME_DATA, LogIn.REMEMBER_REST);
+                            loginDataEditor.commit();
+                        } else {
+                            loginDataEditor.clear();
+                            loginDataEditor.commit();
+                        }
 
                         comprobarUsuario();
 

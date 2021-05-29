@@ -59,7 +59,7 @@ public class Inicio extends BottomNavigationHelper implements InicioListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.i("PARCERROR", "Inicio OnCreate");
-//        @BottomNavigationHelper monta directamente el layoutt
+//        @BottomNavigationHelper monta directamente el layout
 //        setContentView(R.layout.activity_inicio);
 
         if (getIntent().getStringExtra("SNACKBAR") != null) {

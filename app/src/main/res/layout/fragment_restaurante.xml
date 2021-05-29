@@ -168,18 +168,4 @@
         />
 
 
-
-
-<!--    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton-->
-<!--        android:id="@+id/fabReservar"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        android:layout_margin="16dp"-->
-<!--        android:text="@string/restaurante_frag_btn_reservar"-->
-<!--        app:icon="@drawable/ic_add" />-->
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

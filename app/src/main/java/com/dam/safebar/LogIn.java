@@ -37,6 +37,11 @@ public class LogIn extends AppCompatActivity {
     private FirebaseAuth fba;
     private FirebaseUser user;
 
+    public static final String REMEMBER_ME_DATA = "REMEMBER_CHECK";
+    public static final int REMEMBER_REST = 1;
+    public static final int REMEMBER_USER = 2;
+    public static final int REMEMBER_NULL = 0;
+
     String email;
     String password;
 
@@ -82,7 +87,7 @@ public class LogIn extends AppCompatActivity {
                         etPassword.setError(null);
 
                         if (chRemember.isChecked()) {
-                            loginDataEditor.putBoolean("REMEMBER_ME", true);
+                            loginDataEditor.putInt(REMEMBER_ME_DATA, REMEMBER_USER);
                             loginDataEditor.commit();
                         } else {
                             loginDataEditor.clear();
