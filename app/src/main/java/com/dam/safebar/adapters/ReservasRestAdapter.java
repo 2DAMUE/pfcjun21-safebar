@@ -3,7 +3,6 @@ package com.dam.safebar.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,8 +32,7 @@ public class ReservasRestAdapter extends RecyclerView.Adapter<ReservasRestAdapte
     public ReservaRestViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_reservas_rest, parent, false);
         v.setOnClickListener(this);
-        ReservaRestViewHolder rvh = new ReservaRestViewHolder(v);
-        return rvh;
+        return new ReservaRestViewHolder(v);
     }
 
     @Override

@@ -7,15 +7,11 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
-import com.dam.safebar.adapters.BottomNavigationHelperRest;
 import com.dam.safebar.fragments.CheckQRFragment;
-import com.dam.safebar.fragments.CuentaFragment;
 import com.dam.safebar.javabeans.ReservaRest;
 import com.dam.safebar.listeners.CheckQRListener;
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.snackbar.Snackbar;
 
 public class CheckQR extends AppCompatActivity implements CheckQRListener {
 
@@ -28,12 +24,7 @@ public class CheckQR extends AppCompatActivity implements CheckQRListener {
         setContentView(R.layout.activity_check_qr);
 
         MaterialToolbar tb = findViewById(R.id.topAppBarQRRest);
-        tb.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        tb.setNavigationOnClickListener(v -> onBackPressed());
 
         String fechaReserva = getIntent().getStringExtra("fechaQR");
         String horaReserva = getIntent().getStringExtra("horaQR");

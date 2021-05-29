@@ -1,7 +1,6 @@
 package com.dam.safebar.fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,17 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.dam.safebar.Buscar;
 import com.dam.safebar.R;
-import com.dam.safebar.Rest;
 import com.dam.safebar.adapters.InicioAdapter;
 import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.BuscarListener;
-import com.dam.safebar.listeners.InicioListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -77,37 +71,26 @@ public class FiltrosFragment extends Fragment {
 
 
 
-        inicAdap.setListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int i = rv.getChildAdapterPosition(v);
-                Restaurante restaurante = listaRestaurantes.get(i);
-                listener.abrirRestaurante(restaurante.getRestUID(), restaurante.getNombreRest());
-            }
+        inicAdap.setListener(v -> {
+            int i = rv.getChildAdapterPosition(v);
+            Restaurante restaurante = listaRestaurantes.get(i);
+            listener.abrirRestaurante(restaurante.getRestUID(), restaurante.getNombreRest());
         });
 
         rv.setAdapter(inicAdap);
 
-        textLayout.setEndIconOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                nombreRest = etNomRest.getText().toString().trim();
+        textLayout.setEndIconOnClickListener(v -> {
+            nombreRest = etNomRest.getText().toString().trim();
 
-                if (nombreRest.isEmpty()) {
-                    Snackbar snackbar = Snackbar
-                            .make(getActivity().getWindow().getDecorView().getRootView(), R.string.debes_introducir_nombre, Snackbar.LENGTH_LONG)
-                            .setBackgroundTint(getResources().getColor(R.color.green_dark));
-                    snackbar.setAction(getResources().getString(R.string.aceptar), new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            snackbar.dismiss();
-                        }
-                    });
-                    snackbar.setAnchorView(R.id.bottomNavigationBar);
-                    snackbar.show();
-                } else {
-                    listener.buscarRestaurantes(nombreRest);
-                }
+            if (nombreRest.isEmpty()) {
+                Snackbar snackbar = Snackbar
+                        .make(getActivity().getWindow().getDecorView().getRootView(), R.string.debes_introducir_nombre, Snackbar.LENGTH_LONG)
+                        .setBackgroundTint(getResources().getColor(R.color.green_dark));
+                snackbar.setAction(getResources().getString(R.string.aceptar), v1 -> snackbar.dismiss());
+                snackbar.setAnchorView(R.id.bottomNavigationBar);
+                snackbar.show();
+            } else {
+                listener.buscarRestaurantes(nombreRest);
             }
         });
 

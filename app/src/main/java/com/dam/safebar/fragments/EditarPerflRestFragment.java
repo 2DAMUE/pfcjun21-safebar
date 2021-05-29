@@ -11,14 +11,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -27,8 +25,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.dam.safebar.R;
 import com.dam.safebar.javabeans.Restaurante;
-import com.dam.safebar.javabeans.Usuario;
-import com.dam.safebar.listeners.CuentaListener;
 import com.dam.safebar.listeners.PerfilRestListener;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -139,17 +135,14 @@ public class EditarPerflRestFragment extends Fragment {
 
         addListener();
 
-        imbEditarImagen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), R.string.selecciona_imagen, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("image/jpeg");
-                intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
-                startActivityForResult(Intent.createChooser(intent, "Complete la acción usando"), RC_PHOTO_ADJ);
-                fotoCambiada = true;
+        imbEditarImagen.setOnClickListener(v -> {
+            Toast.makeText(getContext(), R.string.selecciona_imagen, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            intent.setType("image/jpeg");
+            intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+            startActivityForResult(Intent.createChooser(intent, "Complete la acción usando"), RC_PHOTO_ADJ);
+            fotoCambiada = true;
 
-            }
         });
 
         return view;
@@ -180,42 +173,37 @@ public class EditarPerflRestFragment extends Fragment {
             if (fotoCambiada) {
                 final StorageReference fotoRef = mFotoStorageRef.child(selectedUri.getEncodedPath());
                 UploadTask ut = fotoRef.putFile(selectedUri);
-                Task<Uri> urlTask = ut.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                    @Override
-                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                        if (!task.isSuccessful()) {
-                            throw task.getException();
-                        }
-
-                        return fotoRef.getDownloadUrl();
+                Task<Uri> urlTask = ut.continueWithTask(task -> {
+                    if (!task.isSuccessful()) {
+                        throw task.getException();
                     }
-                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Uri> task) {
-                        if (task.isSuccessful()) {
-                            Uri downloadUri = task.getResult();
-                            restEditado = new Restaurante(nombreRest, downloadUri.toString(), email, password, direc,
-                                    telef, Integer.parseInt(precio), Integer.parseInt(aforo), descrip);
 
-                            user.updateEmail(email);
-                            user.updatePassword(password);
+                    return fotoRef.getDownloadUrl();
+                }).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Uri downloadUri = task.getResult();
+                        restEditado = new Restaurante(nombreRest, downloadUri.toString(), email, password, direc,
+                                telef, Integer.parseInt(precio), Integer.parseInt(aforo), descrip);
 
-                            //dbRef.child(user.getUid()).setValue(restEditado);
-                            dbRef.child(user.getUid()).child("aforo").setValue(restEditado.getAforo());
-                            dbRef.child(user.getUid()).child("descripcion").setValue(restEditado.getDescripcion());
-                            dbRef.child(user.getUid()).child("direccion").setValue(restEditado.getDireccion());
-                            dbRef.child(user.getUid()).child("email").setValue(restEditado.getEmail());
-                            dbRef.child(user.getUid()).child("nombreRest").setValue(restEditado.getNombreRest());
-                            dbRef.child(user.getUid()).child("password").setValue(restEditado.getPassword());
-                            dbRef.child(user.getUid()).child("precioMedio").setValue(restEditado.getPrecioMedio());
-                            dbRef.child(user.getUid()).child("telefono").setValue(restEditado.getTelefono());
-                            dbRef.child(user.getUid()).child("urlFoto").setValue(downloadUri.toString());
+                        user.updateEmail(email);
+                        user.updatePassword(password);
 
-                            Snackbar snackbar = Snackbar
-                                    .make(getActivity().getWindow().getDecorView().getRootView(), R.string.perfil_modificado_ok, Snackbar.LENGTH_LONG)
-                                    .setBackgroundTint(getResources().getColor(R.color.green_dark));
-                            snackbar.setAnchorView(R.id.bottomNavigationBarRest);
-                            snackbar.show();
+                        //dbRef.child(user.getUid()).setValue(restEditado);
+                        dbRef.child(user.getUid()).child("aforo").setValue(restEditado.getAforo());
+                        dbRef.child(user.getUid()).child("descripcion").setValue(restEditado.getDescripcion());
+                        dbRef.child(user.getUid()).child("direccion").setValue(restEditado.getDireccion());
+                        dbRef.child(user.getUid()).child("email").setValue(restEditado.getEmail());
+                        dbRef.child(user.getUid()).child("nombreRest").setValue(restEditado.getNombreRest());
+                        dbRef.child(user.getUid()).child("password").setValue(restEditado.getPassword());
+                        dbRef.child(user.getUid()).child("precioMedio").setValue(restEditado.getPrecioMedio());
+                        dbRef.child(user.getUid()).child("telefono").setValue(restEditado.getTelefono());
+                        dbRef.child(user.getUid()).child("urlFoto").setValue(downloadUri.toString());
+
+                        Snackbar snackbar = Snackbar
+                                .make(getActivity().getWindow().getDecorView().getRootView(), R.string.perfil_modificado_ok, Snackbar.LENGTH_LONG)
+                                .setBackgroundTint(getResources().getColor(R.color.green_dark));
+                        snackbar.setAnchorView(R.id.bottomNavigationBarRest);
+                        snackbar.show();
 
 
 //                            //View para introducir margen por encima del BottomBar
@@ -223,9 +211,8 @@ public class EditarPerflRestFragment extends Fragment {
 //                            snackBarView.setTranslationY(-(convertDpToPixel(56, getActivity())));
 //                            snackbar.show();
 
-                            listener.volverPerfilRest();
+                        listener.volverPerfilRest();
 
-                        }
                     }
                 });
             } else {

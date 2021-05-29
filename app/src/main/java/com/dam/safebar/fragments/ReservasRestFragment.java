@@ -14,15 +14,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dam.safebar.R;
 import com.dam.safebar.adapters.ReservasRestAdapter;
 import com.dam.safebar.javabeans.ReservaRest;
 import com.dam.safebar.listeners.ReservasRestListener;
-import com.dam.safebar.listeners.ReservasUsuListener;
 
 
 import java.util.ArrayList;
@@ -71,14 +67,11 @@ public class ReservasRestFragment extends Fragment {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         ReservasRestAdapter reserRestAdap = new ReservasRestAdapter(listaReservas);
-        reserRestAdap.setListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int i = rv.getChildAdapterPosition(v);
-                ReservaRest reservaRest = listaReservas.get(i);
-                listener.abrirActivityCheckQR(reservaRest);
-                Log.i("qr", "OnClick RESERVA");
-            }
+        reserRestAdap.setListener(v -> {
+            int i = rv.getChildAdapterPosition(v);
+            ReservaRest reservaRest = listaReservas.get(i);
+            listener.abrirActivityCheckQR(reservaRest);
+            Log.i("qr", "OnClick RESERVA");
         });
 
        rv.setAdapter(reserRestAdap);

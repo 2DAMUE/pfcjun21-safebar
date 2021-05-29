@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.dam.safebar.R;
@@ -33,8 +32,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
-import java.util.zip.Inflater;
 
 public class ConfiguracionFragment extends Fragment {
 
@@ -99,13 +96,10 @@ public class ConfiguracionFragment extends Fragment {
 
         addListener();
 
-        btnLO.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fba.signOut();
-                listener.salir();
+        btnLO.setOnClickListener(v -> {
+            fba.signOut();
+            listener.salir();
 
-            }
         });
 
         return view;

@@ -2,21 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/itmInicio"
-        android:title="Home"
+        android:title="@string/home"
         android:icon="@drawable/ic_inicio"
         />
     <item
         android:id="@+id/itmBuscar"
-        android:title="Buscar"
+        android:title="@string/buscar"
         android:icon="@drawable/ic_busqueda"/>
     <item
         android:id="@+id/itmReservas"
-        android:title="Reservas"
+        android:title="@string/reservas"
         android:icon="@drawable/ic_reserva"
         />
     <item
         android:id="@+id/itmCuenta"
-        android:title="Cuenta"
+        android:title="@string/cuenta"
         android:icon="@drawable/ic_cuenta"
         />
 </menu>

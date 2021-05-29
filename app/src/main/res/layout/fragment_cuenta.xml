@@ -9,19 +9,18 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tu cuenta"
+        android:text="@string/tu_cuenta"
         android:gravity="center"
         android:layout_marginTop="22dp"
         android:textStyle="bold"
         style="@style/Text.Titulo"
-        android:textSize="32dp"
+        android:textSize="32sp"
         android:textColor="@color/orange_dark"/>
     <TextView
         android:id="@+id/tvCuentaEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Text.Subtitulo.RobotoMedium"
-        android:text="email@email.com"
         android:textSize="18sp"
         android:textColor="@color/common_google_signin_btn_text_light"
         android:layout_marginTop="8dp"

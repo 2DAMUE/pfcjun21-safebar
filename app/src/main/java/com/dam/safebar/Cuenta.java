@@ -1,6 +1,5 @@
 package com.dam.safebar;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -10,7 +9,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.dam.safebar.adapters.BottomNavigationHelper;
 import com.dam.safebar.fragments.AboutUsFragment;
@@ -57,10 +55,8 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
 
 
 
-        tb.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
+        tb.setNavigationOnClickListener(v -> {
+            onBackPressed();
 //                if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
 //                    tb.setNavigationIcon(null);
 //                    tb.setTitle("Cuenta");
@@ -73,7 +69,6 @@ public class Cuenta extends BottomNavigationHelper implements CuentaListener {
 //                    }
 //                    tb.setNavigationIcon(R.drawable.ic_back_arrow);
 //                }
-            }
         });
 
     }

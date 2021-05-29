@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.dam.safebar.R;
@@ -115,12 +114,9 @@ public class PerfilRestFragment extends Fragment {
 //            }
 //        });
 
-        btnLO.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fba.signOut();
-                listener.salir();
-            }
+        btnLO.setOnClickListener(v -> {
+            fba.signOut();
+            listener.salir();
         });
 
         return view;

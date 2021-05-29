@@ -15,10 +15,8 @@ import android.view.ViewGroup;
 
 import com.dam.safebar.R;
 import com.dam.safebar.adapters.InicioAdapter;
-import com.dam.safebar.javabeans.Datos;
 import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.InicioListener;
-import com.google.android.gms.dynamic.IFragmentWrapper;
 
 import java.util.ArrayList;
 
@@ -67,13 +65,10 @@ public class InicioFragment extends Fragment {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         InicioAdapter inicAdap = new InicioAdapter(listaRestaurantes);
-        inicAdap.setListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int i = rv.getChildAdapterPosition(v);
-                Restaurante restaurante = listaRestaurantes.get(i);
-                listener.abrirRestaurante(restaurante.getRestUID(), restaurante.getNombreRest());
-            }
+        inicAdap.setListener(v -> {
+            int i = rv.getChildAdapterPosition(v);
+            Restaurante restaurante = listaRestaurantes.get(i);
+            listener.abrirRestaurante(restaurante.getRestUID(), restaurante.getNombreRest());
         });
 
         rv.setAdapter(inicAdap);

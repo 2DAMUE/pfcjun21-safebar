@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.dam.safebar.javabeans.Restaurante;
-import com.dam.safebar.javabeans.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
@@ -64,34 +63,31 @@ public class SignUpRest extends AppCompatActivity {
                 .apply(RequestOptions.bitmapTransform(new BlurTransformation(6, 1)))
                 .into(background);
 
-        btnSignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (checkEmpty(etNombre)) {
+        btnSignup.setOnClickListener(v -> {
+            if (checkEmpty(etNombre)) {
 
-                    etNombre.setError(null);
+                etNombre.setError(null);
 
-                    if (checkEmpty(etEmail)) {
+                if (checkEmpty(etEmail)) {
 
-                        etEmail.setError(null);
+                    etEmail.setError(null);
 
-                        if (checkEmpty(etPassword)) {
+                    if (checkEmpty(etPassword)) {
 
-                            etPassword.setError(null);
+                        etPassword.setError(null);
 
-                            if (checkEmpty(etDireccion)) {
+                        if (checkEmpty(etDireccion)) {
 
-                                etDireccion.setError(null);
+                            etDireccion.setError(null);
 
-                                registrarRest();
+                            registrarRest();
 
-                                //TODO: REGISTRAR USUARIO
+                            //TODO: REGISTRAR USUARIO
 
-                            } else { etDireccion.setError("Campo obligatorio"); }
-                        } else { etPassword.setError("Campo obligatorio"); }
-                    } else { etEmail.setError("Campo obligatorio"); }
-                } else { etNombre.setError("Campo obligatorio"); }
-            }
+                        } else { etDireccion.setError("Campo obligatorio"); }
+                    } else { etPassword.setError("Campo obligatorio"); }
+                } else { etEmail.setError("Campo obligatorio"); }
+            } else { etNombre.setError("Campo obligatorio"); }
         });
 
     }
@@ -104,24 +100,22 @@ public class SignUpRest extends AppCompatActivity {
         direccion = etDireccion.getEditText().getText().toString().trim();
 
         fba.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            user = fba.getCurrentUser();
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        user = fba.getCurrentUser();
 
-                            restReg = new Restaurante(nombreRest, email, password, direccion);
+                        restReg = new Restaurante(nombreRest, email, password, direccion);
 
-                            dr.child("restaurantes").child(user.getUid()).setValue(restReg);
+                        dr.child("restaurantes").child(user.getUid()).setValue(restReg);
 
-                            accederApp();
+                        accederApp();
 
-                            Toast.makeText(getApplicationContext(),"Registrado con éxito!",
-                                    Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(getApplicationContext()," Ha ocurrido un error en el registro",
-                                    Toast.LENGTH_SHORT).show();
-                        } } });
+                        Toast.makeText(getApplicationContext(),"Registrado con éxito!",
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext()," Ha ocurrido un error en el registro",
+                                Toast.LENGTH_SHORT).show();
+                    } });
 
     }
 

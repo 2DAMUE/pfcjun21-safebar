@@ -2,10 +2,10 @@ package com.dam.safebar.listeners;
 
 public interface PerfilRestListener {
 
-    public void abrirEditCuenta();
+    void abrirEditCuenta();
 
-    public void volverPerfilRest();
+    void volverPerfilRest();
 
-    public void salir();
+    void salir();
 
 }

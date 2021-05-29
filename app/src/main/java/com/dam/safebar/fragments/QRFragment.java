@@ -1,10 +1,8 @@
 package com.dam.safebar.fragments;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -16,8 +14,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.dam.safebar.R;
-import com.dam.safebar.listeners.CheckQRListener;
-import com.dam.safebar.listeners.QRListener;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -77,12 +73,7 @@ public class QRFragment extends Fragment {
 
         //BotonPrueba
         Button btnGenerar = view.findViewById(R.id.btnOnClicl);
-        btnGenerar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createQR(codigoReserva);
-            }
-        });
+        btnGenerar.setOnClickListener(v -> createQR(codigoReserva));
 
         return view;
     }

@@ -8,13 +8,11 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.dam.safebar.adapters.BottomNavigationHelper;
 import com.dam.safebar.fragments.QRFragment;
 import com.dam.safebar.fragments.ReservasUsuFragment;
 import com.dam.safebar.javabeans.ReservaUsu;
-import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.ReservasUsuListener;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
@@ -26,8 +24,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -63,12 +59,7 @@ public class ReservasUsu extends BottomNavigationHelper implements ReservasUsuLi
         MaterialToolbar tb = findViewById(R.id.topAppbarReservasUsu);
         setSupportActionBar(tb);
 
-        tb.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        tb.setNavigationOnClickListener(v -> onBackPressed());
 
         listaReservas = new ArrayList<ReservaUsu>();
         listaFechas = new ArrayList<String>();

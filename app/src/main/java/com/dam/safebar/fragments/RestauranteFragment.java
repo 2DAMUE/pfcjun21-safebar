@@ -15,15 +15,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.dam.safebar.R;
 import com.dam.safebar.javabeans.Restaurante;
-import com.dam.safebar.listeners.PerfilRestListener;
 import com.dam.safebar.listeners.ReservarListener;
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
@@ -107,33 +103,18 @@ public class RestauranteFragment extends Fragment {
 
         addListener();
 
-        btnReservar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.abrirReservar(restUID, restNom);
-            }
-        });
+        btnReservar.setOnClickListener(v -> listener.abrirReservar(restUID, restNom));
 
-        btnIndicaciones.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String add = restaurante.getDireccion();
-                Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + add);
-                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                mapIntent.setPackage("com.google.android.apps.maps");
-                startActivity(mapIntent);
-            }
+        btnIndicaciones.setOnClickListener(v -> {
+            String add = restaurante.getDireccion();
+            Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + add);
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+            mapIntent.setPackage("com.google.android.apps.maps");
+            startActivity(mapIntent);
         });
 
 
-        btnLlamar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                listener.llamar(restaurante.getTelefono());
-
-            }
-        });
+        btnLlamar.setOnClickListener(v -> listener.llamar(restaurante.getTelefono()));
 
 
         return view;

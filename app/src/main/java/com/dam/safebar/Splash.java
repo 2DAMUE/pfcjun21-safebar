@@ -1,17 +1,13 @@
 package com.dam.safebar;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -95,38 +91,29 @@ public class Splash extends AppCompatActivity {
 
         switch (code) {
             case LogIn.REMEMBER_REST:
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent intent = new Intent(Splash
-                                .this, PerfilRest.class);
-                        startActivity(intent);
-                        finish();
-                    }
+                handler.postDelayed(() -> {
+                    Intent intent = new Intent(Splash
+                            .this, PerfilRest.class);
+                    startActivity(intent);
+                    finish();
                 }, 3500);
                 break;
 
             case LogIn.REMEMBER_USER:
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent intent = new Intent(Splash
-                                .this, Inicio.class);
-                        startActivity(intent);
-                        finish();
-                    }
+                handler.postDelayed(() -> {
+                    Intent intent = new Intent(Splash
+                            .this, Inicio.class);
+                    startActivity(intent);
+                    finish();
                 }, 3500);
                 break;
 
             case LogIn.REMEMBER_NULL:
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent intent = new Intent(Splash
-                                .this, LogIn.class);
-                        startActivity(intent);
-                        finish();
-                    }
+                handler.postDelayed(() -> {
+                    Intent intent = new Intent(Splash
+                            .this, LogIn.class);
+                    startActivity(intent);
+                    finish();
                 }, 3500);
                 break;
         }

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -27,7 +27,6 @@
                 android:id="@+id/tvNomItemRVInicio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nombre restaurante"
                 android:fontFamily="@font/roboto_medium"
                 android:textColor="@color/green_dark"
                 android:textAlignment="center"
@@ -59,7 +58,6 @@
                 android:id="@+id/tvDirecItemRVInicio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="direccion"
                 android:fontFamily="@font/roboto_light"
                 android:textAlignment="center"
                 android:textSize="16sp"
@@ -84,7 +82,6 @@
                         android:id="@+id/tvAforoItemRVInicio"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="aforo"
                         android:textAlignment="center"
                         android:textSize="18sp"/>
                     <ImageView
@@ -119,7 +116,6 @@
                             android:layout_marginLeft="-110dp"
                             android:numStars="5"
                             android:max="5"
-                            android:min="0"
                             android:scaleY="0.3"
                             android:scaleX="0.3"
                             android:minHeight="1dp"
@@ -162,7 +158,6 @@
                         android:id="@+id/tvPrecioItemRVInicio"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="precio"
                         android:textAlignment="center"
                         android:textSize="18sp"/>
 

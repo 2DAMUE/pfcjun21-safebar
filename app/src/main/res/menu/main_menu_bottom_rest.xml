@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/itmReservasRest"
-        android:title="Reservas"
+        android:title="@string/reservas"
         android:icon="@drawable/ic_reserva"
         />
     <item
         android:id="@+id/itmPerfilRest"
-        android:title="Perfil"
+        android:title="@string/perfil"
         android:icon="@drawable/ic_cuenta"
         />
 </menu>

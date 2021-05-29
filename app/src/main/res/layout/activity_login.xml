@@ -82,7 +82,6 @@
             style="@style/TextInput.LogIn">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etLoginUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textColor="@color/white"
@@ -108,7 +107,6 @@
             style="@style/TextInput.LogIn">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etLoginPassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textColor="@color/white"

@@ -25,7 +25,7 @@
 
             <TextView
                 android:id="@+id/tvNombreRestauranteFrag"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
@@ -63,8 +63,7 @@
             android:layout_marginTop="4dp"
             android:fontFamily="@font/roboto_light"
             android:textSize="16sp"
-            android:textStyle="italic"
-            android:text="Calle la que sea 434"/>
+            android:textStyle="italic"/>
 
 
         <LinearLayout
@@ -83,7 +82,6 @@
                     android:id="@+id/tvPrecioRestauranteFrag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="precio"
                     android:textAlignment="center"
                     android:textSize="18sp"/>
 
@@ -115,7 +113,6 @@
                     android:id="@+id/tvAforoRestauranteFrag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="aforo"
                     android:textAlignment="center"
                     android:textSize="18sp"/>
                 <ImageView
@@ -136,8 +133,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginTop="21dp"
-            android:text="Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de tipografías o de borradores de diseño para probar el diseño visual antes de insertar el texto fina"/>
+            android:layout_marginTop="21dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -152,7 +148,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_weight="1"
                 android:text="@string/navegar"
-                android:drawableRight="@drawable/ic_indicaciones"/>
+                android:drawableEnd="@drawable/ic_indicaciones"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLlamarRestauranteFrag"
@@ -162,7 +158,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_weight="1"
                 android:text="@string/llamar"
-                android:drawableRight="@drawable/ic_telefono"
+                android:drawableEnd="@drawable/ic_telefono"
                 android:backgroundTint="@color/green_dark"
                 />
         </LinearLayout>

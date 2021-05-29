@@ -1,6 +1,5 @@
 package com.dam.safebar;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -10,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.dam.safebar.adapters.BottomNavigationHelperRest;
-import com.dam.safebar.fragments.CuentaFragment;
 import com.dam.safebar.fragments.EditarPerflRestFragment;
 import com.dam.safebar.fragments.PerfilRestFragment;
 import com.dam.safebar.listeners.PerfilRestListener;
@@ -35,12 +33,7 @@ public class PerfilRest extends BottomNavigationHelperRest implements PerfilRest
         ft.addToBackStack(null);
         ft.commit();
 
-        tb.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        tb.setNavigationOnClickListener(v -> onBackPressed());
 
 
     }

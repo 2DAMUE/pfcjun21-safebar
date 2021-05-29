@@ -1,6 +1,5 @@
 package com.dam.safebar.adapters;
 
-import android.media.Rating;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import com.dam.safebar.Inicio;
 import com.dam.safebar.R;
 import com.dam.safebar.javabeans.Restaurante;
 
@@ -34,8 +32,7 @@ public class InicioAdapter extends RecyclerView.Adapter<InicioAdapter.Restaurant
     public RestauranteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rest_inicio, parent, false);
         v.setOnClickListener(this);
-        RestauranteViewHolder rvh = new RestauranteViewHolder(v);
-        return rvh;
+        return new RestauranteViewHolder(v);
     }
 
     @Override

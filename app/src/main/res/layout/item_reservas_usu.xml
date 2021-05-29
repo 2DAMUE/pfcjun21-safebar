@@ -11,7 +11,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_weight="1">
@@ -22,19 +22,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
                 style="@style/Text.Subtitulo.RobotoMedium.Italic"
-                android:textSize="18dp"
-                android:textColor="@color/green_light"
-                android:text="10/03/2004"/>
+                android:textSize="18sp"
+                android:textColor="@color/green_light"/>
 
             <TextView
                 android:id="@+id/tvNombreResReservasItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/Text.Subtitulo.RobotoMedium"
-                android:textSize="24dp"
+                android:textSize="24sp"
                 android:textColor="@color/green_dark"
-                android:layout_marginStart="8dp"
-                android:text="Burger King"/>
+                android:layout_marginStart="8dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -59,11 +57,10 @@
                         android:id="@+id/tvHoraReservasItem"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textAlignment="center"
                         android:gravity="center"
-                        style="@style/Text.Titulo"
-                        android:text="10:00"/>
+                        style="@style/Text.Titulo"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -80,12 +77,11 @@
                         app:tint="@color/cardview_shadow_start_color"/>
                     <TextView
                         android:id="@+id/tvNumPersonasReservasItem"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         style="@style/Text.Titulo"
-                        android:layout_weight="1"
-                        android:text="4"/>
+                        android:layout_weight="1"/>
                 </LinearLayout>
 
 
@@ -109,7 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:text="VER"
+                android:text="@string/ver"
                 android:textSize="14sp"
                 android:textColor="@color/green_dark"
                 style="@style/Text.Subtitulo.RobotoMedium"/>

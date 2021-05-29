@@ -11,34 +11,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.dam.safebar.R;
-import com.dam.safebar.ReservasRest;
 import com.dam.safebar.javabeans.ReservaRest;
-import com.dam.safebar.javabeans.ReservaUsu;
-import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.CheckQRListener;
-import com.dam.safebar.listeners.InicioListener;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -121,45 +108,39 @@ public class CheckQRFragment extends Fragment {
         user = fba.getCurrentUser();
         dbRef = FirebaseDatabase.getInstance().getReference("datos");
 
-        btnEscanear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                IntentIntegrator scaner = IntentIntegrator.forSupportFragment(CheckQRFragment.this);
-                scaner.setPrompt(getString(R.string.escanea_qr));
-                scaner.setOrientationLocked(false);
-                scaner.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
-                scaner.initiateScan();
-            }
+        btnEscanear.setOnClickListener(v -> {
+            IntentIntegrator scaner = IntentIntegrator.forSupportFragment(CheckQRFragment.this);
+            scaner.setPrompt(getString(R.string.escanea_qr));
+            scaner.setOrientationLocked(false);
+            scaner.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
+            scaner.initiateScan();
         });
 
-        btnValidar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btnValidar.setOnClickListener(v -> {
 
 
-                if (reservaRest.getCodigo().equals(codigdoReservaUsu)) {
+            if (reservaRest.getCodigo().equals(codigdoReservaUsu)) {
 
-                    dbRef.child("restaurantes").child(user.getUid()).child("reservas").child(reservaRest.getFecha()).
-                            child(reservaRest.getHora()).child(reservaRest.getCodigo()).removeValue();
+                dbRef.child("restaurantes").child(user.getUid()).child("reservas").child(reservaRest.getFecha()).
+                        child(reservaRest.getHora()).child(reservaRest.getCodigo()).removeValue();
 
-                    dbRef.child("usuarios").child(reservaRest.getUserUID()).child("reservas").child(reservaRest.getFecha()).
-                            child(reservaRest.getCodigo()).removeValue();
+                dbRef.child("usuarios").child(reservaRest.getUserUID()).child("reservas").child(reservaRest.getFecha()).
+                        child(reservaRest.getCodigo()).removeValue();
 
 
-                    listener.volverActivityReservasRest();
+                listener.volverActivityReservasRest();
 
-                } else {
+            } else {
 //                    Snackbar snackbar = Snackbar
 //                            .make(getActivity().getWindow().getDecorView().getRootView(), R.string.error_qr_no_coincide, Snackbar.LENGTH_LONG)
 //                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
 //                    snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
 //                    snackbar.setAnchorView(R.id.btnValidar);
 //                    snackbar.show();
-                }
-
-
-
             }
+
+
+
         });
 
         return view;

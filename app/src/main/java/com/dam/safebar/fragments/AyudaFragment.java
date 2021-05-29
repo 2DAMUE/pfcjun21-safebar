@@ -13,7 +13,6 @@ import android.widget.Button;
 
 import com.dam.safebar.R;
 import com.dam.safebar.listeners.CuentaListener;
-import com.dam.safebar.listeners.InicioListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -60,19 +59,9 @@ public class AyudaFragment extends Fragment {
         fba = FirebaseAuth.getInstance();
         user = fba.getCurrentUser();
 
-        btnLLamar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.llamar();
-            }
-        });
+        btnLLamar.setOnClickListener(v -> listener.llamar());
 
-        btnEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.mandarCorreo(user.getEmail());
-            }
-        });
+        btnEmail.setOnClickListener(v -> listener.mandarCorreo(user.getEmail()));
 
         return view;
     }

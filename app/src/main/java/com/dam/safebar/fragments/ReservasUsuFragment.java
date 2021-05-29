@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +17,6 @@ import android.view.ViewGroup;
 import com.dam.safebar.R;
 import com.dam.safebar.adapters.ReservasUsuAdapter;
 import com.dam.safebar.javabeans.ReservaUsu;
-import com.dam.safebar.listeners.InicioListener;
-import com.dam.safebar.listeners.QRListener;
 import com.dam.safebar.listeners.ReservasUsuListener;
 
 import java.util.ArrayList;
@@ -69,14 +66,11 @@ public class ReservasUsuFragment extends Fragment {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         ReservasUsuAdapter reserAdap = new ReservasUsuAdapter(listaReservas);
-       reserAdap.setListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int i = rv.getChildAdapterPosition(v);
-                ReservaUsu reservaUsu = listaReservas.get(i);
-                listener.abrirActivityMostrarQR(reservaUsu.getCodigo());
-            }
-        });
+       reserAdap.setListener(v -> {
+           int i = rv.getChildAdapterPosition(v);
+           ReservaUsu reservaUsu = listaReservas.get(i);
+           listener.abrirActivityMostrarQR(reservaUsu.getCodigo());
+       });
 
         rv.setAdapter(reserAdap);
         return view;

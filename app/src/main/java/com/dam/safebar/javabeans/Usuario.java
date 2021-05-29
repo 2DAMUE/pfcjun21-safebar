@@ -3,8 +3,6 @@ package com.dam.safebar.javabeans;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
-
 public class Usuario implements Parcelable {
 
     private String urlFoto;

@@ -5,12 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/llInicio"
     tools:context=".Inicio"
     android:gravity="bottom">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbaar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent">
@@ -32,7 +30,7 @@
     <FrameLayout
         android:id="@+id/flInicio"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1" />
 
     <include

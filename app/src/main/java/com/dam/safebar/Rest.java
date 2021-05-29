@@ -8,14 +8,10 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.dam.safebar.fragments.BookingFragment;
-import com.dam.safebar.fragments.InicioFragment;
 import com.dam.safebar.fragments.RestauranteFragment;
-import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.ReservarListener;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
@@ -38,12 +34,7 @@ public class Rest extends AppCompatActivity implements ReservarListener {
 
         MaterialToolbar tb = findViewById(R.id.topAppBar);
         tb.setTitle(restNom);
-        tb.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        tb.setNavigationOnClickListener(v -> onBackPressed());
 
 
 

@@ -4,11 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -65,32 +63,29 @@ public class SignUp extends AppCompatActivity {
                 .apply(RequestOptions.bitmapTransform(new BlurTransformation(6, 1)))
                 .into(background);
 
-        btnSignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (checkEmpty(etNombre)) {
+        btnSignup.setOnClickListener(v -> {
+            if (checkEmpty(etNombre)) {
 
-                    etNombre.setError(null);
+                etNombre.setError(null);
 
-                    if (checkEmpty(etEmail)) {
+                if (checkEmpty(etEmail)) {
 
-                        etEmail.setError(null);
+                    etEmail.setError(null);
 
-                        if (checkEmpty(etPassword)) {
+                    if (checkEmpty(etPassword)) {
 
-                            etPassword.setError(null);
+                        etPassword.setError(null);
 
-                            if (checkEmpty(etDireccion)) {
+                        if (checkEmpty(etDireccion)) {
 
-                                etDireccion.setError(null);
+                            etDireccion.setError(null);
 
-                                registrarUsuario();
+                            registrarUsuario();
 
-                            }  else { etDireccion.setError("Campo obligatorio"); }
-                        } else { etPassword.setError("Campo obligatorio"); }
-                    } else { etEmail.setError("Campo obligatorio"); }
-                } else { etNombre.setError("Campo obligatorio"); }
-            }
+                        }  else { etDireccion.setError("Campo obligatorio"); }
+                    } else { etPassword.setError("Campo obligatorio"); }
+                } else { etEmail.setError("Campo obligatorio"); }
+            } else { etNombre.setError("Campo obligatorio"); }
         });
 
     }
@@ -103,24 +98,22 @@ public class SignUp extends AppCompatActivity {
         direccion = etDireccion.getEditText().getText().toString().trim();
 
         fba.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            user = fba.getCurrentUser();
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        user = fba.getCurrentUser();
 
-                            usuReg = new Usuario(nombre, email, password, direccion);
+                        usuReg = new Usuario(nombre, email, password, direccion);
 
-                            dr.child("usuarios").child(user.getUid()).setValue(usuReg);
+                        dr.child("usuarios").child(user.getUid()).setValue(usuReg);
 
-                            accederApp();
+                        accederApp();
 
-                            Toast.makeText(getApplicationContext(),"Registrado con éxito!",
-                                    Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(getApplicationContext()," Ha ocurrido un error en el registro",
-                                    Toast.LENGTH_SHORT).show();
-                        } } });
+                        Toast.makeText(getApplicationContext(),"Registrado con éxito!",
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext()," Ha ocurrido un error en el registro",
+                                Toast.LENGTH_SHORT).show();
+                    } });
 
     }
 

@@ -13,8 +13,8 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/oswald_light"
         android:textAlignment="center"
-        android:textSize="28dp"
-        android:text="¿Estás listo para reservar en tu restaurante favorito?"
+        android:textSize="28sp"
+        android:text="@string/estas_listo_booking"
         android:textColor="@color/green_dark"
         style="@style/TextAppearance.AppCompat.Headline"/>
 
@@ -27,9 +27,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Comida"
+            android:text="@string/comida"
             android:textSize="18sp"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             style="@style/Text.Subtitulo.RobotoMedium"/>
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switchComidaCena"
@@ -40,9 +40,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             style="@style/Text.Subtitulo.RobotoMedium"
-            android:text="Cena"/>
+            android:text="@string/cena"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="300dp"
@@ -53,7 +53,7 @@
         android:gravity="center">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="1"
             android:hint="Fecha"
@@ -78,10 +78,10 @@
             android:id="@+id/btnSelecFecha"
             android:layout_width="68dp"
             android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_calendario"
+            android:drawableEnd="@drawable/ic_calendario"
             android:drawableTint="@color/white"
             android:backgroundTint="@color/green_light"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginStart="10dp"/>
 
     </LinearLayout>
 
@@ -96,12 +96,12 @@
         android:layout_marginTop="12dp"
         >
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="60dp"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:hint="Hora"
+            android:hint="@string/hora"
             android:layout_gravity="center"
             style="@style/TextInput.Outlined.WithBackground">
             <com.google.android.material.textfield.TextInputEditText
@@ -117,10 +117,10 @@
             android:id="@+id/btnSelecHora"
             android:layout_width="68dp"
             android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_reloj"
+            android:drawableEnd="@drawable/ic_reloj"
             android:drawableTint="@color/white"
             android:backgroundTint="@color/green_light"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginStart="10dp"/>
     </LinearLayout>
 
 
@@ -130,7 +130,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:hint="Número de personas"
+        android:hint="@string/num_personas"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
         style="@style/TextInput.Outlined.WithBackground">

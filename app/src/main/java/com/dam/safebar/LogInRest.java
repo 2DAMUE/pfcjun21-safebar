@@ -7,12 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -67,42 +65,36 @@ public class LogInRest extends AppCompatActivity {
         fba = FirebaseAuth.getInstance();
         user = fba.getCurrentUser();
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (checkEmpty(etUsuarioEmail)) {
+        btnLogin.setOnClickListener(v -> {
+            if (checkEmpty(etUsuarioEmail)) {
 
-                    etUsuarioEmail.setError(null);
+                etUsuarioEmail.setError(null);
 
-                    if (checkEmpty(etPassword)) {
+                if (checkEmpty(etPassword)) {
 
-                        etPassword.setError(null);
+                    etPassword.setError(null);
 
-                        if (chRememberRest.isChecked()) {
-                            loginDataEditor.putInt(LogIn.REMEMBER_ME_DATA, LogIn.REMEMBER_REST);
-                            loginDataEditor.commit();
-                        } else {
-                            loginDataEditor.clear();
-                            loginDataEditor.commit();
-                        }
+                    if (chRememberRest.isChecked()) {
+                        loginDataEditor.putInt(LogIn.REMEMBER_ME_DATA, LogIn.REMEMBER_REST);
+                        loginDataEditor.apply();
+                    } else {
+                        loginDataEditor.clear();
+                        loginDataEditor.commit();
+                    }
 
-                        comprobarUsuario();
+                    comprobarUsuario();
 
-                    } else { etPassword.setError("Obligatorio"); }
+                } else { etPassword.setError("Obligatorio"); }
 
-                } else { etUsuarioEmail.setError("Obligatorio"); }
+            } else { etUsuarioEmail.setError("Obligatorio"); }
 
-            }
         });
 
         swRest.setChecked(true);
-        swRest.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (!isChecked) {
-                    Intent i = new Intent(LogInRest.this, LogIn.class);
-                    startActivity(i);
-                }
+        swRest.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (!isChecked) {
+                Intent i = new Intent(LogInRest.this, LogIn.class);
+                startActivity(i);
             }
         });
     }
@@ -113,21 +105,17 @@ public class LogInRest extends AppCompatActivity {
         password = etPassword.getEditText().getText().toString().trim();
 
         fba.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            user = fba.getCurrentUser();
-                            acceder();
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        user = fba.getCurrentUser();
+                        acceder();
 
-                        } else {
-                            Snackbar snackbar = Snackbar
-                                    .make(getWindow().getDecorView().getRootView(), R.string.user_not_found, Snackbar.LENGTH_LONG)
-                                    .setBackgroundTint(getResources().getColor(R.color.orange_dark));
-                            snackbar.setAnchorView(R.id.llSwitchRest);
-                            snackbar.show();
-                        }
-
+                    } else {
+                        Snackbar snackbar = Snackbar
+                                .make(getWindow().getDecorView().getRootView(), R.string.user_not_found, Snackbar.LENGTH_LONG)
+                                .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+                        snackbar.setAnchorView(R.id.llSwitchRest);
+                        snackbar.show();
                     }
 
                 });
@@ -146,9 +134,6 @@ public class LogInRest extends AppCompatActivity {
 
     private String getInputString(TextInputLayout et) {
         return et.getEditText().getText().toString();
-    }
-
-    public void olvidasteContrasena(View view) {
     }
 
     public void goSignUp(View view) {

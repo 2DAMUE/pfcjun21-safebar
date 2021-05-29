@@ -51,7 +51,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/green_dark"
-                    android:text="Nombre restaurante"
                     style="@style/Text.Subtitulo.RobotoMedium"
                     android:textSize="20sp"/>
             </LinearLayout>
@@ -89,7 +88,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/green_dark"
-                    android:text="email@email.com"
                     style="@style/Text.Subtitulo.RobotoMedium"
                     android:textSize="20sp"/>
             </LinearLayout>
@@ -127,7 +125,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/green_dark"
-                    android:text="Calle falsa 123, Madrid"
                     style="@style/Text.Subtitulo.RobotoMedium"
                     android:textSize="20sp"/>
             </LinearLayout>
@@ -165,7 +162,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/green_dark"
-                    android:text="636 636 636"
                     style="@style/Text.Subtitulo.RobotoMedium"
                     android:textSize="20sp"/>
             </LinearLayout>
@@ -204,7 +200,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/green_dark"
-                    android:text="36 €"
                     style="@style/Text.Subtitulo.RobotoMedium"
                     android:textSize="20sp"/>
             </LinearLayout>
@@ -243,7 +238,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/green_dark"
-                    android:text="22"
                     style="@style/Text.Subtitulo.RobotoMedium"
                     android:textSize="20sp"/>
             </LinearLayout>
@@ -282,7 +276,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/green_dark"
-                    android:text="@string/perf_rest_frag_tv_descrip"
                     style="@style/Text.Subtitulo.RobotoMedium"
                     android:textSize="20sp"/>
             </LinearLayout>

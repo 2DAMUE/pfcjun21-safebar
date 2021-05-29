@@ -8,9 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.dam.safebar.fragments.CheckQRFragment;
 import com.dam.safebar.fragments.QRFragment;
-import com.dam.safebar.javabeans.ReservaRest;
 import com.google.android.material.appbar.MaterialToolbar;
 
 public class MostrarQR extends AppCompatActivity {
@@ -21,12 +19,7 @@ public class MostrarQR extends AppCompatActivity {
         setContentView(R.layout.activity_mostrar_qr);
 
         MaterialToolbar tb = findViewById(R.id.topAppBarQRUsu);
-        tb.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        tb.setNavigationOnClickListener(v -> onBackPressed());
 
         String codigoReserva = getIntent().getStringExtra("codQR");
 

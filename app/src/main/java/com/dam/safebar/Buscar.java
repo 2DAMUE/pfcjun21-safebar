@@ -1,27 +1,17 @@
 package com.dam.safebar;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
 import com.dam.safebar.adapters.BottomNavigationHelper;
-import com.dam.safebar.adapters.InicioAdapter;
-import com.dam.safebar.fragments.CuentaFragment;
 import com.dam.safebar.fragments.FiltrosFragment;
-import com.dam.safebar.fragments.InicioFragment;
 import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.listeners.BuscarListener;
-import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;

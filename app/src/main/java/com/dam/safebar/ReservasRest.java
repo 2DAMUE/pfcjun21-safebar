@@ -4,20 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.dam.safebar.adapters.BottomNavigationHelperRest;
-import com.dam.safebar.fragments.CheckQRFragment;
 import com.dam.safebar.fragments.ReservasRestFragment;
-import com.dam.safebar.fragments.ReservasUsuFragment;
 import com.dam.safebar.javabeans.ReservaRest;
-import com.dam.safebar.javabeans.ReservaUsu;
-import com.dam.safebar.listeners.CheckQRListener;
 import com.dam.safebar.listeners.ReservasRestListener;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
@@ -99,12 +93,7 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
 
         addListener();
 
-        tb.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        tb.setNavigationOnClickListener(v -> onBackPressed());
 
 
     }

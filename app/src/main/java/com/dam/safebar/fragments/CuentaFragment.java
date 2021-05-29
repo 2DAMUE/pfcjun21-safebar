@@ -11,11 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.dam.safebar.Inicio;
 import com.dam.safebar.R;
-import com.dam.safebar.javabeans.Restaurante;
 import com.dam.safebar.javabeans.Usuario;
 import com.dam.safebar.listeners.CuentaListener;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
@@ -79,33 +76,13 @@ public class CuentaFragment extends Fragment {
 
         addListener();
 
-        btnConfiguracion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.abrirConfiguracion();
-            }
-        });
+        btnConfiguracion.setOnClickListener(v -> listener.abrirConfiguracion());
 
-        btnAboutUs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.abrirAboutUs();
-            }
-        });
+        btnAboutUs.setOnClickListener(v -> listener.abrirAboutUs());
 
-        btnAyuda.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.abrirAyuda();
-            }
-        });
+        btnAyuda.setOnClickListener(v -> listener.abrirAyuda());
 
-        btnProtocoloCovid.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.abrirProtocoloCovid();
-            }
-        });
+        btnProtocoloCovid.setOnClickListener(v -> listener.abrirProtocoloCovid());
 
         return view;
 

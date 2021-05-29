@@ -28,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="120dp"
 
-        android:text="SIGN UP RESTAURANTE"
+        android:text="@string/sign_up_rest"
         android:textColor="@color/white"
         style="@style/Text.Titulo"/>
 
@@ -40,11 +40,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="40dp"
-        android:hint="Nombre"
+        android:hint="@string/edit_perf_rest_frag_tv_nombre"
         style="@style/TextInput.LogIn">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etSignUpNombreRest"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textPersonName"
@@ -61,11 +60,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="10dp"
-        android:hint="Email"
+        android:hint="@string/email"
         style="@style/TextInput.LogIn">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etSignUpEmailRest"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textEmailAddress"
@@ -82,13 +80,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="10dp"
-        android:hint="Contraseña"
+        android:hint="@string/edit_perf_rest_frag_tv_pw"
         app:endIconMode="password_toggle"
         app:endIconTint="@color/white"
         style="@style/TextInput.LogIn">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etSignUpPasswordRest"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textPassword"
@@ -104,11 +101,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="10dp"
-        android:hint="Dirección"
+        android:hint="@string/edit_perf_rest_frag_tv_direc"
         style="@style/TextInput.LogIn">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etSignUpDireccionRest"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="text"
@@ -124,7 +120,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="26dp"
-        android:text="Sign up"
+        android:text="@string/sign_up"
         style="@style/Button.Material.BaseLogin"/>
 
     <TextView
@@ -134,7 +130,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="80dp"
-        android:text="¿Ya tienes cuenta? Inicia sesión"
+        android:text="@string/ya_tienes_cuenta_inicia_sesion"
         style="@style/Text.Subtitulo.RobotoMedium.Italic"
         android:textSize="16sp"
         android:textColor="@color/white"

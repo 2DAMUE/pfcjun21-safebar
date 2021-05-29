@@ -4,6 +4,6 @@ import com.dam.safebar.javabeans.ReservaRest;
 
 public interface ReservasRestListener {
 
-    public void abrirActivityCheckQR(ReservaRest reservaRest);
+    void abrirActivityCheckQR(ReservaRest reservaRest);
 
 }
