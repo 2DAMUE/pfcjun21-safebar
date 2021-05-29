@@ -68,4 +68,9 @@
     <string name="qr_code">Código QR</string>
     <string name="user_not_found">El usuario introducido no existe</string>
     <string name="unexpected_error">Ha ocurrido un error inesperado</string>
+    <string name="login_restaurante">LOGIN RESTAURANTE</string>
+    <string name="login">Login</string>
+    <string name="mantenerme_logueado">Mantenerme logueado</string>
+    <string name="sin_cuenta_registrate">¿No tienes cuenta? Regístrate</string>
+    <string name="login_usuario">LOGIN USUARIO</string>
 </resources>
