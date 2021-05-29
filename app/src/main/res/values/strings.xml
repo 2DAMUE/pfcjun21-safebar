@@ -73,4 +73,5 @@
     <string name="mantenerme_logueado">Mantenerme logueado</string>
     <string name="sin_cuenta_registrate">¿No tienes cuenta? Regístrate</string>
     <string name="login_usuario">LOGIN USUARIO</string>
+    <string name="introduce_rest">Introduce un restaurante</string>
 </resources>
