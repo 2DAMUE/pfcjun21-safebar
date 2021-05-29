@@ -46,12 +46,12 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        ImageView background = (ImageView) findViewById(R.id.ivBackgroundSignUp);
-        Button btnSignup = (Button) findViewById(R.id.btnSignUp);
-        etNombre = (TextInputLayout) findViewById(R.id.lSignUpNombre);
-        etEmail = (TextInputLayout) findViewById(R.id.lSignUpEmail);
-        etPassword = (TextInputLayout) findViewById(R.id.lSignUpPassword);
-        etDireccion = (TextInputLayout) findViewById(R.id.lSignUpDireccion);
+        ImageView background = findViewById(R.id.ivBackgroundSignUp);
+        Button btnSignup = findViewById(R.id.btnSignUp);
+        etNombre = findViewById(R.id.lSignUpNombre);
+        etEmail = findViewById(R.id.lSignUpEmail);
+        etPassword = findViewById(R.id.lSignUpPassword);
+        etDireccion = findViewById(R.id.lSignUpDireccion);
 
         dr = FirebaseDatabase.getInstance().getReference("datos");
         fba = FirebaseAuth.getInstance();

@@ -45,7 +45,7 @@ public class ProtocoloCovidFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_protocolo_covid, container, false);
         final String pdfString = "https://www.mincotur.gob.es/es-es/COVID-19/GuiasSectorTurismo/Restaurantes.pdf";
         String path = "https://docs.google.com/gview?embedded=true&url=" + pdfString;
-        final WebView webView = (WebView) view.findViewById(R.id.webViewCovid);
+        final WebView webView = view.findViewById(R.id.webViewCovid);
         webView.loadUrl(path);
 
         WebSettings webSettings = webView.getSettings();

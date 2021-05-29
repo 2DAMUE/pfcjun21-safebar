@@ -46,12 +46,12 @@ public class SignUpRest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_rest);
 
-        ImageView background = (ImageView) findViewById(R.id.ivBackgroundSignUpRest);
-        Button btnSignup = (Button) findViewById(R.id.btnSignUpRest);
-        etNombre = (TextInputLayout) findViewById(R.id.lSignUpNombreRest);
-        etEmail = (TextInputLayout) findViewById(R.id.lSignUpEmailRest);
-        etPassword = (TextInputLayout) findViewById(R.id.lSignUpPasswordRest);
-        etDireccion = (TextInputLayout) findViewById(R.id.lSignUpDireccionRest);
+        ImageView background = findViewById(R.id.ivBackgroundSignUpRest);
+        Button btnSignup = findViewById(R.id.btnSignUpRest);
+        etNombre = findViewById(R.id.lSignUpNombreRest);
+        etEmail = findViewById(R.id.lSignUpEmailRest);
+        etPassword = findViewById(R.id.lSignUpPasswordRest);
+        etDireccion = findViewById(R.id.lSignUpDireccionRest);
 
         dr = FirebaseDatabase.getInstance().getReference("datos");
         fba = FirebaseAuth.getInstance();

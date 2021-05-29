@@ -46,11 +46,11 @@ public class LogInRest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in_rest);
-        ImageView background = (ImageView) findViewById(R.id.ivBackgroundLoginRest);
-        Button btnLogin = (Button) findViewById(R.id.btnLoginRest);
-        etUsuarioEmail = (TextInputLayout) findViewById(R.id.lLoginUsuarioRest);
-        etPassword = (TextInputLayout) findViewById(R.id.lLoginPasswordRest);
-        SwitchMaterial swRest = (SwitchMaterial) findViewById(R.id.switchLoginRest);
+        ImageView background = findViewById(R.id.ivBackgroundLoginRest);
+        Button btnLogin = findViewById(R.id.btnLoginRest);
+        etUsuarioEmail = findViewById(R.id.lLoginUsuarioRest);
+        etPassword = findViewById(R.id.lLoginPasswordRest);
+        SwitchMaterial swRest = findViewById(R.id.switchLoginRest);
         chRememberRest = findViewById(R.id.chLoginRest);
 
         loginData = getSharedPreferences("loginData", Context.MODE_PRIVATE);

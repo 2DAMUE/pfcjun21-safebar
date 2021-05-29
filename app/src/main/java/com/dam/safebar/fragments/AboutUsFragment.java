@@ -43,9 +43,9 @@ public class AboutUsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_about_us, container, false);
 
-        ImageView imageView1 = (ImageView) view.findViewById(R.id.imgAboutUs1);
-        ImageView imageView2 = (ImageView) view.findViewById(R.id.imgAboutUs2);
-        ImageView imageView3 = (ImageView) view.findViewById(R.id.imgAboutUs3);
+        ImageView imageView1 = view.findViewById(R.id.imgAboutUs1);
+        ImageView imageView2 = view.findViewById(R.id.imgAboutUs2);
+        ImageView imageView3 = view.findViewById(R.id.imgAboutUs3);
 
         Glide.with(this)
                 .load(R.drawable.img_alex)

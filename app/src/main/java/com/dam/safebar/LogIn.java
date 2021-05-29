@@ -51,11 +51,11 @@ public class LogIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        ImageView background = (ImageView) findViewById(R.id.ivBackgroundLogin);
-        Button btnLogin = (Button) findViewById(R.id.btnLogin);
-        etUsuarioEmail = (TextInputLayout) findViewById(R.id.lLoginUsuario);
-        etPassword = (TextInputLayout) findViewById(R.id.lLoginPassword);
-        SwitchMaterial swUsuario = (SwitchMaterial) findViewById(R.id.switchLogin);
+        ImageView background = findViewById(R.id.ivBackgroundLogin);
+        Button btnLogin = findViewById(R.id.btnLogin);
+        etUsuarioEmail = findViewById(R.id.lLoginUsuario);
+        etPassword = findViewById(R.id.lLoginPassword);
+        SwitchMaterial swUsuario = findViewById(R.id.switchLogin);
         chRemember = findViewById(R.id.chLogin);
         loginData = getSharedPreferences("loginData", Context.MODE_PRIVATE);
         loginDataEditor = loginData.edit();
