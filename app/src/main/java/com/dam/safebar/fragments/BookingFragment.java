@@ -64,6 +64,7 @@ public class BookingFragment extends Fragment {
     ReservaRest reservaRestCheck;
     Restaurante restaurante;
     Usuario usuario;
+    int contadorInicio;
 
     ReservarListener listener;
 
@@ -72,13 +73,14 @@ public class BookingFragment extends Fragment {
     DatabaseReference dbRef;
     ValueEventListener vel;
 
+//    boolean reservaOk;
+
     String fecha;
     String hora;
     String sNumPersonas;
     int numPersonas;
     int contAforo;
     boolean isCena;
-    String resOk = "";
 
 
     EditText etFecha;
@@ -112,7 +114,6 @@ public class BookingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_booking, container, false);
 
         etFecha = view.findViewById(R.id.etBookingFragFecha);
@@ -123,6 +124,8 @@ public class BookingFragment extends Fragment {
         btnReservar = view.findViewById(R.id.btnBookingFragReservar);
 
         SwitchMaterial comidaCena = view.findViewById(R.id.switchComidaCena);
+
+//        reservaOk = false;
 
         comidaCena.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -235,9 +238,6 @@ public class BookingFragment extends Fragment {
             }
         });
 
-
-        Log.i("onclick", "etFecha creado");
-
         contAforo = 0;
 
         dbRef = FirebaseDatabase.getInstance().getReference("datos");
@@ -263,8 +263,6 @@ public class BookingFragment extends Fragment {
                     snackbar.setAnchorView(R.id.btnBookingFragReservar);
                     snackbar.show();
 
-
-
                 } else {
                     numPersonas = Integer.parseInt(sNumPersonas);
                     codigoReserva = crearCodigoReserva();
@@ -273,6 +271,7 @@ public class BookingFragment extends Fragment {
                     reservaRest = new ReservaRest(user.getUid(), fecha, hora,  numPersonas);
 
                     addListener1();
+//                    reservaOkInicio();
 
                 }
 
@@ -280,9 +279,15 @@ public class BookingFragment extends Fragment {
         });
 
 
-
         return view;
     }
+
+//    private void reservaOkInicio() {
+//        if (reservaOk) {
+//            listener.booking();
+//            Log.i("reservaOk", String.valueOf(reservaOk));
+//        }
+//    }
 
     private String crearCodigoReserva() {
 
@@ -397,9 +402,18 @@ public class BookingFragment extends Fragment {
                     dbRef.child("restaurantes").child(restUID).child("reservas").child(fecha).child(hora).child(codigoReserva).setValue(reservaRest);
 
                     removeListener();
+//                    reservaOk = true;
+                    Log.i("LISTENERBOOKING", "OnDataChange FUERA IF");
+                    if (getActivity() != null) {
+                        if (getActivity().getSupportFragmentManager() != null) {
+                            Fragment f = getActivity().getSupportFragmentManager().findFragmentById(R.id.flRestaurante);
+                            if (f instanceof BookingFragment) {
+                                Log.i("LISTENERBOOKING", "OnDataChange + " + getActivity());
+                                listener.booking();
+                            }
+                        }
 
-                    listener.booking();
-
+                    }
                 }
 
                 @Override
