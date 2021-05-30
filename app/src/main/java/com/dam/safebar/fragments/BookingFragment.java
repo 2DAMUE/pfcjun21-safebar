@@ -133,7 +133,7 @@ public class BookingFragment extends Fragment {
             picker.show(getChildFragmentManager(), picker.toString());
             etFecha.setEnabled(false);
 
-            //TODO: NO SE QUE DICE DE RAW, NO ME DEJA METER EL '?', SE QUEDA CON WARNING
+            //TODO: En la documentacion se usa el metodo sin parametrizar, el warning no deberia llegar a causar un error.
 
             picker.addOnPositiveButtonClickListener((MaterialPickerOnPositiveButtonClickListener) selection -> {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
@@ -280,7 +280,6 @@ public class BookingFragment extends Fragment {
 
                     for (DataSnapshot dss : dataSnapshot.getChildren()) {
                         reservaRestCheck = dss.getValue(ReservaRest.class);
-                        //TODO: cambiar NumPersonas
                         contAforo = contAforo + reservaRestCheck.getNumPersonas();
                     }
 

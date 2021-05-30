@@ -82,8 +82,6 @@ public class SignUpRest extends AppCompatActivity {
 
                             registrarRest();
 
-                            //TODO: REGISTRAR USUARIO
-
                         } else { etDireccion.setError("Campo obligatorio"); }
                     } else { etPassword.setError("Campo obligatorio"); }
                 } else { etEmail.setError("Campo obligatorio"); }

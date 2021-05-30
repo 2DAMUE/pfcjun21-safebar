@@ -56,7 +56,6 @@ public class Inicio extends BottomNavigationHelper implements InicioListener {
 //        @BottomNavigationHelper monta directamente el layout
 //        setContentView(R.layout.activity_inicio);
 
-        //TODO: problema Snackbar, intuyo que por savedInstanceState
         if (getIntent().getBooleanExtra(Rest.BOOKING_OK, false)) {
             Snackbar snackbar = Snackbar
                     .make(getWindow().getDecorView().getRootView(), R.string.reserva_realizada, Snackbar.LENGTH_LONG)

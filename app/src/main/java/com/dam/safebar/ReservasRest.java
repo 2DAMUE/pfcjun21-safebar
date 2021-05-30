@@ -285,8 +285,6 @@ public class ReservasRest extends BottomNavigationHelperRest implements Reservas
         }
 
 
-        //todo: snackbar??
-
 //        Snackbar snackbar = Snackbar
 //                .make(getWindow().getDecorView().getRootView(), R.string.reserva_realizada, Snackbar.LENGTH_LONG)
 //                .setBackgroundTint(getResources().getColor(R.color.green_dark));

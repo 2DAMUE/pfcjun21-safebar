@@ -10,11 +10,7 @@ public class Datos {
     public Datos() {
         listaUsuarios = new ArrayList<Usuario>();
 
-        // TODO: Rellenar listaUsuarios
-
         listaRestaurantes = new ArrayList<Restaurante>();
-
-        // TODO: REllenar listaRestaurantes
 
     }
 

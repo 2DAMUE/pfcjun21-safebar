@@ -41,7 +41,6 @@ public abstract class BottomNavigationHelperRest extends AppCompatActivity imple
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         navigationView.postDelayed(() -> {
             int itemId = item.getItemId();
-            //TODO ITEMS REST
             if (itemId == R.id.itmReservasRest) {
                 Intent i = new Intent(this, ReservasRest.class);
                 startActivity(i);

@@ -19,7 +19,6 @@
         android:background="#66000000"
         android:visibility="visible"/>
 
-<!--    TODO: LINEAR PARA CENTRAR-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

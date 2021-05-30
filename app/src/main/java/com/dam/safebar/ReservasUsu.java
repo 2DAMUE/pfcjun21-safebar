@@ -55,7 +55,6 @@ public class ReservasUsu extends BottomNavigationHelper implements ReservasUsuLi
         super.onCreate(savedInstanceState);
 
         //Implementar QRListener
-        //TODO: MaterialToolbar
         MaterialToolbar tb = findViewById(R.id.topAppbarReservasUsu);
         setSupportActionBar(tb);
 
