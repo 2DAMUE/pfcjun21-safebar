@@ -99,7 +99,7 @@ En el lado del restaurante nos encontramos con:
 - ***Reservas***: nos encontramos también con una pestaña de reservas, parecida a la del usuario, donde se ven las reservas realizadas al restaurante con el nombre de la persona que reserva, fecha y personas. Accedemos a *Verificar QR* pulsando en cada una de ellas.
 - ***Verificar QR***: pulsando en verificar accedemos al Scanner de QR, que devuelve el código de la reserva escaneada en el móvil del usuario y elimina la reserva al pulsar el botón verificar, actualizándose tanto en la parte del usuario como en el restaurante.
 
-## Librerias usadas
+## Librerías usadas
 
 En el desarrollo de la aplicación se han utilizado tanto librerias de Android o Google como algunas desarrolladas por usuarios de GitHub.
 Se incluyen en el proyecto:
