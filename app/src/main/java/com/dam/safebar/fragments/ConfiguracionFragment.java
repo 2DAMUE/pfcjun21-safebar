@@ -154,11 +154,17 @@ public class ConfiguracionFragment extends Fragment {
 
         removeListener();
 
-        Glide.with(this)
-                .load(usuLoged.getUrlFoto())
-                .placeholder(null)
-                .circleCrop()
-                .into(img);
+        if (getActivity() != null) {
+            Fragment f = getActivity().getSupportFragmentManager().findFragmentById(R.id.flCuenta);
+            if (f instanceof ConfiguracionFragment) {
+
+                Glide.with(this)
+                        .load(usuLoged.getUrlFoto())
+                        .placeholder(null)
+                        .circleCrop()
+                        .into(img);
+            }
+        }
 
         tvNom.setText(usuLoged.getNombre());
         tvEmail.setText(usuLoged.getEmail());

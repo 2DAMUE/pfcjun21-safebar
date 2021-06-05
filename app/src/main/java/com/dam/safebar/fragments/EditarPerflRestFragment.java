@@ -301,12 +301,18 @@ public class EditarPerflRestFragment extends Fragment {
     private void cargarDatosUsuario() {
 
         removeListener();
+        if (getActivity() != null) {
+            Fragment f = getActivity().getSupportFragmentManager().findFragmentById(R.id.flPerfilRest);
+            if (f instanceof EditarPerflRestFragment) {
+                Glide.with(this)
+                        .load(restLoged.getUrlFoto())
+                        .placeholder(null)
+                        .circleCrop()
+                        .into(imageView);
+            }
 
-        Glide.with(this)
-                .load(restLoged.getUrlFoto())
-                .placeholder(null)
-                .circleCrop()
-                .into(imageView);
+        }
+
 
         etNombre.setText(restLoged.getNombreRest());
         etEmail.setText(restLoged.getEmail());

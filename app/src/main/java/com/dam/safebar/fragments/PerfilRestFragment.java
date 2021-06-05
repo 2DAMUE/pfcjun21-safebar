@@ -172,10 +172,13 @@ public class PerfilRestFragment extends Fragment {
         removeListener();
 
         if (getActivity() != null) {
-            Glide.with(img)
-                    .load(restLoged.getUrlFoto())
-                    .placeholder(null)
-                    .into(img);
+            Fragment f = getActivity().getSupportFragmentManager().findFragmentById(R.id.flPerfilRest);
+            if (f instanceof PerfilRestFragment) {
+                Glide.with(img)
+                        .load(restLoged.getUrlFoto())
+                        .placeholder(null)
+                        .into(img);
+            }
         }
 
 
