@@ -162,61 +162,7 @@ public class CheckQRFragment extends Fragment {
 
         }
     }
-
-    //    @Override
-//    public void onResume() {
-//        super.onResume();
-//        addListener();
-//    }
-
-//    private void addListener() {
-//        if (vel == null) {
-//            vel = new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                    ReservaUsu reservaUsu = dataSnapshot.getValue(ReservaUsu.class);
-//                    reservaUsu.setCodigo(reservaRest.getCodigo());
-//
-//                    if (reservaUsu != null) {
-//
-//
-//
-//
-//                    }
-//
-//                    Toast.makeText(getContext(), "La reserva no existe", Toast.LENGTH_SHORT).show();
-//
-//
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//                    Toast.makeText(getContext(), "Error al cargar los datos", Toast.LENGTH_SHORT).show();
-//                }
-//            };
-//            dbRef.child("usuarios").child(reservaRest.getUserUID()).child("reservas").child(reservaRest.getFecha()).
-//                    child(reservaRest.getCodigo()).addValueEventListener(vel);
-//        }
-//    }
-//
-//    @Override
-//    public void onPause() {
-//        super.onPause();
-//        removeListener();
-//    }
-//
-//    private void removeListener() {
-//        if (vel != null) {
-//            dbRef.removeEventListener(vel);
-//            vel = null;
-//        }
-//
-//    }
-
-
-
-
+    
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
