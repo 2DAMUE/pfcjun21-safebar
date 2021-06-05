@@ -69,4 +69,5 @@
     <string name="reservas">Reservas</string>
     <string name="cuenta">Cuenta</string>
     <string name="perfil">Perfil</string>
+    <string name="error_qr_no_coincide">El QR no coincide para esta reserva</string>
 </resources>

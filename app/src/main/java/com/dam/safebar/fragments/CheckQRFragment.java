@@ -21,6 +21,8 @@ import android.widget.TextView;
 import com.dam.safebar.R;
 import com.dam.safebar.javabeans.ReservaRest;
 import com.dam.safebar.listeners.CheckQRListener;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -131,12 +133,12 @@ public class CheckQRFragment extends Fragment {
                 listener.volverActivityReservasRest();
 
             } else {
-//                    Snackbar snackbar = Snackbar
-//                            .make(getActivity().getWindow().getDecorView().getRootView(), R.string.error_qr_no_coincide, Snackbar.LENGTH_LONG)
-//                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
-//                    snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
-//                    snackbar.setAnchorView(R.id.btnValidar);
-//                    snackbar.show();
+                    Snackbar snackbar = Snackbar
+                            .make(getActivity().getWindow().getDecorView().getRootView(), R.string.error_qr_no_coincide, Snackbar.LENGTH_LONG)
+                            .setBackgroundTint(getResources().getColor(R.color.orange_dark));
+                    snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                    snackbar.setAnchorView(R.id.btnValidar);
+                    snackbar.show();
             }
 
 

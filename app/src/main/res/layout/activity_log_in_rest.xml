@@ -78,6 +78,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:hint="@string/email"
             android:layout_marginTop="40dp"
+            app:startIconDrawable="@drawable/ic_restaurante"
+            app:startIconTint="@color/white_alpha"
             style="@style/TextInput.LogIn">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -99,7 +101,9 @@
             android:layout_marginTop="12dp"
             android:hint="@string/editperf_frag_tv_pw"
             app:endIconMode="password_toggle"
-            app:endIconTint="@color/white"
+            app:endIconTint="@color/white_alpha"
+            app:startIconDrawable="@drawable/ic_password_24"
+            app:startIconTint="@color/white_alpha"
             style="@style/TextInput.LogIn">
 
             <com.google.android.material.textfield.TextInputEditText

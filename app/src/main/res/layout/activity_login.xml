@@ -100,7 +100,7 @@
             android:layout_marginTop="12dp"
             android:hint="@string/edit_perf_rest_frag_tv_pw"
             app:endIconMode="password_toggle"
-            app:endIconTint="@color/white"
+            app:endIconTint="@color/white_alpha"
             app:startIconDrawable="@drawable/ic_password_24"
             app:startIconTint="@color/white_alpha"
             style="@style/TextInput.LogIn">
