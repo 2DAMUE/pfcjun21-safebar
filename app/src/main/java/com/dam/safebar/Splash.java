@@ -70,20 +70,6 @@ public class Splash extends AppCompatActivity {
 
         }
 
-//        if (rememberMe.equals("USER")) {
-//            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//            if (user != null) {
-//                openDelay(false);
-//            } else {
-//                openDelay(0);
-//            }
-//        }else if (rememberMe.equals("")) {
-//
-//        }
-//        else {
-//            openDelay(0);
-//        }
-
     }
 
     private void openDelay(int code) {
@@ -118,31 +104,6 @@ public class Splash extends AppCompatActivity {
                 break;
         }
 
-//        if (b == LogIn.REMEMBER_NULL) {
-//
-//            handler.postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    Intent intent = new Intent(Splash
-//                            .this, LogIn.class);
-//                    startActivity(intent);
-//                    finish();
-//                }
-//            }, 3500);
-//
-//        } else {
-//
-//            handler.postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    Intent intent = new Intent(Splash
-//                            .this, Inicio.class);
-//                    startActivity(intent);
-//                    finish();
-//                }
-//            }, 3500);
-//
-//        }
     }
 
 

@@ -45,7 +45,6 @@ public class BookingFragment extends Fragment {
 
     public static final String COD_REST_UID_BOOKING = "RUID";
     public static final String COD_REST_NOM_BOOKING = "RNOM";
-    public static final int NUMERO_MAX_PERSONAS = 9;
 
     String restUID;
     String restNom;
@@ -55,7 +54,6 @@ public class BookingFragment extends Fragment {
     ReservaRest reservaRestCheck;
     Restaurante restaurante;
     Usuario usuario;
-    int contadorInicio;
 
     ReservarListener listener;
 
@@ -63,8 +61,6 @@ public class BookingFragment extends Fragment {
     FirebaseUser user;
     DatabaseReference dbRef;
     ValueEventListener vel;
-
-//    boolean reservaOk;
 
     String fecha;
     String hora;
@@ -133,7 +129,7 @@ public class BookingFragment extends Fragment {
             picker.show(getChildFragmentManager(), picker.toString());
             etFecha.setEnabled(false);
 
-            //TODO: En la documentacion se usa el metodo sin parametrizar, el warning no deberia llegar a causar un error.
+            //En la documentacion se usa el metodo sin parametrizar, el warning no deberia llegar a causar un error.
 
             picker.addOnPositiveButtonClickListener((MaterialPickerOnPositiveButtonClickListener) selection -> {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
