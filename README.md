@@ -113,5 +113,5 @@ Se incluyen en el proyecto:
 
 ## Licencia
 
-[GNU GENERAL PUBLIC LICENSE](https://github.com/2DAMUE/pfcjun21-safebar/blob/documentacion/LICENSE)
+[GNU GENERAL PUBLIC LICENSE](https://github.com/2DAMUE/pfcjun21-safebar/blob/main/LICENSE)
 
